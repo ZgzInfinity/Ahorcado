@@ -14,6 +14,40 @@
 const int MAX_LONG_FICHERO = 100;
 
 
+void escribirFichero (const char ficheroPalabrasTexto[], const char ficheroPalabrasBinario[]){
+	ifstream f1;
+	ofstream f2;
+	
+	f1.open(ficheroPalabrasTexto);
+	if (f1.is_open()){
+		
+		f2.open(ficheroPalabrasBinario,ios::binary);
+		
+		if (f2.is_open()){
+			Palabra palabraActual;
+			
+			char linea[128];
+			f1.getline(linea, 128, '\n');
+			
+			crearPalabra(linea, int(strlen(linea)), palabraActual);
+			
+			while (!f1.eof()){
+				
+				f2.write(reinterpret_cast<char *>(&palabraActual), sizeof(Palabra));
+				f1.getline(linea, 128, '\n');
+			}
+			f1.close();
+			f2.close();
+		}
+		else {
+			cerr << " El fichero " << ficheroPalabrasBinario << " es innacesible" << endl;
+		}
+	}
+	else {
+		cerr << " El fichero " << ficheroPalabrasTexto << " es innacesible" << endl;
+	}
+}
+
 /*
  * Secuenvia de pruebas basicas para probar el TAD Palabra
  */
@@ -23,6 +57,9 @@ int main(){
 	
 	char sec1[MAX_LETRAS] = "domingo";
 	char sec2[MAX_LETRAS] = "bicicleta";
+	
+	const char f1[MAX_LONG_FICHERO] = "palabras_mod.txt";
+	const char f2[MAX_LONG_FICHERO] = "palabras_bin.txt";
 	
 	// Priemra instancia del tipo de dato palabra
 	Palabra p1;
@@ -44,6 +81,8 @@ int main(){
 	
 	cout << " La palabra " << sec3 << " tiene " << obtenerLetras(p1) << " letras " << endl;
 	cout << " La palabra " << sec4 << " tiene " << obtenerLetras(p2) << " letras " << endl;
+	
+	escribirFichero(f1, f2);
 	
 	cout << " Fin del programa " << endl;
 	return 0;
