@@ -29,8 +29,7 @@ void seleccionarPalabra(const char ficheroPalabrasBinario[], const int numLineas
 		// Seleccion aleatoria de una linea del fichero
 		int lineaAleatoria = rand() % numLineas + 1;
 		// Calculo de la posicion en bytes de la palabra en esa fila aleatoria
-		int direccion = sizeof(int) + sizeof(Palabra) * (lineaAleatoria - 1);
-		
+		int direccion = sizeof(Palabra) * (lineaAleatoria - 1);
 		// Desplazamiento del cursor a la posicion
 		f.seekg(direccion);
 		// Lectura de la palabra en esa fila
@@ -152,6 +151,13 @@ int main(){
 	
 	// seleccion de la palabra con la que se va a jugar
 	seleccionarPalabra(f2, numLineas, palabraSeleccionada);
+	
+	// Obtencion de la palabra leida
+	char palabra[MAX_LETRAS];
+	obtenerPalabra(palabra, palabraSeleccionada);
+	
+	// Muestreo de la palabra seleccionada
+	cout << "La palabra leida es " << palabra << " y tiene " << obtenerLetras(palabraSeleccionada) << endl;
 	
 	cout << " Fin del programa " << endl;
 	return 0;
