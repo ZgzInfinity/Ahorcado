@@ -14,19 +14,54 @@
 const int MAX_LONG_FICHERO = 100;
 
 
+/*
+ * Pre: <<ficheroPalabrasBinario>> es un fichero binario que almacena una secuencia de
+ *      de palabras, <<numLineas>> es el numero de lineas del fichero
+ * Post: Ha seleccionado una fila aleatoria del fichero <<ficheroPalabrasBinario>> y ha guardado en
+ *       <<p>> la palabra correspondiente a esa linea
+ */
+void seleccionarPalabra(const char ficheroPalabrasBinario[], const int numLineas, Palabra& p){
+	// Flujo de lectura del fichero binario
+	ifstream f;
+	// Apertura del fichero de palabras
+	f.open(ficheroPalabrasBinario, ios::binary);
+	if (f.is_open()){
+		// Seleccion aleatoria de una linea del fichero
+		int lineaAleatoria = rand() % numLineas + 1;
+		// Calculo de la posicion en bytes de la palabra en esa fila aleatoria
+		int direccion = sizeof(int) + sizeof(Palabra) * (lineaAleatoria - 1);
+		
+		// Desplazamiento del cursor a la posicion
+		f.seekg(direccion);
+		// Lectura de la palabra en esa fila
+		f.read(reinterpret_cast<char *>(&p), sizeof(Palabra));
+		
+		// Cierre del flujo de lectura del fichero
+		f.close();
+	}
+	else {
+		// Error en el fichero binario de palabras
+		cerr << " El fichero " << ficheroPalabrasBinario << " no esta disponible " << endl;
+	}
+}
+
 
 /*
  * Pre: <<ficheroPalabrasTexto>> es un fichero de texto que almacena, a razón de una por línea,
  *      un diccionario amplio de palabras en castellano.
  * Post: Ha creado un fichero binario denominado <<ficheroPalabrasBinario>> con el contenido del
  *      fichero <<ficheroPalabrasTexto>>. En caso de que el fichero no exista lo crea, y si no,
- *      lo trunca y reemplaza su contenido
+ *      lo trunca y reemplaza su contenido y ha guardado en <<totalLineas>> el numero de lineas del 
+ *      fichero de texto
  */ 
-void crearFicheroPalabrasBinario(const char ficheroPalabrasTexto[], const char ficheroPalabrasBinario[]){
+void crearFicheroPalabrasBinario(const char ficheroPalabrasTexto[], const char ficheroPalabrasBinario[], int& totalLineas){
 	// Flujo de lectura asociado al fichero de texto
 	ifstream f1;
 	// Flujo de escritura asociado al fichero binario
 	ofstream f2;
+	
+	// Contador de lineas del fichero
+	totalLineas = 0;
 	
 	// Apertura del fichero de texto
 	f1.open(ficheroPalabrasTexto);
@@ -43,6 +78,8 @@ void crearFicheroPalabrasBinario(const char ficheroPalabrasTexto[], const char f
 			f1.getline(linea, 128, '\n');
 			
 			while (!f1.eof()){
+				// Incremento del numero de lineas leidas
+				totalLineas++;
 				// Mientras queden palabras por leer
 				// Crea una palabra con la información leída
 				crearPalabra(linea, int(strlen(linea)), palabraActual);
@@ -80,8 +117,8 @@ int main(){
 	char sec1[MAX_LETRAS] = "domingo";
 	char sec2[MAX_LETRAS] = "bicicleta";
 	
-	const char f1[MAX_LONG_FICHERO] = "palabras_mod.txt";
-	const char f2[MAX_LONG_FICHERO] = "palabras_bin.txt";
+	const char f1[MAX_LONG_FICHERO] = "palabras_rae.txt";
+	const char f2[MAX_LONG_FICHERO] = "palabras_bin.bin";
 	
 	// Priemra instancia del tipo de dato palabra
 	Palabra p1;
@@ -104,7 +141,17 @@ int main(){
 	cout << " La palabra " << sec3 << " tiene " << obtenerLetras(p1) << " letras " << endl;
 	cout << " La palabra " << sec4 << " tiene " << obtenerLetras(p2) << " letras " << endl;
 	
-	crearFicheroPalabrasBinario(f1, f2);
+	// Contador de filas del fichero de texto de palabras
+	int numLineas;
+	
+	// Palabra seleccionada para guardar
+	Palabra palabraSeleccionada;
+	
+	// Lectura del fichero de palabras y generacion del fichero binario
+	crearFicheroPalabrasBinario(f1, f2, numLineas);
+	
+	// seleccion de la palabra con la que se va a jugar
+	seleccionarPalabra(f2, numLineas, palabraSeleccionada);
 	
 	cout << " Fin del programa " << endl;
 	return 0;
