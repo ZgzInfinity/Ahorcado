@@ -21,9 +21,9 @@
  * Post: Ha creado una palabra asignado a <<cadena>> la secuencia de caracteres
  *      <<secuencia>> y a <<numLetras>> el valor de <<nLetras>>
  */
-Palabra::Palabra(char secuencia[], int nLetras){
-	strcpy(cadena, secuencia);
-	numLetras = nLetras;
+void crearPalabra(char secuencia[], int nLetras, Palabra& p){
+	strcpy(p.cadena, secuencia);
+	p.numLetras = nLetras;
 }
 
 
@@ -33,8 +33,8 @@ Palabra::Palabra(char secuencia[], int nLetras){
  * Post: Ha copiado en <<palabra>> la secuencia de caracteres
  *       almacenados en <<cadena>>
  */
-void Palabra::obtenerPalabra(char palabra[]){
-	strcpy(palabra, this->cadena);
+void obtenerPalabra(char palabra[], Palabra& p){
+	strcpy(palabra, p.cadena);
 }
 
 
@@ -43,6 +43,6 @@ void Palabra::obtenerPalabra(char palabra[]){
  * Pre: ---
  * Post: Ha devuelto el total de letras de la palabra
  */
-int Palabra::obtenerLetras(){
-	return numLetras;
+int obtenerLetras(Palabra& p){
+	return p.numLetras;
 }

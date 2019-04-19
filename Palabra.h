@@ -23,7 +23,7 @@ using namespace std;
 // Longitud de la palabra mas larga conocida
 const int MAX_LETRAS = 33;
  
-class Palabra {
+struct Palabra {
 	private:
 		// Estructura interna del tipo de dato Palabra
 		char cadena[MAX_LETRAS];	// vector de caracteres que representa las letras de la palabra
@@ -37,7 +37,7 @@ class Palabra {
 		 * Post: Ha creado una palabra asignado a <<cadena>> la secuencia de caracteres
 		 *      <<secuencia>> y a <<numLetras>> el valor de <<nLetras>>
 		 */
-		Palabra(char secuencia[], int nLetras);
+		friend void crearPalabra(char secuencia[], int nLetras, Palabra& p);
 		
 		
 		/*
@@ -45,14 +45,14 @@ class Palabra {
 		 * Post: Ha copiado en <<palabra>> la secuencia de caracteres
 		 *       almacenados en <<cadena>>
 		 */
-		void obtenerPalabra(char palabra[]);
+		friend void obtenerPalabra(char palabra[], Palabra& p);
 		
 		
 		/*
 		 * Pre: ---
 		 * Post: Ha devuelto el total de letras de la palabra
 		 */
-		int obtenerLetras();
+		friend int obtenerLetras(Palabra& p);
 };
 
 #endif
