@@ -46,3 +46,66 @@ void obtenerPalabra(char palabra[], Palabra& p){
 int obtenerLetras(Palabra& p){
 	return p.numLetras;
 }
+
+
+
+
+/*
+ * Pre: ---
+ * Post: Ha devuelto la i-esima letra de la palabra <<p>>
+ */
+char devolverLetra(Palabra& p, const int i){
+	return p.cadena[i];
+}
+
+
+
+
+/*
+ * Pre: ---
+ * Post: Ha mostrado por cada letra de la palabra <<p>> un guion 
+ *       bajo de acuerdo al siguiente formato
+ * 
+ *      Ejemplo:
+ *      diligentemente:  _ _ _ _ _ _ _ _ _ _ _ _ _ _
+ *      ababol:          _ _ _ _ _ _
+ *      ganzua:          _ _ _ _ _ _
+ */
+void mostrarHuecosPalabra(Palabra& p){
+	// Total de letras de la palabra <<p>>
+	int numLetras = obtenerLetras(p);
+	// Bucle de recorrido de la palabra
+	for (int i = 0; i < numLetras; i++){
+		cout << "_ ";
+	}
+}
+
+
+/*
+ * Pre: <<p>> es una secuencia de caracteres que describe la 
+ *       estructura de una palabra
+ * Post: Ha devuelto <<true>> si y solo si la letra <<l>> esta dentro
+ *       de la palabra <<p>> y ha reemplazada en la posicion correspondiente
+ *       el caracter "_" por el valor de la letra <<l>>
+ */
+bool existeLetra(Palabra& p, const char l){
+	// Total de letras de la palabra <<p>>
+	int numLetras = obtenerLetras(p);
+	// Control de existencia de letra
+	bool encontrado = false;
+	// Total de veces que ha aparecido la letra <<l>>
+	int numVeces = 0;
+	// Bucle de recorrido
+	for (int i = 0; i < numLetras; i++){
+		// Se compara si la letra i-ésima es igual a <<l>>
+		if (devolverLetra(p, i) == l){
+			// Se compara si esta mas de una vez
+			if (numVeces != 1){
+				// es la primera vez 
+				encontrado = true;
+			}
+			cout << "La letra " << l << " esta contenida" << endl;
+		}
+	}
+	return encontrado;
+}

@@ -53,6 +53,37 @@ struct Palabra {
 		 * Post: Ha devuelto el total de letras de la palabra
 		 */
 		friend int obtenerLetras(Palabra& p);
+		
+		
+		/*
+		 * Pre: ---
+		 * Post: Ha devuelto la i-esima letra de la palabra <<p>>
+		 */
+		friend char devolverLetra(Palabra& p, const int i);
+		
+		
+		/*
+		 * Pre: ---
+		 * Post: Ha mostrado por cada letra de la palabra <<p>> un guion 
+		 *       bajo de acuerdo al siguiente formato
+		 * 
+		 *      Ejemplo:
+		 *      diligentemente:  _ _ _ _ _ _ _ _ _ _ _ _ _ _
+		 *      ababol:          _ _ _ _ _ _
+		 *      ganzua:          _ _ _ _ _ _
+		 */
+		 friend void mostrarHuecosPalabra(Palabra& p);
+
+
+		/*
+		 * Pre: <<p>> es una secuencia de caracteres que describe la 
+		 *       estructura de una palabra
+		 * Post: Ha devuelto <<true>> si y solo si la letra <<l>> esta dentro
+		*       de la palabra <<p>> y ha reemplazada en la posicion correspondiente
+		*       el caracter "_" por el valor de la letra <<l>>
+		*/
+		friend bool existeLetra(Palabra& p, const char l);
+
 };
 
 #endif
