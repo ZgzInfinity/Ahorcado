@@ -82,7 +82,7 @@ struct Palabra {
 		*       de la palabra <<p>> y ha reemplazada en la posicion correspondiente
 		*       el caracter "_" por el valor de la letra <<l>>
 		*/
-		friend bool existeLetra(Palabra& p, const char l);
+		friend bool existeLetra(Palabra& p, const char l, int& letrasVoltedas);
 
 };
 
