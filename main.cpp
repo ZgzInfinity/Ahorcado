@@ -9,9 +9,37 @@
 #include <fstream>
 #include <cstdlib>
 #include <ctime>
+#include <cctype>
 #include "Palabra.h"
 
 const int MAX_LONG_FICHERO = 100;
+
+
+
+/*
+ * Pre: ---
+ * Post: Ha guardado en <<letra>> la letra introducida por el
+ *       usuario a traves del teclado
+ */
+void pedirLetra(char& letra){
+	// Peticion al usuario del caracter por teclado
+	cout << "Introduzca la letra a comprobar: " << flush;
+	cin >> letra;
+	
+	// Comprobacion de si el caracter introducido por el usuario es una letra
+	while (!isalpha(letra)){
+		// El caracter no es el adecuado y lo vuelve a pedir
+		cout << "El caracter introducido no es una letra" << endl;
+		cout << "Introduzca la letra a comprobar: " << flush;
+		cin >> letra;
+	}
+	
+	// Comprueba si el caracter es una letra mayuscula
+	if (isupper(letra)){
+		// Si es mayuscula la convierte a minuscula
+		letra = tolower(letra);
+	}
+}
 
 
 /*
@@ -111,34 +139,12 @@ void crearFicheroPalabrasBinario(const char ficheroPalabrasTexto[], const char f
  */
 int main(){
 	
+	// Semilla generadora de numeros aleatorios
 	srand(time(NULL));
 	
-	char sec1[MAX_LETRAS] = "domingo";
-	char sec2[MAX_LETRAS] = "bicicleta";
-	
+	// Ficheros de trabajo 
 	const char f1[MAX_LONG_FICHERO] = "palabras_rae.txt";
 	const char f2[MAX_LONG_FICHERO] = "palabras_bin.bin";
-	
-	// Priemra instancia del tipo de dato palabra
-	Palabra p1;
-	crearPalabra(sec1, 7, p1);
-	
-	// Segunda instancia del tipo de dato palabra
-	Palabra p2;
-	crearPalabra(sec2, 9, p2);
-	
-	// Cadenas de caracteres para almacenar las palabras
-	char sec3[MAX_LETRAS];
-	char sec4[MAX_LETRAS];
-	
-	// Guardado de la palabra <<p1>> en <<sec1>>
-	obtenerPalabra(sec3, p1);
-	
-	// Guardado de la palabra <<p2>> en <<sec2>>
-	obtenerPalabra(sec4, p2);
-	
-	cout << " La palabra " << sec3 << " tiene " << obtenerLetras(p1) << " letras " << endl;
-	cout << " La palabra " << sec4 << " tiene " << obtenerLetras(p2) << " letras " << endl;
 	
 	// Contador de filas del fichero de texto de palabras
 	int numLineas;
@@ -152,12 +158,35 @@ int main(){
 	// seleccion de la palabra con la que se va a jugar
 	seleccionarPalabra(f2, numLineas, palabraSeleccionada);
 	
-	// Obtencion de la palabra leida
-	char palabra[MAX_LETRAS];
-	obtenerPalabra(palabra, palabraSeleccionada);
+	// Numero de letras de la palabra seleccionada
+	int numLetras = obtenerLetras(palabraSeleccionada);
 	
-	// Muestreo de la palabra seleccionada
-	cout << "La palabra leida es " << palabra << " y tiene " << obtenerLetras(palabraSeleccionada) << endl;
+	// Modo de dificultad por defecto 
+	int dificultad = 2;
+	
+	// PRESENTAR EL MENU DEL JUEGO
+	
+	// Numero de letras descubiertas de la palabra
+	int letrasVolteadas = 0;
+	
+	// Muestreo de los huecos de la palabra a averiguar
+	mostrarHuecosPalabra(palabraSeleccionada);
+	
+	// Peticion de letra con la que jugar al usuario
+	char letra;
+	pedirLetra(letra);
+	
+	// Comprobar si la letra esta o no en la palara
+	existeLetra(palabraSeleccionada, letra, letrasVolteadas);
+	
+	// Mientras queden letras por descubir
+	while (letrasVolteadas != numLetras){
+		// Se vuelve a pedir letra nueva
+		pedirLetra(letra);
+	
+		// Comprobar si la letra nueva esta o no en la palara
+		existeLetra(palabraSeleccionada, letra, letrasVolteadas);
+	}
 	
 	cout << " Fin del programa " << endl;
 	return 0;
