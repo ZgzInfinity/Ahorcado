@@ -21,34 +21,107 @@ const int MAX_LONG_FICHERO = 100;
  * Post: Ha dibujado la parte correspondiente del monigote en funcion del
  *       estado del juego
  */
-void dibujoParteMonigote(int& estado){
-    // Seleccion del estado de control del juego
-    switch(estado){
-    case 1:
-            // Dibujo de la cabeza del monigote
-            dibujoCabeza();
-    case 2:
-            // Dibujo del cuello del monigote
-            dibujarCuello();
-    case 3:
-            // Dibujo del cuerpo del monigote
-            dibujarCuerpo();
-    case 4:
-            // Dibujo del brazo izquierdo
-            dibujarBrazoIzq();
-    case 5:
-            // Dibujo del brazo derecho
-            dibujarBrazoDer();
-    case 6:
-            // Dibujo de la pierna izquierda
-            dibujarPiernaIzq();
-    case 7:
-            // Dibujo de la pierna derecha
-            dibujarPiernaDer();
-    default:
-            // Estado desconocido del juego
-            cerr << "Estado desconocido" << endl;
+void dibujoParteMonigote(int& estado, const int dificultad){
+    // Control de la dificultad del juego
+    switch (dificultad){
+        // Dificultad en modo novato
+        case 1:
+            // Seleccion del estado de control del juego
+            switch(estado){
+            case 1:
+                    // Dibujo de la cabeza del monigote
+                    dibujoCabeza();
+                    break;
+            case 2:
+                    // Dibujo del cuello del monigote
+                    dibujarCuello();
+                    break;
+            case 3:
+                    // Dibujo del cuerpo del monigote
+                    dibujarCuerpo();
+                    break;
+            case 4:
+                    // Dibujo del brazo izquierdo
+                    dibujarBrazoIzq();
+                    break;
+            case 5:
+                    // Dibujo del brazo derecho
+                    dibujarBrazoDer();
+                    break;
+            case 6:
+                    // Dibujo de la pierna izquierda
+                    dibujarPiernaIzq();
+                    break;
+            case 7:
+                    // Dibujo de la pierna derecha
+                    dibujarPiernaDer();
+                    break;
+            default:
+                    // Estado desconocido del juego
+                    cerr << "Estado desconocido" << endl;
+            }
+            break;
+        // Dificultad en modo intermedio
+        case 2:
+            switch(estado){
+                case 1:
+                    // Dibujo de la cabeza y del cuello
+                    dibujoCabeza();
+                    dibujarCuello();
+                    break;
+                case 2:
+                    // Dibujo del brazo izquierdo
+                    dibujarBrazoIzq();
+                    break;
+                case 3:
+                    // Dibujo del brazo derecho
+                    dibujarBrazoDer();
+                    break;
+                case 4:
+                    // Dibujo del cuerpo
+                    dibujarCuerpo();
+                    break;
+                case 5:
+                    // Dibujo de las dos piernas
+                    dibujarBrazoIzq();
+                    dibujarPiernaDer();
+                    break;
+                default:
+                    cerr << "Estado desconocido " << endl;
+            }
+            break;
+        // Dificultad en modo maestro
+        case 3:
+            switch(estado){
+                case 1:
+                    // Dibujo de la cabeza y del cuello
+                    dibujoCabeza();
+                    dibujarCuello();
+                    break;
+                case 2:
+                    // Dibujo de los dos brazos
+                    dibujarBrazoIzq();
+                    dibujarBrazoDer();
+                    break;
+                case 3:
+                    // Dibujo del cuerpo
+                    dibujarCuerpo();
+                    break;
+                case 4:
+                    // Dibujo de las dos piernas
+                    dibujarBrazoIzq();
+                    dibujarPiernaDer();
+                    break;
+                default:
+                    cerr << "Estado desconocido " << endl;
+            }
+            break;
+         // Niguno de los modos de dificultad coincide
+        default:
+            cerr << "Dificutad no admitida " << endl;
     }
+    // Incremento del estado del juego
+    estado++;
 }
 
 
@@ -197,6 +270,9 @@ int main(){
 	// Numero de letras de la palabra seleccionada
 	int numLetras = obtenerLetras(palabraSeleccionada);
 
+	// Estado inicial del juego
+    int estado = 0;
+
 	// Modo de dificultad por defecto
 	int dificultad = 2;
 
@@ -208,6 +284,9 @@ int main(){
 	// Muestreo de los huecos de la palabra a averiguar
 	mostrarHuecosPalabra(palabraSeleccionada);
 
+	// Dibujo de la horca
+	dibujarHorca();
+
 	// Peticion de letra con la que jugar al usuario
 	char letra;
 	pedirLetra(letra);
@@ -218,6 +297,7 @@ int main(){
 	}
 	else {
         // Dibujo correspondiente del monigote
+        dibujoParteMonigote(estado, dificultad);
 	}
 
 
