@@ -10,11 +10,23 @@
 #include <cstdlib>
 #include <ctime>
 #include <cctype>
+#include <cstdio>
+#include <unistd.h>
 #include "Palabra.h"
 #include "Monigote.h"
 
-const int MAX_LONG_FICHERO = 100;
 
+// valores de color de fondo y fuente
+const int FONDO_AZUL = 1;
+const int COLOR_VERDE = 10;
+const int COLOR_ROJO = 12;
+const int COLOR_AMARILLO = 14;
+const int COLOR_BLANCO = 15;
+
+
+// longitud maxima del nombre de un fichero
+const int MAX_LONG_FICHERO = 100;
+const int retardo = 100000;
 
 /*
  * Pre: <<estado>> almacena el estado actual del juego
@@ -132,6 +144,9 @@ void dibujoParteMonigote(int& estado, const int dificultad){
  */
 void pedirLetra(char& letra){
 	// Peticion al usuario del caracter por teclado
+	gotoxy(5,3);
+	// Borrado del contenido de la linea
+	clreol();
 	cout << "Introduzca la letra a comprobar: " << flush;
 	cin >> letra;
 
@@ -139,6 +154,8 @@ void pedirLetra(char& letra){
 	while (!isalpha(letra)){
 		// El caracter no es el adecuado y lo vuelve a pedir
 		cout << "El caracter introducido no es una letra" << endl;
+		usleep(retardo);
+		gotoxy(5,3);
 		cout << "Introduzca la letra a comprobar: " << flush;
 		cin >> letra;
 	}
@@ -251,6 +268,13 @@ int main(){
 	// Semilla generadora de numeros aleatorios
 	srand(time(NULL));
 
+
+	// configurar color de la terminal
+    textbackground(FONDO_AZUL);
+
+    // configurar color de la fuente
+    textcolor(COLOR_AMARILLO);
+
 	// Ficheros de trabajo
 	const char f1[MAX_LONG_FICHERO] = "palabras_rae.txt";
 	const char f2[MAX_LONG_FICHERO] = "palabras_bin.bin";
@@ -271,10 +295,10 @@ int main(){
 	int numLetras = obtenerLetras(palabraSeleccionada);
 
 	// Estado inicial del juego
-    int estado = 0;
+    int estado = 1;
 
 	// Modo de dificultad por defecto
-	int dificultad = 2;
+	int dificultad = 1;
 
 	// PRESENTAR EL MENU DEL JUEGO
 
@@ -298,6 +322,11 @@ int main(){
 	else {
         // Dibujo correspondiente del monigote
         dibujoParteMonigote(estado, dificultad);
+
+        gotoxy(5,5);
+        cout << "La letra " << letra << " esta contenida" << endl;
+        usleep(retardo);
+        clreol();
 	}
 
 

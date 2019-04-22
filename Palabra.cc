@@ -5,7 +5,7 @@
  * Fecha: 14-4-19 ----------------
  * -------------------------------
  */
- 
+
 /*
  * Fichero de implementacion del modulo Palabra
  */
@@ -15,8 +15,8 @@
 
 
 /*
- * Pre: <<secuencia>> es una secuencia de caracteres que representa una 
- *      palabra de la lengua española y <<nLetras>> es el total de letras 
+ * Pre: <<secuencia>> es una secuencia de caracteres que representa una
+ *      palabra de la lengua española y <<nLetras>> es el total de letras
  *      de la cadena <<secuencia>>
  * Post: Ha creado una palabra asignado a <<cadena>> la secuencia de caracteres
  *      <<secuencia>> y a <<numLetras>> el valor de <<nLetras>>
@@ -63,9 +63,9 @@ char devolverLetra(Palabra& p, const int i){
 
 /*
  * Pre: ---
- * Post: Ha mostrado por cada letra de la palabra <<p>> un guion 
+ * Post: Ha mostrado por cada letra de la palabra <<p>> un guion
  *       bajo de acuerdo al siguiente formato
- * 
+ *
  *      Ejemplo:
  *      diligentemente:  _ _ _ _ _ _ _ _ _ _ _ _ _ _
  *      ababol:          _ _ _ _ _ _
@@ -73,6 +73,7 @@ char devolverLetra(Palabra& p, const int i){
  */
 void mostrarHuecosPalabra(Palabra& p){
 	// Total de letras de la palabra <<p>>
+	gotoxy(60, 15);
 	int numLetras = obtenerLetras(p);
 	// Bucle de recorrido de la palabra
 	for (int i = 0; i < numLetras; i++){
@@ -83,13 +84,15 @@ void mostrarHuecosPalabra(Palabra& p){
 
 
 /*
- * Pre: <<p>> es una secuencia de caracteres que describe la 
+ * Pre: <<p>> es una secuencia de caracteres que describe la
  *       estructura de una palabra
  * Post: Ha devuelto <<true>> si y solo si la letra <<l>> esta dentro
  *       de la palabra <<p>> y ha reemplazada en la posicion correspondiente
  *       el caracter "_" por el valor de la letra <<l>>
  */
 bool existeLetra(Palabra& p, const char l, int& letrasVolteadas){
+    // Posicionado en la pantalla
+    gotoxy(60, 15);
 	// Total de letras de la palabra <<p>>
 	int numLetras = obtenerLetras(p);
 	// Control de existencia de letra
@@ -102,12 +105,17 @@ bool existeLetra(Palabra& p, const char l, int& letrasVolteadas){
 		if (devolverLetra(p, i) == l){
 			// Se ha hallado una nueva letra y se voltea
 			letrasVolteadas++;
+
+			// Incremento del numero de veces que se ha hallado la letra
+			numVeces++;
 			// Se compara si esta mas de una vez
 			if (numVeces != 1){
-				// es la primera vez 
+				// es la primera vez
 				encontrado = true;
 			}
-			cout << "La letra " << l << " esta contenida" << endl;
+			// Muestreo de la letra en la poscion correcta
+			gotoxy(60 + 2 * i, 15);
+            cout << l << " ";
 		}
 	}
 	return encontrado;
