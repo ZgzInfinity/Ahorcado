@@ -26,7 +26,7 @@ const int COLOR_BLANCO = 15;
 
 // longitud maxima del nombre de un fichero
 const int MAX_LONG_FICHERO = 100;
-const int retardo = 100000;
+const int RETARDO = 60000;
 
 /*
  * Pre: <<estado>> almacena el estado actual del juego
@@ -132,8 +132,6 @@ void dibujoParteMonigote(int& estado, const int dificultad){
         default:
             cerr << "Dificutad no admitida " << endl;
     }
-    // Incremento del estado del juego
-    estado++;
 }
 
 
@@ -154,7 +152,7 @@ void pedirLetra(char& letra){
 	while (!isalpha(letra)){
 		// El caracter no es el adecuado y lo vuelve a pedir
 		cout << "El caracter introducido no es una letra" << endl;
-		usleep(retardo);
+		usleep(RETARDO);
 		gotoxy(5,3);
 		cout << "Introduzca la letra a comprobar: " << flush;
 		cin >> letra;
@@ -291,14 +289,23 @@ int main(){
 	// seleccion de la palabra con la que se va a jugar
 	seleccionarPalabra(f2, numLineas, palabraSeleccionada);
 
+	gotoxy(1,1);
+	char linea[MAX_LETRAS];
+	obtenerPalabra(linea, palabraSeleccionada);
+
+	cout << linea << endl;
+
 	// Numero de letras de la palabra seleccionada
 	int numLetras = obtenerLetras(palabraSeleccionada);
 
 	// Estado inicial del juego
     int estado = 1;
 
+    int dificultad;
+
 	// Modo de dificultad por defecto
-	int dificultad = 1;
+	cout << " Introduzca el nivel de dificultad con el que desea jugar " << flush;
+	cin >> dificultad;
 
 	// PRESENTAR EL MENU DEL JUEGO
 
@@ -311,23 +318,8 @@ int main(){
 	// Dibujo de la horca
 	dibujarHorca();
 
-	// Peticion de letra con la que jugar al usuario
+	// Letra con la que jugar al usuario
 	char letra;
-	pedirLetra(letra);
-
-	// Comprobar si la letra esta o no en la palara
-	if (existeLetra(palabraSeleccionada, letra, letrasVolteadas)){
-        // Sustitucion de los huecos por las letras correctas
-	}
-	else {
-        // Dibujo correspondiente del monigote
-        dibujoParteMonigote(estado, dificultad);
-
-        gotoxy(5,5);
-        cout << "La letra " << letra << " esta contenida" << endl;
-        usleep(retardo);
-        clreol();
-	}
 
 
 	// Mientras queden letras por descubir
@@ -337,8 +329,32 @@ int main(){
 
 		// Comprobar si la letra nueva esta o no en la palara
 		existeLetra(palabraSeleccionada, letra, letrasVolteadas);
-	}
 
+		// Posicionamiento en la pantalla
+        gotoxy(5,5);
+        // Comprobar si la letra esta o no en la palara
+        if (existeLetra(palabraSeleccionada, letra, letrasVolteadas)){
+            // Sustitucion de los huecos por las letras correctas
+            textcolor(COLOR_VERDE);
+            cout << " La letra " << letra << " es correcta" << endl;
+
+        }
+        else {
+            // Dibujo correspondiente del monigote
+            dibujoParteMonigote(estado, dificultad);
+            textcolor(COLOR_ROJO);
+            cout << "La letra " << letra << " no esta contenida" << endl;
+        }
+
+        // Esperar un tiempo y limpiar la linea
+        usleep(RETARDO);
+        clreol();
+        // Cambio de color de la fuente
+        textcolor(COLOR_AMARILLO);
+    }
+
+	// Posicionamiento al final de la pantalla para el fin de ejecucion
+	gotoxy(1,24);
 	cout << " Fin del programa " << endl;
 	return 0;
 }
