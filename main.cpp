@@ -23,6 +23,9 @@ const int COLOR_ROJO = 12;
 const int COLOR_AMARILLO = 14;
 const int COLOR_BLANCO = 15;
 
+const int DIFICULTAD_MINIMA = 1;
+const int DIFICULTAD_MAXIMA = 3;
+
 
 // longitud maxima del nombre de un fichero
 const int MAX_LONG_FICHERO = 100;
@@ -42,38 +45,31 @@ void dibujoParteMonigote(int& estado, const int dificultad){
             switch(estado){
             case 1:
                     // Dibujo de la cabeza del monigote
-                    cout << " ESTADO : " << estado << " DIFICULTAD : " << dificultad << endl;
                     dibujoCabeza();
                     break;
             case 2:
                     // Dibujo del cuello del monigote
-                    cout << " ESTADO : " << estado << " DIFICULTAD : " << dificultad << endl;
                     dibujarCuello();
                     break;
             case 3:
                     // Dibujo del cuerpo del monigote
-                    cout << " ESTADO : " << estado << " DIFICULTAD : " << dificultad << endl;
                     dibujarCuerpo();
                     break;
             case 4:
                     // Dibujo del brazo izquierdo
-                    cout << " ESTADO : " << estado << " DIFICULTAD : " << dificultad << endl;
                     dibujarBrazoIzq();
                     break;
             case 5:
                     // Dibujo del brazo derecho
-                    cout << " ESTADO : " << estado << " DIFICULTAD : " << dificultad << endl;
                     dibujarBrazoDer();
                     break;
             case 6:
                     // Dibujo de la pierna izquierda
-                    cout << " ESTADO : " << estado << " DIFICULTAD : " << dificultad << endl;
                     dibujarPiernaIzq();
                     break;
             case 7:
                     // Dibujo de la pierna derecha
                     dibujarPiernaDer();
-                    cout << " ESTADO : " << estado << " DIFICULTAD : " << dificultad << endl;
                     break;
             default:
                     // Estado desconocido del juego
@@ -102,7 +98,7 @@ void dibujoParteMonigote(int& estado, const int dificultad){
                     break;
                 case 5:
                     // Dibujo de las dos piernas
-                    dibujarBrazoIzq();
+                    dibujarPiernaIzq();
                     dibujarPiernaDer();
                     break;
                 default:
@@ -142,6 +138,27 @@ void dibujoParteMonigote(int& estado, const int dificultad){
     estado++;
 }
 
+
+/*
+ * Pre: ---
+ * Post: Ha guardado en <<dificultad>> el tipo de dificultad introducida
+ *       por el usuario
+ */
+void pedirDificultad(int& dificultad){
+    // Modo de dificultad por defecto
+	gotoxy(4, 2);
+	cout << " Introduzca el nivel de dificultad con el que desea jugar:" << flush;
+	cin >> dificultad;
+
+	// Repetir hasta que la dificultad este entre los limites permitidos
+	while (dificultad < DIFICULTAD_MINIMA || dificultad > DIFICULTAD_MAXIMA){
+        cout << " Nivel de dificultad no valido " << endl;
+        // Modo de dificultad por defecto
+        gotoxy(4, 2);
+        cout << " Introduzca el nivel de dificultad con el que desea jugar: " << flush;
+        cin >> dificultad;
+	}
+}
 
 /*
  * Pre: ---
@@ -311,12 +328,8 @@ int main(){
 
     int dificultad;
 
-	// Modo de dificultad por defecto
-	gotoxy(4, 2);
-	cout << " Introduzca el nivel de dificultad con el que desea jugar " << flush;
-	cin >> dificultad;
-
-	// PRESENTAR EL MENU DEL JUEGO
+    // Pedir dificultad al usuario
+    pedirDificultad(dificultad);
 
 	// Numero de letras descubiertas de la palabra
 	int letrasVolteadas = 0;
