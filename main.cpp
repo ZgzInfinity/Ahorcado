@@ -42,31 +42,38 @@ void dibujoParteMonigote(int& estado, const int dificultad){
             switch(estado){
             case 1:
                     // Dibujo de la cabeza del monigote
+                    cout << " ESTADO : " << estado << " DIFICULTAD : " << dificultad << endl;
                     dibujoCabeza();
                     break;
             case 2:
                     // Dibujo del cuello del monigote
+                    cout << " ESTADO : " << estado << " DIFICULTAD : " << dificultad << endl;
                     dibujarCuello();
                     break;
             case 3:
                     // Dibujo del cuerpo del monigote
+                    cout << " ESTADO : " << estado << " DIFICULTAD : " << dificultad << endl;
                     dibujarCuerpo();
                     break;
             case 4:
                     // Dibujo del brazo izquierdo
+                    cout << " ESTADO : " << estado << " DIFICULTAD : " << dificultad << endl;
                     dibujarBrazoIzq();
                     break;
             case 5:
                     // Dibujo del brazo derecho
+                    cout << " ESTADO : " << estado << " DIFICULTAD : " << dificultad << endl;
                     dibujarBrazoDer();
                     break;
             case 6:
                     // Dibujo de la pierna izquierda
+                    cout << " ESTADO : " << estado << " DIFICULTAD : " << dificultad << endl;
                     dibujarPiernaIzq();
                     break;
             case 7:
                     // Dibujo de la pierna derecha
                     dibujarPiernaDer();
+                    cout << " ESTADO : " << estado << " DIFICULTAD : " << dificultad << endl;
                     break;
             default:
                     // Estado desconocido del juego
@@ -132,6 +139,7 @@ void dibujoParteMonigote(int& estado, const int dificultad){
         default:
             cerr << "Dificutad no admitida " << endl;
     }
+    estado++;
 }
 
 
@@ -304,6 +312,7 @@ int main(){
     int dificultad;
 
 	// Modo de dificultad por defecto
+	gotoxy(4, 2);
 	cout << " Introduzca el nivel de dificultad con el que desea jugar " << flush;
 	cin >> dificultad;
 
@@ -331,23 +340,24 @@ int main(){
 		existeLetra(palabraSeleccionada, letra, letrasVolteadas);
 
 		// Posicionamiento en la pantalla
-        gotoxy(5,5);
         // Comprobar si la letra esta o no en la palara
         if (existeLetra(palabraSeleccionada, letra, letrasVolteadas)){
             // Sustitucion de los huecos por las letras correctas
             textcolor(COLOR_VERDE);
+            gotoxy(4,5);
             cout << " La letra " << letra << " es correcta" << endl;
-
         }
         else {
             // Dibujo correspondiente del monigote
             dibujoParteMonigote(estado, dificultad);
             textcolor(COLOR_ROJO);
+            gotoxy(4,5);
             cout << "La letra " << letra << " no esta contenida" << endl;
         }
 
         // Esperar un tiempo y limpiar la linea
-        usleep(RETARDO);
+        // usleep(RETARDO);
+        system("pause");
         clreol();
         // Cambio de color de la fuente
         textcolor(COLOR_AMARILLO);

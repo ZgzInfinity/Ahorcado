@@ -91,8 +91,6 @@ void mostrarHuecosPalabra(Palabra& p){
  *       el caracter "_" por el valor de la letra <<l>>
  */
 bool existeLetra(Palabra& p, const char l, int& letrasVolteadas){
-    // Posicionado en la pantalla
-    gotoxy(60, 15);
 	// Total de letras de la palabra <<p>>
 	int numLetras = obtenerLetras(p);
 	// Control de existencia de letra
@@ -109,7 +107,7 @@ bool existeLetra(Palabra& p, const char l, int& letrasVolteadas){
 			// Incremento del numero de veces que se ha hallado la letra
 			numVeces++;
 			// Se compara si esta mas de una vez
-			if (numVeces != 1){
+			if (numVeces == 1){
 				// es la primera vez
 				encontrado = true;
 			}
