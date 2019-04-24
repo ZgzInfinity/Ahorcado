@@ -31,12 +31,17 @@ const int DIFICULTAD_MAXIMA = 3;
 const int MAX_LONG_FICHERO = 100;
 const int RETARDO = 60000;
 
+
 /*
- * Pre: <<estado>> almacena el estado actual del juego
+ * Pre: <<estado>> almacena el estado actual del juego, <<dificultad>> guarda el
+ *       nivel de doficultad introducido por el usuario y <<fin>> controla el final
+ *       de la partida y toma de valor <<false>>
  * Post: Ha dibujado la parte correspondiente del monigote en funcion del
- *       estado del juego
+ *       estado del juego. Si el jugador ha consumido todos los intentos <<fin>>
+ *       tomar el valor de <<true>> y finaliza la partida. En caso contario
+ *       continua a <<false>> y permitira futuros intentos
  */
-void dibujoParteMonigote(int& estado, const int dificultad){
+void dibujoParteMonigote(int& estado, const int dificultad, bool& fin){
     // Control de la dificultad del juego
     switch (dificultad){
         // Dificultad en modo novato
@@ -70,6 +75,8 @@ void dibujoParteMonigote(int& estado, const int dificultad){
             case 7:
                     // Dibujo de la pierna derecha
                     dibujarPiernaDer();
+                    // Fin de la partida actual
+                    fin = true;
                     break;
             default:
                     // Estado desconocido del juego
@@ -100,6 +107,8 @@ void dibujoParteMonigote(int& estado, const int dificultad){
                     // Dibujo de las dos piernas
                     dibujarPiernaIzq();
                     dibujarPiernaDer();
+                    // Fin de la partida actual
+                    fin = true;
                     break;
                 default:
                     cerr << "Estado desconocido " << endl;
@@ -124,8 +133,10 @@ void dibujoParteMonigote(int& estado, const int dificultad){
                     break;
                 case 4:
                     // Dibujo de las dos piernas
-                    dibujarBrazoIzq();
+                    dibujarPiernaIzq();
                     dibujarPiernaDer();
+                    // Fin de la partida actual
+                    fin = true;
                     break;
                 default:
                     cerr << "Estado desconocido " << endl;
@@ -147,7 +158,7 @@ void dibujoParteMonigote(int& estado, const int dificultad){
 void pedirDificultad(int& dificultad){
     // Modo de dificultad por defecto
 	gotoxy(4, 2);
-	cout << " Introduzca el nivel de dificultad con el que desea jugar:" << flush;
+	cout << " Introduzca el nivel de dificultad con el que desea jugar: " << flush;
 	cin >> dificultad;
 
 	// Repetir hasta que la dificultad este entre los limites permitidos
@@ -344,8 +355,11 @@ int main(){
 	char letra;
 
 
-	// Mientras queden letras por descubir
-	while (letrasVolteadas != numLetras){
+	// Control del final del juego
+	bool fin = false;
+
+	// Mientras queden letras por descubir y no se haya terminado el juego
+	while (!fin && letrasVolteadas != numLetras){
 		// Se vuelve a pedir letra nueva
 		pedirLetra(letra);
 
@@ -362,7 +376,7 @@ int main(){
         }
         else {
             // Dibujo correspondiente del monigote
-            dibujoParteMonigote(estado, dificultad);
+            dibujoParteMonigote(estado, dificultad, fin);
             textcolor(COLOR_ROJO);
             gotoxy(4,5);
             cout << "La letra " << letra << " no esta contenida" << endl;
