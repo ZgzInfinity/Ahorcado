@@ -34,6 +34,20 @@ const int RETARDO = 60000;
 
 
 /*
+ * Pre: <<tipo>> es un identificador del sonido a reproducir
+ * Post: Ha reproducido el sonido con identificador <<tipo>>
+ */
+void reproducirSonido(const int tipo){
+    if (tipo == 0){
+        PlaySound("correcto.wav", NULL, SND_ASYNC);
+    }
+    else {
+        PlaySound("incorrecto.wav", NULL, SND_ASYNC);
+    }
+}
+
+
+/*
  * Pre: <<estado>> almacena el estado actual del juego, <<dificultad>> guarda el
  *       nivel de doficultad introducido por el usuario y <<fin>> controla el final
  *       de la partida y toma de valor <<false>>
@@ -300,8 +314,6 @@ void crearFicheroPalabrasBinario(const char ficheroPalabrasTexto[], const char f
  */
 int main(){
 
-    PlaySound("prueba.wav", NULL, SND_SYNC);
-
 	// Semilla generadora de numeros aleatorios
 	srand(time(NULL));
 
@@ -357,6 +369,8 @@ int main(){
 	// Letra con la que jugar al usuario
 	char letra;
 
+	// Controlador de sonidos
+	int tipo;
 
 	// Control del final del juego
 	bool fin = false;
@@ -376,6 +390,10 @@ int main(){
             textcolor(COLOR_VERDE);
             gotoxy(4,5);
             cout << " La letra " << letra << " es correcta" << endl;
+
+            // Sonido correcto
+            tipo = 0;
+            reproducirSonido(tipo);
         }
         else {
             // Dibujo correspondiente del monigote
@@ -383,6 +401,10 @@ int main(){
             textcolor(COLOR_ROJO);
             gotoxy(4,5);
             cout << "La letra " << letra << " no esta contenida" << endl;
+
+            // Sonido incorrecto
+            tipo = 1;
+            reproducirSonido(tipo);
         }
 
         // Esperar un tiempo y limpiar la linea
