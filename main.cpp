@@ -12,6 +12,7 @@
 #include <cctype>
 #include <cstdio>
 #include <unistd.h>
+#include <windows.h>
 #include "Palabra.h"
 #include "Monigote.h"
 
@@ -298,6 +299,8 @@ void crearFicheroPalabrasBinario(const char ficheroPalabrasTexto[], const char f
  * Secuenvia de pruebas basicas para probar el TAD Palabra
  */
 int main(){
+
+    PlaySound("prueba.wav", NULL, SND_SYNC);
 
 	// Semilla generadora de numeros aleatorios
 	srand(time(NULL));
