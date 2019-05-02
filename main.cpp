@@ -16,7 +16,6 @@
 #include "Palabra.h"
 #include "Monigote.h"
 
-
 // valores de color de fondo y fuente
 const int FONDO_AZUL = 1;
 const int COLOR_VERDE = 10;
@@ -32,6 +31,10 @@ const int DIFICULTAD_MAXIMA = 3;
 const int MAX_LONG_FICHERO = 100;
 const int RETARDO = 60000;
 
+const int TECLA_ENTER = 13;
+
+
+
 
 /*
  * Pre: <<tipo>> es un identificador del sonido a reproducir
@@ -39,13 +42,60 @@ const int RETARDO = 60000;
  */
 void reproducirSonido(const int tipo){
     if (tipo == 0){
+        PlaySound("menu.wav", NULL, SND_ASYNC);
+    }
+    else if (tipo == 1){
         PlaySound("correcto.wav", NULL, SND_ASYNC);
     }
-    else {
+    else if (tipo == 2) {
         PlaySound("incorrecto.wav", NULL, SND_ASYNC);
+    }
+    else {
+        PlaySound(NULL, NULL, 0);
     }
 }
 
+
+
+/*
+ * Pre: ---
+ * Post: Muestra por pantalla el mensaje "Pulse la tecla intro" hasta
+ *       que se detecta la tecla
+ */
+void controlPulsoEnter(){
+    bool pulsada = false;
+
+    // Capturar codigo de la tecla ENTER
+    while (!pulsada){
+         gotoxy(38,18);
+         cout << "Pulsa la tecla INTRO para comenzar" << flush;
+
+         // Capturar tecla pulsada
+         unsigned char tecla = getch();
+
+         // Comprobacion de tecla ENTER
+         if (int(tecla) == TECLA_ENTER){
+            // Es la tecla ENTER
+            pulsada = true;
+         }
+    }
+}
+
+
+
+/*
+ * Pre: ---
+ * Post: Ha mostrado por pantalla el menu inicial del
+ *       juego
+ */
+void presentarMenu(){
+    // Datos del creador
+    gotoxy(43,15);
+    cout << " ZgzInfinity - 2019 " << endl;
+
+    // Control del pulso de la tecla INTRO
+    controlPulsoEnter();
+}
 
 /*
  * Pre: <<estado>> almacena el estado actual del juego, <<dificultad>> guarda el
@@ -314,15 +364,29 @@ void crearFicheroPalabrasBinario(const char ficheroPalabrasTexto[], const char f
  */
 int main(){
 
+    // Ajustar dimensiones automaticas de la consola
+    system("mode con: cols=110 lines=24");
+
 	// Semilla generadora de numeros aleatorios
 	srand(time(NULL));
-
 
 	// configurar color de la terminal
     textbackground(FONDO_AZUL);
 
     // configurar color de la fuente
     textcolor(COLOR_AMARILLO);
+
+    // Sonido del menu del juego
+    reproducirSonido(0);
+
+    // Presentacion del menu inicial del juego
+    presentarMenu();
+
+    // Detener la ejecución del sonido del menu
+    reproducirSonido(3);
+
+    // Borrado de pantalla
+    system("cls");
 
 	// Ficheros de trabajo
 	const char f1[MAX_LONG_FICHERO] = "palabras_rae.txt";
