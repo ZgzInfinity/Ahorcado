@@ -90,11 +90,11 @@ void mostrarHuecosPalabra(Palabra& p){
  *       de la palabra <<p>> y ha reemplazada en la posicion correspondiente
  *       el caracter "_" por el valor de la letra <<l>>
  */
-bool existeLetra(Palabra& p, const char l, int& letrasVolteadas){
+void existeLetra(Palabra& p, const char l, int& letrasVolteadas, bool& encontrado){
 	// Total de letras de la palabra <<p>>
 	int numLetras = obtenerLetras(p);
 	// Control de existencia de letra
-	bool encontrado = false;
+    encontrado = false;
 	// Total de veces que ha aparecido la letra <<l>>
 	int numVeces = 0;
 	// Bucle de recorrido
@@ -103,7 +103,6 @@ bool existeLetra(Palabra& p, const char l, int& letrasVolteadas){
 		if (devolverLetra(p, i) == l){
 			// Se ha hallado una nueva letra y se voltea
 			letrasVolteadas++;
-
 			// Incremento del numero de veces que se ha hallado la letra
 			numVeces++;
 			// Se compara si esta mas de una vez
@@ -116,5 +115,4 @@ bool existeLetra(Palabra& p, const char l, int& letrasVolteadas){
             cout << l << " ";
 		}
 	}
-	return encontrado;
 }

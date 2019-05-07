@@ -32,6 +32,7 @@ const int MAX_LONG_FICHERO = 100;
 const int RETARDO = 60000;
 
 const int TECLA_ENTER = 13;
+const int TECLA_ESC = 27;
 
 
 
@@ -83,6 +84,8 @@ void controlPulsoEnter(){
 
 
 
+
+
 /*
  * Pre: ---
  * Post: Ha mostrado por pantalla el menu inicial del
@@ -96,6 +99,52 @@ void presentarMenu(){
     // Control del pulso de la tecla INTRO
     controlPulsoEnter();
 }
+
+
+
+
+
+/*
+ * Pre: ---
+ * Post: Ha preguntado al usuario si desea jugar o no una nueva partida
+ *       Si presiona la tecla ESC finaliza la partida y si pulsa la tecla INTRO
+ *       comienza una nueva
+ */
+void controlFinDelJuego(bool& terminado){
+    // Muestra las posibles teclas a pulsar al usuario
+    cout << endl << endl;
+    cout << "Presione la tecla INTRO si desea jugar una nueva partida " << endl;
+    cout << "Presione la tecla ESC si desea salir del juego " << endl;
+
+    // Control de tecla pulsada
+    bool pulsada = false;
+    // Capturar tecla pulsada
+
+    unsigned char tecla;
+
+    while (!pulsada){
+        // No se ha pusado la tecla
+        tecla = getch();
+
+        cout << int(tecla) << endl;
+        // Comprobacion de tecla ENTER
+        if (int(tecla) == TECLA_ENTER || int(tecla == TECLA_ESC)){
+            // Es la tecla ENTER
+            pulsada = true;
+
+            // Comprobacion de la tecla
+            if (int(tecla == TECLA_ENTER)){
+                // Fin del juego
+                cout << "OK" << endl;
+                terminado = true;
+            }
+        }
+        else {
+            cerr << " Tecla no valida" << endl;
+        }
+    }
+}
+
 
 /*
  * Pre: <<estado>> almacena el estado actual del juego, <<dificultad>> guarda el
@@ -401,14 +450,8 @@ int main(){
 	// Lectura del fichero de palabras y generacion del fichero binario
 	crearFicheroPalabrasBinario(f1, f2, numLineas);
 
-	// seleccion de la palabra con la que se va a jugar
-	seleccionarPalabra(f2, numLineas, palabraSeleccionada);
-
-	gotoxy(1,1);
-	char linea[MAX_LETRAS];
-	obtenerPalabra(linea, palabraSeleccionada);
-
-	cout << linea << endl;
+	// Control del fin del juego
+	bool fin = false;
 
 	// Numero de letras de la palabra seleccionada
 	int numLetras = obtenerLetras(palabraSeleccionada);
@@ -424,12 +467,6 @@ int main(){
 	// Numero de letras descubiertas de la palabra
 	int letrasVolteadas = 0;
 
-	// Muestreo de los huecos de la palabra a averiguar
-	mostrarHuecosPalabra(palabraSeleccionada);
-
-	// Dibujo de la horca
-	dibujarHorca();
-
 	// Letra con la que jugar al usuario
 	char letra;
 
@@ -437,46 +474,72 @@ int main(){
 	int tipo;
 
 	// Control del final del juego
-	bool fin = false;
+	bool terminado = false;
 
-	// Mientras queden letras por descubir y no se haya terminado el juego
-	while (!fin && letrasVolteadas != numLetras){
-		// Se vuelve a pedir letra nueva
-		pedirLetra(letra);
+	// Control de existencia de letra en palabra
+	bool encontrado;
 
-		// Comprobar si la letra nueva esta o no en la palara
-		existeLetra(palabraSeleccionada, letra, letrasVolteadas);
+	// Control de partidas
+	while (!terminado){
+        // limpieza de pantalla
+        system("cls");
 
-		// Posicionamiento en la pantalla
-        // Comprobar si la letra esta o no en la palara
-        if (existeLetra(palabraSeleccionada, letra, letrasVolteadas)){
-            // Sustitucion de los huecos por las letras correctas
-            textcolor(COLOR_VERDE);
-            gotoxy(4,5);
-            cout << " La letra " << letra << " es correcta" << endl;
+        // seleccion de nueva palabra con la que se va a jugar
+        seleccionarPalabra(f2, numLineas, palabraSeleccionada);
 
-            // Sonido correcto
-            tipo = 0;
-            reproducirSonido(tipo);
+        gotoxy(1,1);
+        char linea[MAX_LETRAS];
+        obtenerPalabra(linea, palabraSeleccionada);
+        cout << linea << endl;
+
+        // Muestreo de los huecos de la palabra a averiguar
+        mostrarHuecosPalabra(palabraSeleccionada);
+
+        // Dibujo de la horca
+        dibujarHorca();
+
+        // Mientras queden letras por descubir y no se haya terminado el juego
+        while (!fin && letrasVolteadas != numLetras){
+            // Se vuelve a pedir letra nueva
+            pedirLetra(letra);
+
+
+            // Posicionamiento en la pantalla
+            // Comprobar si la letra esta o no en la palara
+            existeLetra(palabraSeleccionada, letra, letrasVolteadas, encontrado);
+
+            if(encontrado){
+                // Sustitucion de los huecos por las letras correctas
+                textcolor(COLOR_VERDE);
+                gotoxy(4,5);
+                cout << " La letra " << letra << " es correcta" << endl;
+
+                // Sonido correcto
+                tipo = 1;
+                reproducirSonido(tipo);
+            }
+            else {
+                // Dibujo correspondiente del monigote
+                dibujoParteMonigote(estado, dificultad, fin);
+                textcolor(COLOR_ROJO);
+                gotoxy(4,5);
+                cout << "La letra " << letra << " no esta contenida" << endl;
+
+                // Sonido incorrecto
+                tipo = 2;
+                reproducirSonido(tipo);
+            }
+
+            // Esperar un tiempo y limpiar la linea
+            // usleep(RETARDO);
+            system("pause");
+            clreol();
+            // Cambio de color de la fuente
+            textcolor(COLOR_AMARILLO);
         }
-        else {
-            // Dibujo correspondiente del monigote
-            dibujoParteMonigote(estado, dificultad, fin);
-            textcolor(COLOR_ROJO);
-            gotoxy(4,5);
-            cout << "La letra " << letra << " no esta contenida" << endl;
 
-            // Sonido incorrecto
-            tipo = 1;
-            reproducirSonido(tipo);
-        }
-
-        // Esperar un tiempo y limpiar la linea
-        // usleep(RETARDO);
-        system("pause");
-        clreol();
-        // Cambio de color de la fuente
-        textcolor(COLOR_AMARILLO);
+        // Fin de la partida y pregunta al usuario si desea jugar
+        controlFinDelJuego(terminado);
     }
 
 	// Posicionamiento al final de la pantalla para el fin de ejecucion
