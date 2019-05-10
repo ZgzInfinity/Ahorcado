@@ -124,16 +124,18 @@ void controlFinDelJuego(bool& terminado){
 
     while (!pulsada){
         // No se ha pusado la tecla
-        tecla = getch();
+        tecla = getchar();
 
         cout << int(tecla) << endl;
         // Comprobacion de tecla ENTER
-        if (int(tecla) == TECLA_ENTER || int(tecla == TECLA_ESC)){
+        if (int(tecla) == TECLA_ENTER || int(tecla) == TECLA_ESC){
             // Es la tecla ENTER
             pulsada = true;
 
+            cout << int(tecla) << endl;
+
             // Comprobacion de la tecla
-            if (int(tecla == TECLA_ENTER)){
+            if (int(tecla == TECLA_ESC)){
                 // Fin del juego
                 cout << "OK" << endl;
                 terminado = true;
@@ -453,9 +455,6 @@ int main(){
 	// Control del fin del juego
 	bool fin = false;
 
-	// Numero de letras de la palabra seleccionada
-	int numLetras = obtenerLetras(palabraSeleccionada);
-
 	// Estado inicial del juego
     int estado = 1;
 
@@ -486,6 +485,9 @@ int main(){
 
         // seleccion de nueva palabra con la que se va a jugar
         seleccionarPalabra(f2, numLineas, palabraSeleccionada);
+
+        // Numero de letras de la palabra seleccionada
+        int numLetras = obtenerLetras(palabraSeleccionada);
 
         gotoxy(1,1);
         char linea[MAX_LETRAS];
@@ -536,6 +538,10 @@ int main(){
             clreol();
             // Cambio de color de la fuente
             textcolor(COLOR_AMARILLO);
+
+            encontrado = false;
+
+            cout << letrasVolteadas << " " << numLetras;
         }
 
         // Fin de la partida y pregunta al usuario si desea jugar
