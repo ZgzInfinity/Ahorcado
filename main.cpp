@@ -28,13 +28,12 @@ const int DIFICULTAD_MAXIMA = 3;
 
 
 // longitud maxima del nombre de un fichero
+
 const int MAX_LONG_FICHERO = 100;
 const int RETARDO = 60000;
 
 const int TECLA_ENTER = 13;
 const int TECLA_ESC = 27;
-
-
 
 
 /*
@@ -57,32 +56,24 @@ void reproducirSonido(const int tipo){
 }
 
 
-
 /*
  * Pre: ---
  * Post: Muestra por pantalla el mensaje "Pulse la tecla intro" hasta
  *       que se detecta la tecla
  */
-void controlPulsoEnter(){
-    bool pulsada = false;
-
+void mostrarTituloParpadeante(){
     // Capturar codigo de la tecla ENTER
-    while (!pulsada){
-         gotoxy(38,18);
-         cout << "Pulsa la tecla INTRO para comenzar" << flush;
-
-         // Capturar tecla pulsada
-         unsigned char tecla = getch();
-
-         // Comprobacion de tecla ENTER
-         if (int(tecla) == TECLA_ENTER){
-            // Es la tecla ENTER
-            pulsada = true;
-         }
+    while (1){
+         gotoxy(45, 25);
+         cout << "Pulsa la tecla INTRO para comenzar";
+         // Detiene la ejecucion 5 segundps y borra la linea
+         Sleep(500);
+         clreol();
+         gotoxy(45, 25);
+         // Detiene la ejecucion 5 segundos y muestra de nuevo el mensaje
+         Sleep(500);
     }
 }
-
-
 
 
 
@@ -93,11 +84,28 @@ void controlPulsoEnter(){
  */
 void presentarMenu(){
     // Datos del creador
-    gotoxy(43,15);
-    cout << " ZgzInfinity - 2019 " << endl;
+    cout << endl << endl;
+    // titulo del programa
+    cout << "                                                       ******  ****                                                    " << endl;
+    cout << "                                                       ******  ****                                                    " << endl;
+    cout << "                                                       ***     ****                                                    " << endl;
+    cout << "                                                       ******  ****                                                    " << endl;
+    cout << "                                                       ******  ****                                                    " << endl;
+    cout << "                                                       ***     ****                                                    " << endl;
+    cout << "                                                       ******  *******                                                 " << endl;
+    cout << "                                                       ******  *******                                                 " << endl << endl << endl;
 
-    // Control del pulso de la tecla INTRO
-    controlPulsoEnter();
+    cout << "                *****         ****  ****  ********  *******      ********         *****         ******      ********   " << endl;
+    cout << "               *******        ****  ****  ********  ********     ********        *******        *******     ********   " << endl;
+    cout << "              ***   ***       ****  ****  ***  ***  ***  ***     ****           ***   ***       *** ****    ***  ***   " << endl;
+    cout << "             ***     ***      **********  ***  ***  *******      ****          ***     ***      ***  ****   ***  ***   " << endl;
+    cout << "            *************     **********  ***  ***  ********     ****         *************     ***   ***   ***  ***   " << endl;
+    cout << "           ***************    ****  ****  ***  ***  ***   ***    ****        ***************    ***  ***    ***  ***   " << endl;
+    cout << "          ****         ****   ****  ****  ********  ***    ***   ********   ****         ****   *******     ********   " << endl;
+    cout << "         ****          *****  ****  ****  ********  ***     ***  ********  ****          *****  ******      ********   " << endl << endl << endl;
+
+    gotoxy(52, 23);
+    cout << " ZgzInfinity - 2019 " << endl;
 }
 
 
@@ -124,15 +132,12 @@ void controlFinDelJuego(bool& terminado){
 
     while (!pulsada){
         // No se ha pusado la tecla
-        tecla = getchar();
+        tecla = getch();
 
-        cout << int(tecla) << endl;
         // Comprobacion de tecla ENTER
         if (int(tecla) == TECLA_ENTER || int(tecla) == TECLA_ESC){
             // Es la tecla ENTER
             pulsada = true;
-
-            cout << int(tecla) << endl;
 
             // Comprobacion de la tecla
             if (int(tecla == TECLA_ESC)){
@@ -416,7 +421,7 @@ void crearFicheroPalabrasBinario(const char ficheroPalabrasTexto[], const char f
 int main(){
 
     // Ajustar dimensiones automaticas de la consola
-    system("mode con: cols=110 lines=24");
+    system("mode con: cols=130 lines=30");
 
 	// Semilla generadora de numeros aleatorios
 	srand(time(NULL));
@@ -432,6 +437,9 @@ int main(){
 
     // Presentacion del menu inicial del juego
     presentarMenu();
+
+    // Mostrar el rotulo que parpadea
+    mostrarTituloParpadeante();
 
     // Detener la ejecución del sonido del menu
     reproducirSonido(3);
