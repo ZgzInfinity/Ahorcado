@@ -17,6 +17,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cstring>
+#include <fstream>
 #include <conio.h>
 
 using namespace std;
@@ -79,11 +80,24 @@ struct Palabra {
 		/*
 		 * Pre: <<p>> es una secuencia de caracteres que describe la
 		 *       estructura de una palabra
-		 * Post: Ha devuelto <<true>> si y solo si la letra <<l>> esta dentro
-		*       de la palabra <<p>> y ha reemplazada en la posicion correspondiente
-		*       el caracter "_" por el valor de la letra <<l>>
-		*/
-		friend void existeLetra(Palabra& p, const char l, int& letrasVoltedas, bool& encontrado);
+         * Post: Ha devuelto <<true>> si y solo si la letra <<l>> esta dentro
+		 *       de la palabra <<p>> y ha reemplazada en la posicion correspondiente
+		 *       el caracter "_" por el valor de la letra <<l>>
+		 */
+		 friend void existeLetra(Palabra& p, const char l, int& letrasVoltedas, bool& encontrado);
+
+
+
+		/*
+         * Pre: <<ficheroPalabrasBinario>> es un fichero binario que almacena una secuencia de
+         *      de palabras, <<numLineas>> es el numero de lineas del fichero
+         * Post: Ha seleccionado una fila aleatoria del fichero <<ficheroPalabrasBinario>> y ha guardado en
+         *       <<p>> la palabra correspondiente a esa linea
+         */
+        friend void seleccionarPalabra(const char ficheroPalabrasBinario[], const int numLineas, Palabra& p);
+
+
+
 
 };
 

@@ -14,7 +14,12 @@
  * Fichero de interfaz del modulo de dibujo del monigote
  */
 
+ #include <iostream>
 #include <conio.h>
+
+
+using namespace std;
+
 
 const int DIMENSION = 15;
 const int ESQUINA_SUP_IZQ = 218;
@@ -93,6 +98,19 @@ void dibujarPiernaIzq();
  * Post: Ha dibujado la pierna derecho del monigote
  */
 void dibujarPiernaDer();
+
+
+
+/*
+ * Pre: <<estado>> almacena el estado actual del juego, <<dificultad>> guarda el
+ *       nivel de doficultad introducido por el usuario y <<fin>> controla el final
+ *       de la partida y toma de valor <<false>>
+ * Post: Ha dibujado la parte correspondiente del monigote en funcion del
+ *       estado del juego. Si el jugador ha consumido todos los intentos <<fin>>
+ *       tomar el valor de <<true>> y finaliza la partida. En caso contario
+ *       continua a <<false>> y permitira futuros intentos
+ */
+void dibujoParteMonigote(int& estado, const int dificultad, bool& fin);
 
 
 #endif // MONIGOTE_H

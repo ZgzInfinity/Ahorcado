@@ -12,11 +12,14 @@
 #include <cctype>
 #include <cstdio>
 #include <unistd.h>
-#include <windows.h>
 #include "Palabra.h"
 #include "Monigote.h"
+#include "Menu.h"
+#include "Arranque.h"
+
 
 // valores de color de fondo y fuente
+
 const int FONDO_AZUL = 1;
 const int COLOR_VERDE = 10;
 const int COLOR_ROJO = 12;
@@ -30,86 +33,8 @@ const int DIFICULTAD_MAXIMA = 3;
 // longitud maxima del nombre de un fichero
 
 const int MAX_LONG_FICHERO = 100;
-const int RETARDO = 60000;
-
-const int TECLA_ENTER = 13;
 const int TECLA_ESC = 27;
-
-
-/*
- * Pre: <<tipo>> es un identificador del sonido a reproducir
- * Post: Ha reproducido el sonido con identificador <<tipo>>
- */
-void reproducirSonido(const int tipo){
-    if (tipo == 0){
-        PlaySound("menu.wav", NULL, SND_ASYNC);
-    }
-    else if (tipo == 1){
-        PlaySound("correcto.wav", NULL, SND_ASYNC);
-    }
-    else if (tipo == 2) {
-        PlaySound("incorrecto.wav", NULL, SND_ASYNC);
-    }
-    else {
-        PlaySound(NULL, NULL, 0);
-    }
-}
-
-
-/*
- * Pre: ---
- * Post: Muestra por pantalla el mensaje "Pulse la tecla intro" hasta
- *       que se detecta la tecla
- */
-void mostrarTituloParpadeante(){
-    // Capturar codigo de la tecla ENTER
-    while (1){
-         gotoxy(45, 25);
-         cout << "Pulsa la tecla INTRO para comenzar";
-         // Detiene la ejecucion 5 segundps y borra la linea
-         Sleep(500);
-         clreol();
-         gotoxy(45, 25);
-         // Detiene la ejecucion 5 segundos y muestra de nuevo el mensaje
-         Sleep(500);
-    }
-}
-
-
-
-/*
- * Pre: ---
- * Post: Ha mostrado por pantalla el menu inicial del
- *       juego
- */
-void presentarMenu(){
-    // Datos del creador
-    cout << endl << endl;
-    // titulo del programa
-    cout << "                                                       ******  ****                                                    " << endl;
-    cout << "                                                       ******  ****                                                    " << endl;
-    cout << "                                                       ***     ****                                                    " << endl;
-    cout << "                                                       ******  ****                                                    " << endl;
-    cout << "                                                       ******  ****                                                    " << endl;
-    cout << "                                                       ***     ****                                                    " << endl;
-    cout << "                                                       ******  *******                                                 " << endl;
-    cout << "                                                       ******  *******                                                 " << endl << endl << endl;
-
-    cout << "                *****         ****  ****  ********  *******      ********         *****         ******      ********   " << endl;
-    cout << "               *******        ****  ****  ********  ********     ********        *******        *******     ********   " << endl;
-    cout << "              ***   ***       ****  ****  ***  ***  ***  ***     ****           ***   ***       *** ****    ***  ***   " << endl;
-    cout << "             ***     ***      **********  ***  ***  *******      ****          ***     ***      ***  ****   ***  ***   " << endl;
-    cout << "            *************     **********  ***  ***  ********     ****         *************     ***   ***   ***  ***   " << endl;
-    cout << "           ***************    ****  ****  ***  ***  ***   ***    ****        ***************    ***  ***    ***  ***   " << endl;
-    cout << "          ****         ****   ****  ****  ********  ***    ***   ********   ****         ****   *******     ********   " << endl;
-    cout << "         ****          *****  ****  ****  ********  ***     ***  ********  ****          *****  ******      ********   " << endl << endl << endl;
-
-    gotoxy(52, 23);
-    cout << " ZgzInfinity - 2019 " << endl;
-}
-
-
-
+const int RETARDO = 600;
 
 
 /*
@@ -153,144 +78,6 @@ void controlFinDelJuego(bool& terminado){
 }
 
 
-/*
- * Pre: <<estado>> almacena el estado actual del juego, <<dificultad>> guarda el
- *       nivel de doficultad introducido por el usuario y <<fin>> controla el final
- *       de la partida y toma de valor <<false>>
- * Post: Ha dibujado la parte correspondiente del monigote en funcion del
- *       estado del juego. Si el jugador ha consumido todos los intentos <<fin>>
- *       tomar el valor de <<true>> y finaliza la partida. En caso contario
- *       continua a <<false>> y permitira futuros intentos
- */
-void dibujoParteMonigote(int& estado, const int dificultad, bool& fin){
-    // Control de la dificultad del juego
-    switch (dificultad){
-        // Dificultad en modo novato
-        case 1:
-            // Seleccion del estado de control del juego
-            switch(estado){
-            case 1:
-                    // Dibujo de la cabeza del monigote
-                    dibujoCabeza();
-                    break;
-            case 2:
-                    // Dibujo del cuello del monigote
-                    dibujarCuello();
-                    break;
-            case 3:
-                    // Dibujo del cuerpo del monigote
-                    dibujarCuerpo();
-                    break;
-            case 4:
-                    // Dibujo del brazo izquierdo
-                    dibujarBrazoIzq();
-                    break;
-            case 5:
-                    // Dibujo del brazo derecho
-                    dibujarBrazoDer();
-                    break;
-            case 6:
-                    // Dibujo de la pierna izquierda
-                    dibujarPiernaIzq();
-                    break;
-            case 7:
-                    // Dibujo de la pierna derecha
-                    dibujarPiernaDer();
-                    // Fin de la partida actual
-                    fin = true;
-                    break;
-            default:
-                    // Estado desconocido del juego
-                    cerr << "Estado desconocido" << endl;
-            }
-            break;
-        // Dificultad en modo intermedio
-        case 2:
-            switch(estado){
-                case 1:
-                    // Dibujo de la cabeza y del cuello
-                    dibujoCabeza();
-                    dibujarCuello();
-                    break;
-                case 2:
-                    // Dibujo del brazo izquierdo
-                    dibujarBrazoIzq();
-                    break;
-                case 3:
-                    // Dibujo del brazo derecho
-                    dibujarBrazoDer();
-                    break;
-                case 4:
-                    // Dibujo del cuerpo
-                    dibujarCuerpo();
-                    break;
-                case 5:
-                    // Dibujo de las dos piernas
-                    dibujarPiernaIzq();
-                    dibujarPiernaDer();
-                    // Fin de la partida actual
-                    fin = true;
-                    break;
-                default:
-                    cerr << "Estado desconocido " << endl;
-            }
-            break;
-        // Dificultad en modo maestro
-        case 3:
-            switch(estado){
-                case 1:
-                    // Dibujo de la cabeza y del cuello
-                    dibujoCabeza();
-                    dibujarCuello();
-                    break;
-                case 2:
-                    // Dibujo de los dos brazos
-                    dibujarBrazoIzq();
-                    dibujarBrazoDer();
-                    break;
-                case 3:
-                    // Dibujo del cuerpo
-                    dibujarCuerpo();
-                    break;
-                case 4:
-                    // Dibujo de las dos piernas
-                    dibujarPiernaIzq();
-                    dibujarPiernaDer();
-                    // Fin de la partida actual
-                    fin = true;
-                    break;
-                default:
-                    cerr << "Estado desconocido " << endl;
-            }
-            break;
-         // Niguno de los modos de dificultad coincide
-        default:
-            cerr << "Dificutad no admitida " << endl;
-    }
-    estado++;
-}
-
-
-/*
- * Pre: ---
- * Post: Ha guardado en <<dificultad>> el tipo de dificultad introducida
- *       por el usuario
- */
-void pedirDificultad(int& dificultad){
-    // Modo de dificultad por defecto
-	gotoxy(4, 2);
-	cout << " Introduzca el nivel de dificultad con el que desea jugar: " << flush;
-	cin >> dificultad;
-
-	// Repetir hasta que la dificultad este entre los limites permitidos
-	while (dificultad < DIFICULTAD_MINIMA || dificultad > DIFICULTAD_MAXIMA){
-        cout << " Nivel de dificultad no valido " << endl;
-        // Modo de dificultad por defecto
-        gotoxy(4, 2);
-        cout << " Introduzca el nivel de dificultad con el que desea jugar: " << flush;
-        cin >> dificultad;
-	}
-}
 
 /*
  * Pre: ---
@@ -309,7 +96,7 @@ void pedirLetra(char& letra){
 	while (!isalpha(letra)){
 		// El caracter no es el adecuado y lo vuelve a pedir
 		cout << "El caracter introducido no es una letra" << endl;
-		usleep(RETARDO);
+		Sleep(RETARDO);
 		gotoxy(5,3);
 		cout << "Introduzca la letra a comprobar: " << flush;
 		cin >> letra;
@@ -319,97 +106,6 @@ void pedirLetra(char& letra){
 	if (isupper(letra)){
 		// Si es mayuscula la convierte a minuscula
 		letra = tolower(letra);
-	}
-}
-
-
-/*
- * Pre: <<ficheroPalabrasBinario>> es un fichero binario que almacena una secuencia de
- *      de palabras, <<numLineas>> es el numero de lineas del fichero
- * Post: Ha seleccionado una fila aleatoria del fichero <<ficheroPalabrasBinario>> y ha guardado en
- *       <<p>> la palabra correspondiente a esa linea
- */
-void seleccionarPalabra(const char ficheroPalabrasBinario[], const int numLineas, Palabra& p){
-	// Flujo de lectura del fichero binario
-	ifstream f;
-	// Apertura del fichero de palabras
-	f.open(ficheroPalabrasBinario, ios::binary);
-	if (f.is_open()){
-		// Seleccion aleatoria de una linea del fichero
-		int lineaAleatoria = rand() % numLineas + 1;
-		// Calculo de la posicion en bytes de la palabra en esa fila aleatoria
-		int direccion = sizeof(Palabra) * (lineaAleatoria - 1);
-		// Desplazamiento del cursor a la posicion
-		f.seekg(direccion);
-		// Lectura de la palabra en esa fila
-		f.read(reinterpret_cast<char *>(&p), sizeof(Palabra));
-
-		// Cierre del flujo de lectura del fichero
-		f.close();
-	}
-	else {
-		// Error en el fichero binario de palabras
-		cerr << " El fichero " << ficheroPalabrasBinario << " no esta disponible " << endl;
-	}
-}
-
-
-/*
- * Pre: <<ficheroPalabrasTexto>> es un fichero de texto que almacena, a razón de una por línea,
- *      un diccionario amplio de palabras en castellano.
- * Post: Ha creado un fichero binario denominado <<ficheroPalabrasBinario>> con el contenido del
- *      fichero <<ficheroPalabrasTexto>>. En caso de que el fichero no exista lo crea, y si no,
- *      lo trunca y reemplaza su contenido y ha guardado en <<totalLineas>> el numero de lineas del
- *      fichero de texto
- */
-void crearFicheroPalabrasBinario(const char ficheroPalabrasTexto[], const char ficheroPalabrasBinario[], int& totalLineas){
-	// Flujo de lectura asociado al fichero de texto
-	ifstream f1;
-	// Flujo de escritura asociado al fichero binario
-	ofstream f2;
-
-	// Contador de lineas del fichero
-	totalLineas = 0;
-
-	// Apertura del fichero de texto
-	f1.open(ficheroPalabrasTexto);
-	if (f1.is_open()){
-		// Si la apertura es un exito abre el fichero binario
-		f2.open(ficheroPalabrasBinario,ios::binary);
-
-		if (f2.is_open()){
-			// La apertura del fichero binario se hace adecuadamente
-			Palabra palabraActual;
-
-			char linea[128];
-			// Lectura de la primera palabra del fichero de texto
-			f1.getline(linea, 128, '\n');
-
-			while (!f1.eof()){
-				// Incremento del numero de lineas leidas
-				totalLineas++;
-				// Mientras queden palabras por leer
-				// Crea una palabra con la información leída
-				crearPalabra(linea, int(strlen(linea)), palabraActual);
-
-				// Escritura de la palabra en el fichero binario
-				f2.write(reinterpret_cast<char *>(&palabraActual), sizeof(Palabra));
-
-				// Lectura de la siguiente palabra del fichero
-				f1.getline(linea, 128, '\n');
-			}
-			// Cierre del flujo de lectura y del flujo de escritura
-			f1.close();
-			f2.close();
-		}
-		else {
-			// Error al intentar abrir el fichero de texto
-			cerr << " El fichero " << ficheroPalabrasBinario << " es innacesible" << endl;
-		}
-	}
-	else {
-		// Error al intentar abrir el fichero de escritura
-		cerr << " El fichero " << ficheroPalabrasTexto << " es innacesible" << endl;
 	}
 }
 
@@ -432,17 +128,20 @@ int main(){
     // configurar color de la fuente
     textcolor(COLOR_AMARILLO);
 
-    // Sonido del menu del juego
-    reproducirSonido(0);
-
     // Presentacion del menu inicial del juego
     presentarMenu();
 
     // Mostrar el rotulo que parpadea
     mostrarTituloParpadeante();
 
-    // Detener la ejecución del sonido del menu
-    reproducirSonido(3);
+    // Borrado de pantalla
+    system("cls");
+
+    int dificultad, pista;
+
+    // Mostrar menu de opciones
+    menuOpciones(dificultad, pista);
+
 
     // Borrado de pantalla
     system("cls");
@@ -466,19 +165,11 @@ int main(){
 	// Estado inicial del juego
     int estado = 1;
 
-    int dificultad;
-
-    // Pedir dificultad al usuario
-    pedirDificultad(dificultad);
-
 	// Numero de letras descubiertas de la palabra
 	int letrasVolteadas = 0;
 
 	// Letra con la que jugar al usuario
 	char letra;
-
-	// Controlador de sonidos
-	int tipo;
 
 	// Control del final del juego
 	bool terminado = false;
@@ -505,6 +196,9 @@ int main(){
         // Muestreo de los huecos de la palabra a averiguar
         mostrarHuecosPalabra(palabraSeleccionada);
 
+        // Reproducir el sonido de la partida
+        tocarMusicaPartida(pista);
+
         // Dibujo de la horca
         dibujarHorca();
 
@@ -524,9 +218,6 @@ int main(){
                 gotoxy(4,5);
                 cout << " La letra " << letra << " es correcta" << endl;
 
-                // Sonido correcto
-                tipo = 1;
-                reproducirSonido(tipo);
             }
             else {
                 // Dibujo correspondiente del monigote
@@ -535,9 +226,6 @@ int main(){
                 gotoxy(4,5);
                 cout << "La letra " << letra << " no esta contenida" << endl;
 
-                // Sonido incorrecto
-                tipo = 2;
-                reproducirSonido(tipo);
             }
 
             // Esperar un tiempo y limpiar la linea
@@ -548,8 +236,6 @@ int main(){
             textcolor(COLOR_AMARILLO);
 
             encontrado = false;
-
-            cout << letrasVolteadas << " " << numLetras;
         }
 
         // Fin de la partida y pregunta al usuario si desea jugar

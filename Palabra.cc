@@ -116,3 +116,41 @@ void existeLetra(Palabra& p, const char l, int& letrasVolteadas, bool& encontrad
 		}
 	}
 }
+
+
+
+/*
+ * Pre: <<ficheroPalabrasBinario>> es un fichero binario que almacena una secuencia de
+ *      de palabras, <<numLineas>> es el numero de lineas del fichero
+ * Post: Ha seleccionado una fila aleatoria del fichero <<ficheroPalabrasBinario>> y ha guardado en
+ *       <<p>> la palabra correspondiente a esa linea
+ */
+void seleccionarPalabra(const char ficheroPalabrasBinario[], const int numLineas, Palabra& p){
+    // Flujo de lectura del fichero binario
+	ifstream f;
+	// Apertura del fichero de palabras
+	f.open(ficheroPalabrasBinario, ios::binary);
+	if (f.is_open()){
+		// Seleccion aleatoria de una linea del fichero
+		int lineaAleatoria = rand() % numLineas + 1;
+		// Calculo de la posicion en bytes de la palabra en esa fila aleatoria
+		int direccion = sizeof(Palabra) * (lineaAleatoria - 1);
+		// Desplazamiento del cursor a la posicion
+		f.seekg(direccion);
+		// Lectura de la palabra en esa fila
+		f.read(reinterpret_cast<char *>(&p), sizeof(Palabra));
+
+		// Cierre del flujo de lectura del fichero
+		f.close();
+	}
+	else {
+		// Error en el fichero binario de palabras
+		cerr << " El fichero " << ficheroPalabrasBinario << " no esta disponible " << endl;
+    }
+}
+
+
+
+
+
+

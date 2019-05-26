@@ -230,3 +230,125 @@ void dibujarPiernaDer(){
     printf("%c", LINEA_VERTICAL);
 }
 
+
+
+
+/*
+ * Pre: <<estado>> almacena el estado actual del juego, <<dificultad>> guarda el
+ *       nivel de doficultad introducido por el usuario y <<fin>> controla el final
+ *       de la partida y toma de valor <<false>>
+ * Post: Ha dibujado la parte correspondiente del monigote en funcion del
+ *       estado del juego. Si el jugador ha consumido todos los intentos <<fin>>
+ *       tomar el valor de <<true>> y finaliza la partida. En caso contario
+ *       continua a <<false>> y permitira futuros intentos
+ */
+void dibujoParteMonigote(int& estado, const int dificultad, bool& fin){
+    // Control de la dificultad del juego
+    switch (dificultad){
+        // Dificultad en modo novato
+        case 1:
+            // Seleccion del estado de control del juego
+            switch(estado){
+            case 1:
+                    // Dibujo de la cabeza del monigote
+                    dibujoCabeza();
+                    break;
+            case 2:
+                    // Dibujo del cuello del monigote
+                    dibujarCuello();
+                    break;
+            case 3:
+                    // Dibujo del cuerpo del monigote
+                    dibujarCuerpo();
+                    break;
+            case 4:
+                    // Dibujo del brazo izquierdo
+                    dibujarBrazoIzq();
+                    break;
+            case 5:
+                    // Dibujo del brazo derecho
+                    dibujarBrazoDer();
+                    break;
+            case 6:
+                    // Dibujo de la pierna izquierda
+                    dibujarPiernaIzq();
+                    break;
+            case 7:
+                    // Dibujo de la pierna derecha
+                    dibujarPiernaDer();
+                    // Fin de la partida actual
+                    fin = true;
+                    break;
+            default:
+                    // Estado desconocido del juego
+                    cerr << "Estado desconocido" << endl;
+            }
+            break;
+        // Dificultad en modo intermedio
+        case 2:
+            switch(estado){
+                case 1:
+                    // Dibujo de la cabeza y del cuello
+                    dibujoCabeza();
+                    dibujarCuello();
+                    break;
+                case 2:
+                    // Dibujo del brazo izquierdo
+                    dibujarBrazoIzq();
+                    break;
+                case 3:
+                    // Dibujo del brazo derecho
+                    dibujarBrazoDer();
+                    break;
+                case 4:
+                    // Dibujo del cuerpo
+                    dibujarCuerpo();
+                    break;
+                case 5:
+                    // Dibujo de las dos piernas
+                    dibujarPiernaIzq();
+                    dibujarPiernaDer();
+                    // Fin de la partida actual
+                    fin = true;
+                    break;
+                default:
+                    cerr << "Estado desconocido " << endl;
+            }
+            break;
+        // Dificultad en modo maestro
+        case 3:
+            switch(estado){
+                case 1:
+                    // Dibujo de la cabeza y del cuello
+                    dibujoCabeza();
+                    dibujarCuello();
+                    break;
+                case 2:
+                    // Dibujo de los dos brazos
+                    dibujarBrazoIzq();
+                    dibujarBrazoDer();
+                    break;
+                case 3:
+                    // Dibujo del cuerpo
+                    dibujarCuerpo();
+                    break;
+                case 4:
+                    // Dibujo de las dos piernas
+                    dibujarPiernaIzq();
+                    dibujarPiernaDer();
+                    // Fin de la partida actual
+                    fin = true;
+                    break;
+                default:
+                    cerr << "Estado desconocido " << endl;
+            }
+            break;
+         // Niguno de los modos de dificultad coincide
+        default:
+            cerr << "Dificutad no admitida " << endl;
+    }
+    estado++;
+}
+
+
+
