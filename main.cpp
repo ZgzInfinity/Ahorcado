@@ -34,7 +34,7 @@ const int DIFICULTAD_MAXIMA = 3;
 
 const int MAX_LONG_FICHERO = 100;
 const int TECLA_ESC = 27;
-const int RETARDO = 600;
+const int RETARDO = 6000;
 
 
 /*
@@ -97,6 +97,8 @@ void pedirLetra(char& letra){
 		// El caracter no es el adecuado y lo vuelve a pedir
 		cout << "El caracter introducido no es una letra" << endl;
 		Sleep(RETARDO);
+		gotoxy(5,4);
+		clreol();
 		gotoxy(5,3);
 		cout << "Introduzca la letra a comprobar: " << flush;
 		cin >> letra;
@@ -112,17 +114,23 @@ void pedirLetra(char& letra){
 
 
 void panelPuntuacion(){
-    for (int i = 0; i <= 128; i++){
-        gotoxy(i, 23);
-        if (i % 44 == 0){
+    for (int i = 1; i <= 126; i++){
+        if (i % 43 == 0){
+            gotoxy(i, 23);
             printf("%c", 203);
 
+            for (int j = 1; j <= 2; j++){
+                gotoxy(i, 23 + j);
+                printf("%c", 186);
+            }
         }
         else {
+            gotoxy(i, 23);
             printf("%c", 205);
         }
     }
 }
+
 
 /*
  * Secuenvia de pruebas basicas para probar el TAD Palabra
@@ -210,11 +218,10 @@ int main(){
         // Reproducir el sonido de la partida
         tocarMusicaPartida(pista);
 
-        // Dibujo de la horca
-        dibujarHorca();
-
         // Dibujar panel de puntuacion
         panelPuntuacion();
+
+
 
         // Mientras queden letras por descubir y no se haya terminado el juego
         while (!fin && letrasVolteadas != numLetras){
@@ -239,13 +246,13 @@ int main(){
                 textcolor(COLOR_ROJO);
                 gotoxy(4,5);
                 cout << "La letra " << letra << " no esta contenida" << endl;
-
             }
 
             // Esperar un tiempo y limpiar la linea
-            // usleep(RETARDO);
-            system("pause");
+            Sleep(2000);
+            gotoxy(4,5);
             clreol();
+
             // Cambio de color de la fuente
             textcolor(COLOR_AMARILLO);
 
