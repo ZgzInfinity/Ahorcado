@@ -113,7 +113,7 @@ void pedirLetra(char& letra){
 
 
 
-void panelPuntuacion(){
+void panelPuntuacion(int dificultad, string nombre, int puntos){
     for (int i = 1; i <= 126; i++){
         if (i % 43 == 0){
             gotoxy(i, 23);
@@ -129,7 +129,20 @@ void panelPuntuacion(){
             printf("%c", 205);
         }
     }
+
+    gotoxy(15, 24);
+    cout << " DIFICULTAD : " << dificultad;
+
+    gotoxy(55, 24);
+    cout << " JUGADOR : " << nombre;
+
+    gotoxy(80, 24);
+    for (int i = 0; i < 20; i++){
+        cout << " ";
+    }
+    cout << " PUNTUACION : " << puntos;
 }
+
 
 
 /*
@@ -158,11 +171,25 @@ int main(){
     // Borrado de pantalla
     system("cls");
 
-    int dificultad, pista, puntos;
+    int dificultad, pista, puntos, puntosPalabra;
     string nombre;
 
     // Mostrar menu de opciones
     menuOpciones(dificultad, pista, nombre);
+
+    // Establecer cirterio de puntos a ganar por palabra
+    if (dificultad == 1){
+        // Dificultad minima
+        puntosPalabra = 10;
+    }
+    else if (dificultad == 2){
+        // Dificultad intermedia
+        puntosPalabra = 30;
+    }
+    else{
+        // Dificultad maxima
+        puntosPalabra = 50;
+    }
 
     // Borrado de pantalla
     system("cls");
@@ -219,9 +246,7 @@ int main(){
         tocarMusicaPartida(pista);
 
         // Dibujar panel de puntuacion
-        panelPuntuacion();
-
-
+        panelPuntuacion(dificultad, nombre, puntos);
 
         // Mientras queden letras por descubir y no se haya terminado el juego
         while (!fin && letrasVolteadas != numLetras){
@@ -258,6 +283,9 @@ int main(){
 
             encontrado = false;
         }
+
+        // Sumar puntuacion si ha adivinado la palabra
+        puntos += puntosPalabra;
 
         // Fin de la partida y pregunta al usuario si desea jugar
         controlFinDelJuego(terminado);
