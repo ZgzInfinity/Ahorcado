@@ -98,7 +98,6 @@ void menuOpciones(int& dificultad, int& pista, string& nombre){
     gotoxy(32, 23); printf("%c", 200);
     gotoxy(80, 23); printf("%c", 188);
 
-
     gotoxy(35, 15);
     cout << "Dificultad de juego (1 - 3) --> " << flush;
     cin >> dificultad;
@@ -152,3 +151,41 @@ void menuOpciones(int& dificultad, int& pista, string& nombre){
     tocarSonidoCorrecto();
 }
 
+
+void monigoteOpciones(){
+    gotoxy(5,15);
+    cout << "  :::::::::::::::::::::::" << endl;
+    cout << "  ::                   ::" << endl;
+    cout << "  ::                 ::::::" << endl;
+    cout << "  ::                 ::  ::" << endl;
+    cout << "  ::                 ::::::" << endl;
+    cout << "  ::               ::::::::::" << endl;
+    cout << "  ::                   ::" << endl;
+    cout << "  ::                   ::" << endl;
+    cout << "  ::                 ::::::" << endl;
+    cout << "  ::                 ::  ::" << endl;
+    cout << "  ::" << endl;
+    cout << "  ::" << endl;
+    cout << "  ::" << endl;
+    cout << "::::::::::::" << endl;
+}
+
+
+
+void monigoteOpcionesInvertido(){
+    gotoxy(5,15);
+    cout << "    :::::::::::::::::::::::" << endl;
+    cout << "    ::                   ::" << endl;
+    cout << "  ::::::                 ::" << endl;
+    cout << "  ::  ::                 ::" << endl;
+    cout << "  ::::::                 ::" << endl;
+    cout << "::::::::::               ::" << endl;
+    cout << "    ::                   ::" << endl;
+    cout << "    ::                   ::" << endl;
+    cout << "  ::::::                 ::" << endl;
+    cout << "  ::  ::                 ::" << endl;
+    cout << "                         ::" << endl;
+    cout << "                         ::" << endl;
+    cout << "                         ::" << endl;
+    cout << "                 ::::::::::::" << endl;
+}
