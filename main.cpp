@@ -114,19 +114,34 @@ void pedirLetra(char& letra){
 
 
 void panelPuntuacion(int dificultad, string nombre, int puntos){
-    for (int i = 1; i <= 126; i++){
+    for (int i = 1; i <= 128; i++){
         if (i % 43 == 0){
             gotoxy(i, 23);
             printf("%c", 203);
 
-            for (int j = 1; j <= 2; j++){
-                gotoxy(i, 23 + j);
-                printf("%c", 186);
+            if (i < 80){
+                for (int j = 1; j <= 2; j++){
+                    gotoxy(i, 23 + j);
+                    printf("%c", 186);
+                }
             }
         }
         else {
             gotoxy(i, 23);
             printf("%c", 205);
+        }
+    }
+
+
+    for (int j = 1; j < 3; j++){
+        gotoxy(80, 23 + j);
+        for (int k = 81; k < 126; k++){
+            if (k == 87){
+                printf("%c", 186);
+            }
+            else{
+                cout << " ";
+            }
         }
     }
 
@@ -137,8 +152,13 @@ void panelPuntuacion(int dificultad, string nombre, int puntos){
     cout << " JUGADOR : " << nombre;
 
     gotoxy(80, 24);
-    for (int i = 0; i < 20; i++){
-        cout << " ";
+    for (int k = 81; k < 101; k++){
+        if (k == 87){
+            printf("%c", 186);
+        }
+        else{
+            cout << " ";
+        }
     }
     cout << " PUNTUACION : " << puntos;
 }
@@ -146,7 +166,7 @@ void panelPuntuacion(int dificultad, string nombre, int puntos){
 
 
 /*
- * Secuenvia de pruebas basicas para probar el TAD Palabra
+ * Secuencia de pruebas basicas para probar el TAD Palabra
  */
 int main(){
 
@@ -245,6 +265,9 @@ int main(){
         // Reproducir el sonido de la partida
         tocarMusicaPartida(pista);
 
+        // Dibujo de la horca del monigote
+        dibujarHorca();
+
         // Dibujar panel de puntuacion
         panelPuntuacion(dificultad, nombre, puntos);
 
@@ -252,7 +275,6 @@ int main(){
         while (!fin && letrasVolteadas != numLetras){
             // Se vuelve a pedir letra nueva
             pedirLetra(letra);
-
 
             // Posicionamiento en la pantalla
             // Comprobar si la letra esta o no en la palara
