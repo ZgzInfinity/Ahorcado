@@ -111,13 +111,26 @@ void pedirLetra(char& letra){
 
 
 
+void panelPuntuacion(){
+    for (int i = 0; i <= 128; i++){
+        gotoxy(i, 23);
+        if (i % 44 == 0){
+            printf("%c", 203);
+
+        }
+        else {
+            printf("%c", 205);
+        }
+    }
+}
+
 /*
  * Secuenvia de pruebas basicas para probar el TAD Palabra
  */
 int main(){
 
     // Ajustar dimensiones automaticas de la consola
-    system("mode con: cols=130 lines=30");
+    system("mode con: cols=128 lines=25");
 
 	// Semilla generadora de numeros aleatorios
 	srand(time(NULL));
@@ -137,11 +150,11 @@ int main(){
     // Borrado de pantalla
     system("cls");
 
-    int dificultad, pista;
+    int dificultad, pista, puntos;
+    string nombre;
 
     // Mostrar menu de opciones
-    menuOpciones(dificultad, pista);
-
+    menuOpciones(dificultad, pista, nombre);
 
     // Borrado de pantalla
     system("cls");
@@ -168,6 +181,9 @@ int main(){
 	// Numero de letras descubiertas de la palabra
 	int letrasVolteadas = 0;
 
+	// puntuacion total del jugador
+	puntos = 0;
+
 	// Letra con la que jugar al usuario
 	char letra;
 
@@ -188,11 +204,6 @@ int main(){
         // Numero de letras de la palabra seleccionada
         int numLetras = obtenerLetras(palabraSeleccionada);
 
-        gotoxy(1,1);
-        char linea[MAX_LETRAS];
-        obtenerPalabra(linea, palabraSeleccionada);
-        cout << linea << endl;
-
         // Muestreo de los huecos de la palabra a averiguar
         mostrarHuecosPalabra(palabraSeleccionada);
 
@@ -201,6 +212,9 @@ int main(){
 
         // Dibujo de la horca
         dibujarHorca();
+
+        // Dibujar panel de puntuacion
+        panelPuntuacion();
 
         // Mientras queden letras por descubir y no se haya terminado el juego
         while (!fin && letrasVolteadas != numLetras){

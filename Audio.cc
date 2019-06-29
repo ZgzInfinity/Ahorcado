@@ -19,7 +19,8 @@
  *       al menu principal del juego
  */
 void sonidoMenuPrincipal(){
-    PlaySound("menu.wav", NULL, SND_ASYNC);
+    mciSendString("open menu.wav alias MENU", NULL, 0, NULL);
+    mciSendString("play MENU", NULL, 0, NULL);
 }
 
 
@@ -30,7 +31,8 @@ void sonidoMenuPrincipal(){
  *       al menu de opciones del juego
  */
 void sonidoMenuOpciones(){
-    PlaySound("opciones.wav", NULL, SND_ASYNC);
+    mciSendString("open opciones.wav alias OPTIONS", NULL, 0, NULL);
+    mciSendString("play OPTIONS", NULL, 0, NULL);
 }
 
 
@@ -41,7 +43,8 @@ void sonidoMenuOpciones(){
  *       a la primera pista del juego
  */
 void sonidoPistaPrimera(){
-    PlaySound("main.wav", NULL, SND_ASYNC);
+    mciSendString("open main.wav alias FIRST_TRACK", NULL, 0, NULL);
+    mciSendString("play FIRST_TRACK", NULL, 0, NULL);
 }
 
 
@@ -52,7 +55,8 @@ void sonidoPistaPrimera(){
  *       a la segunda pista del juego
  */
 void sonidoPistaSegunda(){
-    PlaySound("speed.wav", NULL, SND_ASYNC);
+    mciSendString("open speed.wav alias SECOND_TRACK", NULL, 0, NULL);
+    mciSendString("play SECOND_TRACK", NULL, 0, NULL);
 }
 
 
@@ -63,7 +67,8 @@ void sonidoPistaSegunda(){
  *       a la tercera pista del juego
  */
 void sonidoPistaTercera(){
-    PlaySound("master.wav", NULL, SND_ASYNC);
+    mciSendString("open master.wav alias THIRD_TRACK", NULL, 0, NULL);
+    mciSendString("play THIRD_TRACK", NULL, 0, NULL);
 }
 
 
@@ -88,9 +93,9 @@ void tocarMusicaPartida(int& pista){
         case 2 :
             sonidoPistaTercera();
         break;
-        // Reproducir tercera pista a modo de prueba
+            // Reproducir tercera pista a modo de prueba
         case 3 :
-            cout << " Modo de juego sin audio " << endl;
+            // El audio del juego esta silenciado
         break;
         default:
             cerr <<" La pista " << pista << " es desconocida " << endl;
@@ -104,8 +109,9 @@ void tocarMusicaPartida(int& pista){
  * Post: Ha reproducido por el microfono el sonido correcto debido
  *       a que el usuario ha acertado una letra de la palabra
  */
-void sonidoCorrecto(){
-    PlaySound("correcto.wav", NULL, SND_ASYNC);
+void tocarSonidoCorrecto(){
+    mciSendString("open correcto.wav alias CORRECT", NULL, 0, NULL);
+    mciSendString("play CORRECT", NULL, 0, NULL);
 }
 
 
@@ -115,8 +121,9 @@ void sonidoCorrecto(){
  * Post: Ha reproducido por el microfono el sonido incorrecto debido
  *       a que el usuario ha acertado una letra de la palabra
  */
-void sonidoIncorrecto(){
-    PlaySound("incorrecto.wav", NULL, SND_ASYNC);
+void tocarSonidoIncorrecto(){
+    mciSendString("open incorrecto.wav alias INCORRECT", NULL, 0, NULL);
+    mciSendString("play INCORRECT", NULL, 0, NULL);
 }
 
 

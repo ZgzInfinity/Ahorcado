@@ -17,6 +17,7 @@
 
 #include<iostream>
 #include<windows.h>
+#include<conio.h>
 
 
 using namespace std;
@@ -81,7 +82,7 @@ void tocarMusicaPartida(int& pista);
  * Post: Ha reproducido por el microfono el sonido correcto debido
  *       a que el usuario ha acertado una letra de la palabra
  */
-void sonidoCorrecto();
+void tocarSonidoCorrecto();
 
 
 
@@ -90,7 +91,7 @@ void sonidoCorrecto();
  * Post: Ha reproducido por el microfono el sonido incorrecto debido
  *       a que el usuario ha acertado una letra de la palabra
  */
-void sonidoIncorrecto();
+void tocarSonidoIncorrecto();
 
 
 

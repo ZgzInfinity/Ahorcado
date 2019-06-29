@@ -35,7 +35,7 @@ void dibujarHorca(){
     printf("%c", ESQUINA_SUP_DER);
 
     // Muestra la columna de la horca por la pantalla
-    for (int i = 1; i <= DIMENSION; i++){
+    for (int i = 1; i <= DIMENSION - 2; i++){
         gotoxy(5, 7 + i);
         printf("%c", LINEA_VERTICAL);
         if (i <= 1){
@@ -46,7 +46,7 @@ void dibujarHorca(){
     }
 
     // Saca por pantalla la base de la horca
-    gotoxy(3, 7 + DIMENSION + 1);
+    gotoxy(3, 7 + DIMENSION - 1);
     for (int i = 0; i < DIMENSION + 15; i++){
         if (i == 2){
             printf("%c", TRI_LAT_INF);
