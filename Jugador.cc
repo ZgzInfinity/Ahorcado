@@ -47,19 +47,21 @@ void comprobarExistenciaFichero (const char fichero[]){
  */
 bool anyadirJugador(const char fichero[], const string jugador, const int puntosJugador){
     // Flujo de lectura/escritura del fichero de jugadores
-    fstream f;
+    ifstream f1;
     // Apertura del fichero de jugadores
-    f.open(fichero);
+    f1.open(fichero);
     // Comprobar que el flujo es correcto
-    if (f.is_open()){
+    if (f1.is_open()){
+        ofstream f2;
         // El fichero de jugadores esta disponible
         string nombreJugador;
         int puntos, totalBytes = 0;
         // Control de jugador hallado
         bool encontrado = false;
         //  Lectura del nombre del jugador
-        f >> nombreJugador;
-        while (!encontrado && !f.eof()){
+
+        f1 >> nombreJugador;
+        while (!encontrado && !f1.eof()){
             // Fichero no vacio
             // Comparacion del jugador leido con el buscado
             totalBytes += nombreJugador.length() + 1;
@@ -68,27 +70,33 @@ bool anyadirJugador(const char fichero[], const string jugador, const int puntos
                 encontrado = true;
             }
             // Lee los ountos del jugador
-            f >> puntos;
-            totalBytes += to_string(puntos).length() + 1;
+            f1 >> puntos;
 
             if (!encontrado){
+                totalBytes += to_string(puntos).length() + 1;
                 // Lectura del siguiente jugador
-                f >> nombreJugador;
+                f1 >> nombreJugador;
             }
         }
         // Comprobar si el jugador estaba o no en el fichero
         if (!encontrado){
+            cout << "NO ENCONTRADO " << jugador << " " << puntosJugador << endl;
+            f2.open(fichero, ios::app);
             // No estaba y se incorpora como entrada
-            f << jugador << puntosJugador;
+            f2 << jugador << " " << puntosJugador << endl;
         }
         else {
+            f2.open(fichero);
             // Desplazamiento del cursor a la posicion totalBytes desde el comienzo del fichero
-            f.seekp(totalBytes);
+
+            cout << totalBytes << endl,
             // Incremento del total de puntos del jugador
             puntos += puntosJugador;
             // Escribe en el fichero los puntos del jugador modificados
-            f << puntos;
+            f2 << puntos << endl;
         }
+        f1.close();
+        f2.close();
         // Retorno de resultado
         return encontrado;
     }
@@ -126,11 +134,17 @@ void mostrarClasificacion(const char fichero[]){
     f.open(fichero);
     // Comprobar que el fichero de jugadores se ha abierto bien
     if (f.is_open()){
-        // Escritura de la cabecera de la clasificacion
-        cout << setw(10) << "JUGADOR"  << setw(14) << "PUNTUACION" << endl;
-        cout << setfill('=') << setw(10) << " " << setfill('=') << setw(12) << " " << endl;
-
         int i = 0, puntos;
+        cout << endl << endl;
+        gotoxy(50, 5);
+        cout << "   RANKING DE LOS JUGADORES" << endl << endl;
+
+        // Escritura de la cabecera de la clasificacion
+        gotoxy(50, 7);
+        cout << setfill(' ') << setw(14) << "JUGADOR"  << setfill(' ') << setw(14) << "PUNTUACION" << endl;
+        gotoxy(50, 8);
+        cout << setfill('=') << setw(14) << "=" << "  " << setfill('=') << setw(12) << "=" << endl;
+
         string nombreJugador;
 
         // Lectura del jugador
@@ -140,8 +154,10 @@ void mostrarClasificacion(const char fichero[]){
 
             // Leer la puntuacion del jugador
             f >> puntos;
+            gotoxy(50, 9 + i);
             // Mostrar los datos del jugador en cuestion
-            cout << i << " - " << setw(10) << nombreJugador << setw(14) << puntos << endl;
+            cout << i + 1 << " - " << setfill(' ') << setw(10) << nombreJugador
+                                   << setfill(' ') << setw(14) << puntos << endl;
 
             // Lectura del nuevo jugador
             f >> nombreJugador;

@@ -132,6 +132,8 @@ void pedirLetra(char& letra){
  */
 int main(){
 
+    sonidoMenuPrincipal();
+
     // Ajustar dimensiones automaticas de la consola
     system("mode con: cols=128 lines=25");
 
@@ -156,6 +158,12 @@ int main(){
     int dificultad, pista, puntos, puntosPalabra;
     string nombre;
 
+    // Detener banda sonora del menu principal
+    detenerSonidoMenu();
+
+    // Reproducir sonido del menu de opciones
+    sonidoMenuOpciones();
+
     // Mostrar menu de opciones
     menuOpciones(dificultad, pista, nombre);
 
@@ -175,6 +183,9 @@ int main(){
 
     // Borrado de pantalla
     system("cls");
+
+    // Detener sonido del menu de opciones
+    detenerSonidoOpciones();
 
 	// Ficheros de trabajo
 	const char f1[MAX_LONG_FICHERO] = "palabras_rae.txt";
@@ -248,13 +259,19 @@ int main(){
                 gotoxy(4,5);
                 cout << " La letra " << letra << " es correcta" << endl;
 
+                // Reproducir sonido CORRECTO
+                tocarSonidoCorrecto();
+
             }
             else {
                 // Dibujo correspondiente del monigote
                 dibujoParteMonigote(estado, dificultad, fin);
                 textcolor(COLOR_ROJO);
                 gotoxy(4,5);
-                cout << "La letra " << letra << " no esta contenida" << endl;
+                cout << " La letra " << letra << " no esta contenida" << endl;
+
+                // Reproducir sonido INCORRECTO
+                tocarSonidoIncorrecto();
             }
 
             // Esperar un tiempo y limpiar la linea
@@ -268,18 +285,45 @@ int main(){
             encontrado = false;
         }
 
-        // Sumar puntuacion si ha adivinado la palabra
-        puntos += puntosPalabra;
+        // Detener banda sonora de la partida
+        detenerSonidoPartida(pista);
+
+        // Comprobar que la palabra se ha resuelto
+        if (!fin){
+            puntos += puntosPalabra;
+
+            // Detener el sonido Game Over
+            detenerSonidoFindOut();
+
+            // Reproducir sonido Game Over
+            tocarSonidoFindOut();
+        }
+        else {
+            // Detener el sonido Game Over
+            detenerSonidoGameOver();
+
+            // Reproducir sonido Game Over
+            tocarSonidoGameOver();
+        }
 
         // Limpiar la pantlla
         system("cls");
 
+        // Sumar o anyadir nuevo jugador
+        anyadirJugador("jugadores.txt",nombre, puntos);
+
         // Fin de la partida y pregunta al usuario si desea jugar
         controlFinDelJuego(terminado);
+
+        // Limpiar la pantlla
+        system("cls");
+
+        // Mostrar la clasificacion actual de los jugadores
+        mostrarClasificacion("jugadores.txt");
     }
 
 	// Posicionamiento al final de la pantalla para el fin de ejecucion
-	gotoxy(1,24);
+	gotoxy(1, 24);
 	cout << " Fin del programa " << endl;
 	return 0;
 }

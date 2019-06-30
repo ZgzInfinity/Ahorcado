@@ -6,6 +6,7 @@
 #include <fstream>
 #include <iomanip>
 #include <fcntl.h>
+#include <conio.h>
 
 
 using namespace std;

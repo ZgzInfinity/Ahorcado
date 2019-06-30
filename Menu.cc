@@ -45,16 +45,12 @@ void presentarFinal(){
 }
 
 
-
 /*
  * Pre: ---
  * Post: Ha mostrado por pantalla el menu inicial del
  *       juego
  */
 void presentarMenu(){
-
-    // Reproduccion de la banda sonora del menu principal
-    sonidoMenuPrincipal();
 
     cout << endl << endl;
     cout << "                *****         ****  ****  ********  *******      ********         *****         ******      ********   " << endl;
@@ -128,6 +124,9 @@ void menuOpciones(int& dificultad, int& pista, string& nombre){
     cout << "Dificultad de juego (1 - 3) --> " << flush;
     cin >> dificultad;
 
+    // Reproducir sonido de correcto
+    tocarSonidoCorrecto();
+
     // Informa de la dificultad seleccionada
     gotoxy(67, 15);
 
@@ -142,12 +141,13 @@ void menuOpciones(int& dificultad, int& pista, string& nombre){
         cout << "Dificil";
     }
 
-    //Reproduce sonido correcto
-    tocarSonidoCorrecto();
-
     gotoxy(35, 18);
     cout << "Banda sonora (0 - 3) --> " << flush;
     cin >> pista;
+
+
+    // Reproducir sonido de correcto
+    tocarSonidoCorrecto();
 
     // Mostrar la banda sonora seleccionada
     gotoxy(60, 18);
@@ -165,17 +165,12 @@ void menuOpciones(int& dificultad, int& pista, string& nombre){
         cout << "Modo muteado";
     }
 
-
-    //Reproduce sonido correcto
-    tocarSonidoCorrecto();
-
     gotoxy(35,21);
     cout << "Nombre de jugador --> " << flush;
     cin >> nombre;
 
-    //Reproduce sonido correcto
+    // Reproducir sonido de correcto
     tocarSonidoCorrecto();
-
 }
 
 

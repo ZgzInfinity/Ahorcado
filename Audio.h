@@ -97,9 +97,84 @@ void tocarSonidoIncorrecto();
 
 /*
  * Pre: ---
+ * Post: Ha reproducido por el microfono el sonido Find_out debido
+ *       a que el usuario ha descifrado la palabra
+ */
+void tocarSonidoFindOut();
+
+
+
+/*
+ * Pre: ---
+ * Post: Ha reproducido por el microfono el sonido incorrecto debido
+ *       a que el usuario ha fallado toda la palabra
+ */
+void tocarSonidoGameOver();
+
+
+
+/*
+ * Pre: ---
  * Post: Ha detenido la reproduccion del sonido actual en curso
  */
-void sonidoDetener();
+void detenerSonidoMenu();
 
+
+
+/*
+ * Pre: ---
+ * Post: Ha detenido la reproduccion del sonido del menu de opciones
+ */
+void detenerSonidoOpciones();
+
+
+
+/*
+ * Pre: ---
+ * Post: Ha detenido la reproduccion del sonido de la primera pista
+ */
+void detenerSonidoPistaPrimera();
+
+
+
+/*
+ * Pre: ---
+ * Post: Ha detenido la reproduccion del sonido de la segunda pista
+ */
+void detenerSonidoPistaSegunda();
+
+
+
+/*
+ * Pre: ---
+ * Post: Ha detenido la reproduccion del sonido de la tercera pista
+ */
+void detenerSonidoPistaTercera();
+
+
+
+/*
+ * Pre: ---
+ * Post: Ha detenido la reproduccion del sonido de Find out
+ */
+void detenerSonidoFindOut();
+
+
+
+/*
+ * Pre: ---
+ * Post: Ha detenido la reproduccion del sonido de Game over
+ */
+void detenerSonidoGameOver();
+
+
+
+/*
+ * Pre: <<pista>> es el indice de la pista musical seleccionada por
+ *      el usario a reproducir
+ * Post: Ha detenido la banda sonora de la partida la con indice de pista
+ *       <<pista>>
+ */
+void detenerSonidoPartida(int& pista);
 
 #endif
