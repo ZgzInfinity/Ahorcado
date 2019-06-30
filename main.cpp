@@ -16,6 +16,7 @@
 #include "Monigote.h"
 #include "Menu.h"
 #include "Arranque.h"
+#include "Jugador.h"
 
 
 // valores de color de fondo y fuente
@@ -44,34 +45,47 @@ const int RETARDO = 6000;
  *       comienza una nueva
  */
 void controlFinDelJuego(bool& terminado){
+
+    // Control de la orden introducida por el usuario
+    int orden;
+
+    // Presentar el rotulo de final de juego
+    presentarFinal();
+
+    // Dibujo de la cuadricula
+    dibujoCuadricula();
+
     // Muestra las posibles teclas a pulsar al usuario
-    cout << endl << endl;
-    cout << "Presione la tecla INTRO si desea jugar una nueva partida " << endl;
-    cout << "Presione la tecla ESC si desea salir del juego " << endl;
+    gotoxy(35, 15);
+    cout << "ORDENES DISPONIBLES" << endl;
+
+    gotoxy(35, 16);
+    cout << "1 - Nueva partida " << endl;
+
+    gotoxy(35, 17);
+    cout << "2 - Salir del juego " << endl << endl;
+
+    gotoxy(35, 19);
+    cout << "Introduzca una orden --> " << flush;
+    cin >> orden;
 
     // Control de tecla pulsada
     bool pulsada = false;
-    // Capturar tecla pulsada
-
-    unsigned char tecla;
 
     while (!pulsada){
-        // No se ha pusado la tecla
-        tecla = getch();
-
-        // Comprobacion de tecla ENTER
-        if (int(tecla) == TECLA_ENTER || int(tecla) == TECLA_ESC){
+        // Comprobacion de tecla 1 o 2
+        if (orden == 1 || orden == 2){
             // Es la tecla ENTER
             pulsada = true;
 
             // Comprobacion de la tecla
-            if (int(tecla == TECLA_ESC)){
+            if (orden == 2){
                 // Fin del juego
-                cout << "OK" << endl;
                 terminado = true;
             }
         }
         else {
+            gotoxy(35, 21);
             cerr << " Tecla no valida" << endl;
         }
     }
@@ -109,58 +123,6 @@ void pedirLetra(char& letra){
 		// Si es mayuscula la convierte a minuscula
 		letra = tolower(letra);
 	}
-}
-
-
-
-void panelPuntuacion(int dificultad, string nombre, int puntos){
-    for (int i = 1; i <= 128; i++){
-        if (i % 43 == 0){
-            gotoxy(i, 23);
-            printf("%c", 203);
-
-            if (i < 80){
-                for (int j = 1; j <= 2; j++){
-                    gotoxy(i, 23 + j);
-                    printf("%c", 186);
-                }
-            }
-        }
-        else {
-            gotoxy(i, 23);
-            printf("%c", 205);
-        }
-    }
-
-
-    for (int j = 1; j < 3; j++){
-        gotoxy(80, 23 + j);
-        for (int k = 81; k < 126; k++){
-            if (k == 87){
-                printf("%c", 186);
-            }
-            else{
-                cout << " ";
-            }
-        }
-    }
-
-    gotoxy(15, 24);
-    cout << " DIFICULTAD : " << dificultad;
-
-    gotoxy(55, 24);
-    cout << " JUGADOR : " << nombre;
-
-    gotoxy(80, 24);
-    for (int k = 81; k < 101; k++){
-        if (k == 87){
-            printf("%c", 186);
-        }
-        else{
-            cout << " ";
-        }
-    }
-    cout << " PUNTUACION : " << puntos;
 }
 
 
@@ -242,11 +204,11 @@ int main(){
 	// Letra con la que jugar al usuario
 	char letra;
 
-	// Control del final del juego
-	bool terminado = false;
+	// Control del final del juego y de letra existente en palabra
+	bool terminado = false, encontrado = false;
 
-	// Control de existencia de letra en palabra
-	bool encontrado;
+	// Crear fichero de jugadores si no existe
+	comprobarExistenciaFichero("jugadores.txt");
 
 	// Control de partidas
 	while (!terminado){
@@ -308,6 +270,9 @@ int main(){
 
         // Sumar puntuacion si ha adivinado la palabra
         puntos += puntosPalabra;
+
+        // Limpiar la pantlla
+        system("cls");
 
         // Fin de la partida y pregunta al usuario si desea jugar
         controlFinDelJuego(terminado);

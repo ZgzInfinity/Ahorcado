@@ -3,6 +3,7 @@
 
 
 #include <iostream>
+#include <thread>
 #include <conio.h>
 #include "Audio.h"
 
@@ -22,6 +23,14 @@ void mostrarTituloParpadeante();
 
 /*
  * Pre: ---
+ * Post: Ha mostrado por pantalla un rotulo cuyo contenido es "FINAL"
+ */
+void presentarFinal();
+
+
+
+/*
+ * Pre: ---
  * Post: Ha mostrado por pantalla el menu inicial del
  *       juego
  */
@@ -31,10 +40,28 @@ void presentarMenu();
 
 /*
  * Pre: ---
+ * Post: Ha dibujado por pantalla una cuadricula pequenya
+ */
+void dibujoCuadricula();
+
+
+
+/*
+ * Pre: ---
  * Post: Ha mostrado por pantalla un menu con las posibles
  *       opciones de configuracion al usuario
  */
 void menuOpciones(int& dificultad, int& pista, string& nombre);
+
+
+
+/*
+ * Pre: ---
+ * Post: Ha mostrado por pantalla un panel con la informacion de la partida actual del usuario.
+ *       En el lateral izquierdo se ha informado de la dificultad actual del modo de juego, en el centro
+ *       se encuentra el nombre del jugador actual, y en la derecha fiura el total de ountos que lleva actualmente
+ */
+void panelPuntuacion(int dificultad, string nombre, int puntos);
 
 
 
