@@ -142,7 +142,7 @@ void tocarSonidoIncorrecto(){
  */
 void tocarSonidoFindOut(){
     mciSendString("close FIND_OUT", NULL, 0, NULL);
-    mciSendString("open GameOver.wav alias FIND_OUT", NULL, 0, NULL);
+    mciSendString("open FindOut.wav alias FIND_OUT", NULL, 0, NULL);
     mciSendString("play FIND_OUT", NULL, 0, NULL);
 }
 
@@ -156,6 +156,19 @@ void tocarSonidoGameOver(){
     mciSendString("close GAME_OVER", NULL, 0, NULL);
     mciSendString("open GameOver.wav alias GAME_OVER", NULL, 0, NULL);
     mciSendString("play GAME_OVER", NULL, 0, NULL);
+}
+
+
+
+/*
+ * Pre: ---
+ * Post: Ha reproducido por el microfono el sonido incorrecto debido
+ *       a que el usuario conteste si quiere jugar otra vez
+ */
+void tocarSonidoReloj(){
+    mciSendString("close CLOCK", NULL, 0, NULL);
+    mciSendString("open Reloj.wav alias CLOCK", NULL, 0, NULL);
+    mciSendString("play CLOCK", NULL, 0, NULL);
 }
 
 
@@ -230,6 +243,15 @@ void detenerSonidoGameOver(){
     mciSendString("close GAME_OVER", NULL, 0, NULL);
 }
 
+
+
+/*
+ * Pre: ---
+ * Post: Ha detenido la reproduccion del sonido de Reloj
+ */
+void detenerSonidoReloj(){
+    mciSendString("close CLOCK", NULL, 0, NULL);
+}
 
 
 /*

@@ -29,6 +29,7 @@ struct Palabra {
 	private:
 		// Estructura interna del tipo de dato Palabra
 		char cadena[MAX_LETRAS];	// vector de caracteres que representa las letras de la palabra
+		bool marcadas[MAX_LETRAS];  // vector que representa las letras descubertas y las que no
 		int numLetras;				// numero de letras de la palabra
 	public:
 
@@ -84,7 +85,7 @@ struct Palabra {
 		 *       de la palabra <<p>> y ha reemplazada en la posicion correspondiente
 		 *       el caracter "_" por el valor de la letra <<l>>
 		 */
-		 friend void existeLetra(Palabra& p, const char l, int& letrasVoltedas, bool& encontrado);
+		 friend void existeLetra(Palabra& p, const char l, int& letrasVoltedas, bool& encontrado, bool& letraYaDicha);
 
 
 

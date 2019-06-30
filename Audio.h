@@ -113,6 +113,16 @@ void tocarSonidoGameOver();
 
 
 
+
+/*
+ * Pre: ---
+ * Post: Ha reproducido por el microfono el sonido incorrecto debido
+ *       a que el usuario conteste si quiere jugar otra vez
+ */
+void tocarSonidoReloj();
+
+
+
 /*
  * Pre: ---
  * Post: Ha detenido la reproduccion del sonido actual en curso
@@ -166,6 +176,14 @@ void detenerSonidoFindOut();
  * Post: Ha detenido la reproduccion del sonido de Game over
  */
 void detenerSonidoGameOver();
+
+
+
+/*
+ * Pre: ---
+ * Post: Ha detenido la reproduccion del sonido de Reloj
+ */
+void detenerSonidoReloj();
 
 
 

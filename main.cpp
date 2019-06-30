@@ -46,6 +46,9 @@ const int RETARDO = 6000;
  */
 void controlFinDelJuego(bool& terminado){
 
+    // Reproducir sonido del reloj
+    tocarSonidoReloj();
+
     // Control de la orden introducida por el usuario
     int orden;
 
@@ -89,6 +92,9 @@ void controlFinDelJuego(bool& terminado){
             cerr << " Tecla no valida" << endl;
         }
     }
+
+    // Detener sonido del reloj
+    detenerSonidoReloj();
 }
 
 
@@ -126,6 +132,15 @@ void pedirLetra(char& letra){
 }
 
 
+void mostrarMensaje(const string mensaje){
+    int dim = mensaje.length();
+    for (int i = 0; i < dim; i++){
+        gotoxy(50 + i, 20);
+        cout << mensaje.at(i) << " ";
+        Sleep(100);
+    }
+
+}
 
 /*
  * Secuencia de pruebas basicas para probar el TAD Palabra
@@ -156,7 +171,7 @@ int main(){
     system("cls");
 
     int dificultad, pista, puntos, puntosPalabra;
-    string nombre;
+    string nombre, mensajePartida;
 
     // Detener banda sonora del menu principal
     detenerSonidoMenu();
@@ -216,7 +231,7 @@ int main(){
 	char letra;
 
 	// Control del final del juego y de letra existente en palabra
-	bool terminado = false, encontrado = false;
+	bool terminado = false, encontrado = false, letraYaDicha = false;;
 
 	// Crear fichero de jugadores si no existe
 	comprobarExistenciaFichero("jugadores.txt");
@@ -251,9 +266,16 @@ int main(){
 
             // Posicionamiento en la pantalla
             // Comprobar si la letra esta o no en la palara
-            existeLetra(palabraSeleccionada, letra, letrasVolteadas, encontrado);
+            existeLetra(palabraSeleccionada, letra, letrasVolteadas, encontrado, letraYaDicha);
 
-            if(encontrado){
+            // Comprobar que la letra ya se habia probado antes
+            if (letraYaDicha){
+                // La letra ya se habia probado
+                gotoxy(4,5);
+                cout << " La letra " << letra << " ya se ha probado" << endl;
+                letraYaDicha = false;
+            }
+            else if (encontrado){
                 // Sustitucion de los huecos por las letras correctas
                 textcolor(COLOR_VERDE);
                 gotoxy(4,5);
@@ -290,6 +312,11 @@ int main(){
 
         // Comprobar que la palabra se ha resuelto
         if (!fin){
+            textcolor(COLOR_VERDE);
+
+            mensajePartida = "¡VICTORIA!";
+
+            // Sumar puntos acumulados
             puntos += puntosPalabra;
 
             // Detener el sonido Game Over
@@ -297,20 +324,38 @@ int main(){
 
             // Reproducir sonido Game Over
             tocarSonidoFindOut();
+
+            // Mostrar mensaje de victoria
+            mostrarMensaje(mensajePartida);
         }
         else {
+            textcolor(COLOR_ROJO);
+
+            mensajePartida = "!DERROTA!";
+
             // Detener el sonido Game Over
             detenerSonidoGameOver();
 
             // Reproducir sonido Game Over
             tocarSonidoGameOver();
+
+            // Para poder volver a jugar
+            fin = false;
+
+            // Mostrar mensaje de derrota
+            mostrarMensaje(mensajePartida);
         }
+
+        textcolor(COLOR_AMARILLO);
+
+         // Dormir 2 segundos
+        Sleep(2000);
 
         // Limpiar la pantlla
         system("cls");
 
         // Sumar o anyadir nuevo jugador
-        anyadirJugador("jugadores.txt",nombre, puntos);
+        // anyadirJugador("jugadores.txt",nombre, puntos);
 
         // Fin de la partida y pregunta al usuario si desea jugar
         controlFinDelJuego(terminado);

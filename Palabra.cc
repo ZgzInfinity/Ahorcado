@@ -24,6 +24,10 @@
 void crearPalabra(char secuencia[], int nLetras, Palabra& p){
 	strcpy(p.cadena, secuencia);
 	p.numLetras = nLetras;
+
+	for (int i = 0; i < MAX_LETRAS; i++){
+        p.marcadas[i] = false;
+	}
 }
 
 
@@ -90,7 +94,7 @@ void mostrarHuecosPalabra(Palabra& p){
  *       de la palabra <<p>> y ha reemplazada en la posicion correspondiente
  *       el caracter "_" por el valor de la letra <<l>>
  */
-void existeLetra(Palabra& p, const char l, int& letrasVolteadas, bool& encontrado){
+void existeLetra(Palabra& p, const char l, int& letrasVolteadas, bool& encontrado, bool& letraYaDicha){
 	// Total de letras de la palabra <<p>>
 	int numLetras = obtenerLetras(p);
 	// Control de existencia de letra
@@ -99,20 +103,30 @@ void existeLetra(Palabra& p, const char l, int& letrasVolteadas, bool& encontrad
 	int numVeces = 0;
 	// Bucle de recorrido
 	for (int i = 0; i < numLetras; i++){
-		// Se compara si la letra i-ésima es igual a <<l>>
+		// Se compara si la letra i-ésima es igual a <<l>> y no se ha buscado antes
 		if (devolverLetra(p, i) == l){
-			// Se ha hallado una nueva letra y se voltea
-			letrasVolteadas++;
-			// Incremento del numero de veces que se ha hallado la letra
-			numVeces++;
-			// Se compara si esta mas de una vez
-			if (numVeces == 1){
-				// es la primera vez
-				encontrado = true;
-			}
-			// Muestreo de la letra en la poscion correcta
-			gotoxy(60 + 2 * i, 15);
-            cout << l << " ";
+		    // Comprobar si la letra no esta marcada
+		    if (!p.marcadas[i]){
+                 // Poner letra como marcada
+                p.marcadas[i] = true;
+                // Se ha hallado una nueva letra y se voltea
+                letrasVolteadas++;
+                // Incremento del numero de veces que se ha hallado la letra
+                numVeces++;
+                // Se compara si esta mas de una vez
+                if (numVeces == 1){
+                    // es la primera vez
+                    encontrado = true;
+                }
+
+                // Muestreo de la letra en la poscion correcta
+                gotoxy(60 + 2 * i, 15);
+                cout << l << " ";
+		    }
+		    else {
+                // La letra ya estaba dicha de antes
+                letraYaDicha = true;
+		    }
 		}
 	}
 }
