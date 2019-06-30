@@ -5,6 +5,7 @@
 #include <iostream>
 #include <cstring>
 #include <fstream>
+#include <fcntl.h>
 #include "Palabra.h"
 
 
@@ -20,6 +21,37 @@ using namespace std;
  *      fichero de texto
  */
 void crearFicheroPalabrasBinario(const char ficheroPalabrasTexto[], const char ficheroPalabrasBinario[], int& totalLineas);
+
+
+
+/*
+ * Pre: <<fichero>> es un posible fichero de texto
+ * Post: Ha creado un fichero de texto vacio de nombre <<fichero>>
+ *       en caso de si inexistencia
+ */
+void comprobarExistenciaFichero(const char fichero[]);
+
+
+
+/*
+ * Pre:  * Pre: <<fichero>> es un fichero binario que almacena todos los jugadores registrados hasta el momento.
+ * Post: Ha mostrado por pantalla una clasificacion de todos los jugadores registrados. La clasificacion
+ *       presenta el siguiente formqto:
+ *
+ *       Ejemplo:
+ *
+ *         JUGADOR    PUNTUACION
+ *       =========  ============
+ *          Europe           230
+ *      ZgzInfinty            40
+ *
+ *            . . . . . . . . .
+ *
+ *         Pitazzo           870
+ *            Aeri            90
+ */
+void mostrarClasificacion(const char fichero[]);
+
 
 
 #endif // ARRANQUE_H_INCLUDED

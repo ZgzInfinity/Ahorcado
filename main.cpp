@@ -234,7 +234,7 @@ int main(){
 	bool terminado = false, encontrado = false, letraYaDicha = false;;
 
 	// Crear fichero de jugadores si no existe
-	comprobarExistenciaFichero("jugadores.txt");
+	comprobarExistenciaFichero("jugadores.bin");
 
 	// Control de partidas
 	while (!terminado){

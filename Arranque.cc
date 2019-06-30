@@ -1,6 +1,7 @@
 
 
 #include "Arranque.h"
+#include "Jugador.h"
 
 
 /*
@@ -61,3 +62,105 @@ void crearFicheroPalabrasBinario(const char ficheroPalabrasTexto[], const char f
 		cerr << " El fichero " << ficheroPalabrasTexto << " es innacesible" << endl;
 	}
 }
+
+
+
+/*
+ * Pre: <<fichero>> es un posible fichero de texto
+ * Post: Ha creado un fichero de texto vacio de nombre <<fichero>>
+ *       en caso de si inexistencia
+ */
+void comprobarExistenciaFichero(const char fichero[]){
+    // Comprobar que el fichero se puede abrir en modo lectura
+    int fd = open(fichero, O_RDONLY);
+    if (fd > 0){
+        // el fichero exsite
+        // se cierra el flujo asociado al fichero
+        close(fd);
+    }
+    else {
+        // se crea el fichero con permisos de lectura y escritura
+        creat(fichero, 0777);
+        // Flujo de escritura asociado al fichero de jugadores
+        ofstream f;
+        // Aperura del flujo de escritura del fichero
+        f.open(fichero);
+        if (f.is_open()){
+            // Escritura de la cabecera del fichero
+            f << "   JUGADOR    PUNTUACION " << endl;
+            f << " =========  ============" << endl;
+            // Cierre del flujo de escritura del fichero
+            f.close();
+        }
+        else{
+            // El fichero de jugadores creado presente un error al abrirlo
+            cerr << "El fichero de jugadores " << fichero << " es innacesible " << endl;
+        }
+    }
+}
+
+
+
+
+/*
+ * Pre: <<fichero>> es un fichero binario que almacena todos los jugadores registrados hasta el momento.
+ * Post: Ha mostrado por pantalla una clasificacion de todos los jugadores registrados. La clasificacion
+ *       presenta el siguiente formqto:
+ *
+ *       Ejemplo:
+ *
+ *         JUGADOR    PUNTUACION
+ *       =========  ============
+ *          Europe           230
+ *      ZgzInfinty            40
+ *
+ *            . . . . . . . . .
+ *
+ *         Pitazzo           870
+ *            Aeri            90
+ */
+void mostrarClasificacion(const char fichero[]){
+    // Flujo de lectura del fichero de jugadires
+    ifstream f;
+    // Apertura del fichero
+    f.open(fichero, ios::binary);
+    // Comprobar que el fichero de jugadores se ha abierto bien
+    if (f.is_open()){
+        int i = 0, puntos;
+        // Almacenado del ultimo jugador leido
+        Jugador jugadorActual;
+        cout << endl << endl;
+        gotoxy(50, 5);
+        cout << "   RANKING DE LOS JUGADORES" << endl << endl;
+
+        // Escritura de la cabecera de la clasificacion
+        gotoxy(50, 7);
+        cout << setfill(' ') << setw(14) << "JUGADOR"  << setfill(' ') << setw(14) << "PUNTUACION" << endl;
+        gotoxy(50, 8);
+        cout << setfill('=') << setw(14) << "=" << "  " << setfill('=') << setw(12) << "=" << endl;
+
+        // Lectura del jugador
+        f.read(reinterpret_cast<char*>(&jugadorActual), sizeof(Jugador));
+        while (!f.eof()){
+            // Mientras queden lienas por leer
+
+            gotoxy(50, 9 + i);
+            // Mostrar los datos del jugador en cuestion
+            cout << i + 1 << " - " << setfill(' ') << setw(10) << nombre(jugadorActual)
+                                   << setfill(' ') << setw(14) << puntuacion(jugadorActual) << endl;
+
+            // Lectura del nuevo jugador
+            f.read(reinterpret_cast<char*>(&jugadorActual), sizeof(Jugador));
+
+            // Incremento del indice del jugador en la tabla
+            i++;
+        }
+        // Cierre del flujo de lectura del fichero
+        f.close();
+    }
+    else{
+        // Error al acceder al fichero de judadores
+        cerr << "El fichero de jugadores " << fichero << " es innacesible" << endl;
+    }
+}
+
