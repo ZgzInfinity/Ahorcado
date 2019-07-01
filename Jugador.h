@@ -55,7 +55,7 @@ struct Jugador {
          *       En caso contrario ha aumentado los puntos que ya tenia el jugador cuyo nombre es igual a <<nombre>> un
          *       total de <<puntosJugador>> puntos
          */
-        friend bool anyadirJugador(const char fichero[], const string jugador, const int puntosJugador);
+        friend bool anyadirJugador(const char fichero[], Jugador jugador);
 
 };
 

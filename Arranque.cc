@@ -81,21 +81,6 @@ void comprobarExistenciaFichero(const char fichero[]){
     else {
         // se crea el fichero con permisos de lectura y escritura
         creat(fichero, 0777);
-        // Flujo de escritura asociado al fichero de jugadores
-        ofstream f;
-        // Aperura del flujo de escritura del fichero
-        f.open(fichero);
-        if (f.is_open()){
-            // Escritura de la cabecera del fichero
-            f << "   JUGADOR    PUNTUACION " << endl;
-            f << " =========  ============" << endl;
-            // Cierre del flujo de escritura del fichero
-            f.close();
-        }
-        else{
-            // El fichero de jugadores creado presente un error al abrirlo
-            cerr << "El fichero de jugadores " << fichero << " es innacesible " << endl;
-        }
     }
 }
 

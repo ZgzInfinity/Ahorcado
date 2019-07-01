@@ -129,6 +129,15 @@ void existeLetra(Palabra& p, const char l, int& letrasVolteadas, bool& encontrad
 		    }
 		}
 	}
+	if (!encontrado){
+        // Si la letra no figura dentro de la palabra pero hay que marcarla
+        if (!p.marcadas[l - 'a']){
+            p.marcadas[l - 'a'] = true;
+        }
+        else {
+            letraYaDicha = true;
+        }
+	}
 }
 
 

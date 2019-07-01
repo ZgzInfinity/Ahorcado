@@ -196,6 +196,8 @@ int main(){
 	// Ficheros de trabajo
 	const char f1[MAX_LONG_FICHERO] = "palabras_rae.txt";
 	const char f2[MAX_LONG_FICHERO] = "palabras_bin.bin";
+	const char f3[MAX_LONG_FICHERO] = "jugadores_bin.bin";
+
 
 	// Contador de filas del fichero de texto de palabras
 	int numLineas;
@@ -225,7 +227,7 @@ int main(){
 	bool terminado = false, encontrado = false, letraYaDicha = false;;
 
 	// Crear fichero de jugadores si no existe
-	comprobarExistenciaFichero("jugadores.bin");
+	comprobarExistenciaFichero(f3);
 
 	// Control de partidas
 	while (!terminado){
@@ -348,8 +350,11 @@ int main(){
         // Limpiar la pantlla
         system("cls");
 
+        Jugador jugador;
+        crearJugador(nombre, puntos, jugador);
+
         // Sumar o anyadir nuevo jugador
-        // anyadirJugador("jugadores.txt",nombre, puntos);
+        anyadirJugador(f3, jugador);
 
         // Fin de la partida y pregunta al usuario si desea jugar
         controlFinDelJuego(terminado);
@@ -364,7 +369,7 @@ int main(){
         tocarSonidoRanking();
 
         // Mostrar la clasificacion actual de los jugadores
-        // mostrarClasificacion("jugadores.bin");
+        mostrarClasificacion(f3);
     }
 
     Sleep(20000);
