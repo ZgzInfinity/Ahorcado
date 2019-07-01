@@ -132,15 +132,6 @@ void pedirLetra(char& letra){
 }
 
 
-void mostrarMensaje(const string mensaje){
-    int dim = mensaje.length();
-    for (int i = 0; i < dim; i++){
-        gotoxy(50 + i, 20);
-        cout << mensaje.at(i) << " ";
-        Sleep(100);
-    }
-
-}
 
 /*
  * Secuencia de pruebas basicas para probar el TAD Palabra
@@ -360,12 +351,20 @@ int main(){
         // Fin de la partida y pregunta al usuario si desea jugar
         controlFinDelJuego(terminado);
 
+        // Detener sonido del reloj
+        detenerSonidoReloj();
+
         // Limpiar la pantlla
         system("cls");
 
+        // Reproducir sonido de ranking
+        tocarSonidoRanking();
+
         // Mostrar la clasificacion actual de los jugadores
-        mostrarClasificacion("jugadores.txt");
+        // mostrarClasificacion("jugadores.bin");
     }
+
+    Sleep(20000);
 
 	// Posicionamiento al final de la pantalla para el fin de ejecucion
 	gotoxy(1, 24);

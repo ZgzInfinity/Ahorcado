@@ -175,6 +175,19 @@ void tocarSonidoReloj(){
 
 /*
  * Pre: ---
+ * Post: Ha reproducido por el microfono el sonido del ranking
+ */
+void tocarSonidoRanking(){
+    mciSendString("close RANKING", NULL, 0, NULL);
+    mciSendString("open Ranking.wav alias RANKING", NULL, 0, NULL);
+    mciSendString("play RANKING", NULL, 0, NULL);
+}
+
+
+
+
+/*
+ * Pre: ---
  * Post: Ha detenido la reproduccion del sonido del menu principal
  */
 void detenerSonidoMenu(){
@@ -251,6 +264,16 @@ void detenerSonidoGameOver(){
  */
 void detenerSonidoReloj(){
     mciSendString("close CLOCK", NULL, 0, NULL);
+}
+
+
+
+/*
+ * Pre: ---
+ * Post: Ha detenido la reproduccion del sonido del ranking
+ */
+void detenerSonidoRanking(){
+    mciSendString("close RANKING", NULL, 0, NULL);
 }
 
 

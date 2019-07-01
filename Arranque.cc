@@ -126,7 +126,7 @@ void mostrarClasificacion(const char fichero[]){
     f.open(fichero, ios::binary);
     // Comprobar que el fichero de jugadores se ha abierto bien
     if (f.is_open()){
-        int i = 0, puntos;
+        int i = 0;
         // Almacenado del ultimo jugador leido
         Jugador jugadorActual;
         cout << endl << endl;

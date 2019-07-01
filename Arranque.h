@@ -7,6 +7,7 @@
 #include <fstream>
 #include <fcntl.h>
 #include "Palabra.h"
+#include "Audio.h"
 
 
 using namespace std;

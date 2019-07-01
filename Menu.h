@@ -65,4 +65,13 @@ void panelPuntuacion(int dificultad, string nombre, int puntos);
 
 
 
+/*
+ * Pre: ---
+ * Post: Ha mostrado por terminal los caracteres que componen la cadena
+ *          <<mensaje>> con un intervalo de separacion de 100 milisegundos
+ */
+void mostrarMensaje(const string mensaje);
+
+
+
 #endif // MENU_H_INCLUDED

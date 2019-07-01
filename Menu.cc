@@ -242,3 +242,21 @@ void panelPuntuacion(int dificultad, string nombre, int puntos){
     cout << " PUNTUACION : " << puntos;
 }
 
+
+
+
+/*
+ * Pre: ---
+ * Post: Ha mostrado por terminal los caracteres que componen la cadena
+ *          <<mensaje>> con un intervalo de separacion de 100 milisegundos
+ */
+void mostrarMensaje(const string mensaje){
+    int dim = mensaje.length();
+    for (int i = 0; i < dim; i++){
+        gotoxy(65 + i, 20);
+        cout << mensaje.at(i) << " ";
+        Sleep(100);
+    }
+}
+
+

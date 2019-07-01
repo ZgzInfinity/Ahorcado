@@ -20,6 +20,7 @@
 #include<conio.h>
 
 
+
 using namespace std;
 
 /*
@@ -125,6 +126,14 @@ void tocarSonidoReloj();
 
 /*
  * Pre: ---
+ * Post: Ha reproducido por el microfono el sonido del ranking
+ */
+void tocarSonidoRanking();
+
+
+
+/*
+ * Pre: ---
  * Post: Ha detenido la reproduccion del sonido actual en curso
  */
 void detenerSonidoMenu();
@@ -184,6 +193,15 @@ void detenerSonidoGameOver();
  * Post: Ha detenido la reproduccion del sonido de Reloj
  */
 void detenerSonidoReloj();
+
+
+
+/*
+ * Pre: ---
+ * Post: Ha detenido la reproduccion del sonido del ranking
+ */
+void detenerSonidoRanking();
+
 
 
 
