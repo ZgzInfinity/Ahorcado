@@ -6,14 +6,14 @@
  * Post: Muestra por pantalla el mensaje "Pulse la tecla intro" hasta
  *       que se detecta la tecla
  */
-void mostrarTitulo(){
+void mostrarTitulo(const string deseo){
     // Capturar codigo de la tecla ENTER
     bool pulsada = false;
 
     // Capturar codigo de la tecla ENTER
     while (!pulsada){
          gotoxy(45 , 22);
-         cout << "Pulsa la tecla INTRO para comenzar" << flush;
+         cout << "Pulsa la tecla INTRO para " + deseo << flush;
 
          // Capturar tecla pulsada
          unsigned char tecla = getch();
@@ -276,4 +276,73 @@ void mostrarMensaje(const string mensaje){
     }
 }
 
+
+
+
+/*
+ * Pre: ---
+ * Post: Muestra por pantalla los creditos del juego
+ */
+void creditos(){
+    // Creditos finales del juego
+    string orden = "terminar";
+    gotoxy(50, 5);
+    cout << " CREDITOS FINALES " << endl;
+    gotoxy(49, 6);
+    cout << " ==================" << endl;
+
+    // Dormir 1 segundo y mostrar titulo del juego
+    Sleep(2000);
+    gotoxy(49, 9);
+    cout << " Juego del Ahorcado " << endl;
+
+    // Dormir 1 segundo y mostrar autor del juego
+    Sleep(2000);
+    gotoxy(52, 11);
+    cout << " ZgzInfinity " << endl;
+
+    // Dormir 1 segundo y duracion del proyecto
+    Sleep(2000);
+    gotoxy(47, 14);
+    cout << " Marzo 2019 - Julio 2019 " << endl;
+
+    // Dormir 2 segundos
+    Sleep(2000);
+
+    // Limpiar pantalla y seguir con los creditos
+    system("cls");
+    gotoxy(50, 5);
+    cout << " Bandas sonoras del juego " << endl;
+    gotoxy(49, 6);
+    cout << "===========================" << endl;
+
+    Sleep(2000);
+    gotoxy(45, 8);
+    cout << "Streets of Rage 1991 (GENESIS) Music " << endl;
+
+    Sleep(2000);
+    gotoxy(50, 10);
+    cout << "Alien 3 (GENESIS) Music " << endl;
+
+    Sleep(2000);
+    gotoxy(43, 12);
+    cout << "Sonic the hedgehog 1991 (GENESIS) Music " << endl;
+
+    Sleep(2000);
+    gotoxy(47, 14);
+    cout << "Final fantasy X 2001 (ps2) Music " << endl;
+
+    Sleep(2000);
+    gotoxy(50, 16);
+    cout << "Chessmaster 2002 (ps2)" << endl;
+
+    Sleep(2000);
+    gotoxy(33, 18);
+    cout << " Todos los sonidos y bandas sonoras empleadas son propiedad " << endl;
+    gotoxy(35, 19);
+    cout << " de las empresas desarrolladoras de dichos videojuegos" << endl;
+
+    // Pulsar ENTER para finalizar
+    mostrarTitulo(orden);
+}
 

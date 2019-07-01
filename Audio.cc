@@ -79,6 +79,19 @@ void sonidoPistaTercera(){
 
 
 /*
+ * Pre: ---
+ * Post: Ha reproducido por el microfono la banda sonora correspondiente
+ *       a la tercera pista del juego
+ */
+void sonidoRing(){
+    mciSendString("close RING", NULL, 0, NULL);
+    mciSendString("open Ring.wav alias RING", NULL, 0, NULL);
+    mciSendString("play RING", NULL, 0, NULL);
+}
+
+
+
+/*
  * Pre: <<pista>> es el indice de la pista musical seleccionada por
  *      el usario a reproducir
  * Post: Ha reproducido durante la partida la banda sonora con indice de pista
@@ -188,6 +201,19 @@ void tocarSonidoRanking(){
 
 /*
  * Pre: ---
+ * Post: Ha reproducido por el microfono el sonido de los creditos
+ */
+void tocarSonidoCreditos(){
+    mciSendString("close CREDITS", NULL, 0, NULL);
+    mciSendString("open creditos.wav alias CREDITS", NULL, 0, NULL);
+    mciSendString("play CREDITS", NULL, 0, NULL);
+}
+
+
+
+
+/*
+ * Pre: ---
  * Post: Ha detenido la reproduccion del sonido del menu principal
  */
 void detenerSonidoMenu(){
@@ -275,6 +301,26 @@ void detenerSonidoReloj(){
 void detenerSonidoRanking(){
     mciSendString("close RANKING", NULL, 0, NULL);
 }
+
+
+/*
+ * Pre: ---
+ * Post: Ha detenido la reproduccion del sonido del ring
+ */
+void detenerSonidoRing(){
+    mciSendString("close RING", NULL, 0, NULL);
+}
+
+
+
+/*
+ * Pre: ---
+ * Post: Ha detenido la reproduccion del sonido de los creditos
+ */
+void detenerSonidoCreditos(){
+    mciSendString("close CREDITS", NULL, 0, NULL);
+}
+
 
 
 /*

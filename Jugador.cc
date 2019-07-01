@@ -47,7 +47,7 @@ bool anyadirJugador(const char fichero[], Jugador jugador){
     // Flujo de lectura/escritura del fichero de jugadores
     ifstream f1;
     // Apertura del fichero de jugadores
-    f1.open(fichero, ios::binary);
+    f1.open(fichero, ios::binary | ios::in | ios::out);
     // Comprobar que el flujo es correcto
     if (f1.is_open()){
         ofstream f2;
@@ -56,16 +56,21 @@ bool anyadirJugador(const char fichero[], Jugador jugador){
         int puntos, direccion = 0;
         // Control de jugador hallado
         bool encontrado = false;
+        string nombreActual;
         //  Lectura del nombre del jugador
         f1.read(reinterpret_cast<char*>(&jugadorActual), sizeof(Jugador));
 
         while (!f1.eof() && !encontrado){
             // Fichero no vacio
             // Comparacion del jugador leido con el buscado
-
-            if (nombre(jugadorActual) == nombre(jugador)){
+            nombreActual = nombre(jugadorActual);
+            cout << nombre(jugadorActual) << " " << puntuacion(jugadorActual) << endl;
+            if ( nombreActual == nombre(jugador)){
                 // Jugador hallado
                 encontrado = true;
+
+                // Eliminar los bytes correspondientes al ultimo jugador leido
+                direccion -= sizeof(Jugador);
             }
             else {
                 // Contar espacio del nuevo jugador
@@ -74,7 +79,7 @@ bool anyadirJugador(const char fichero[], Jugador jugador){
                 f1.read(reinterpret_cast<char*>(&jugadorActual), sizeof(Jugador));
             }
         }
-        f2.open(fichero, ios::binary);
+        f2.open(fichero, ios::binary | ios::in | ios::out);
         f2.seekp(direccion);
         // Comprobar si el jugador estaba o no en el fichero
         if (!encontrado){
@@ -87,7 +92,7 @@ bool anyadirJugador(const char fichero[], Jugador jugador){
             // Incremento del total de puntos del jugador
             puntos = puntuacion(jugadorActual);
             puntos += puntuacion(jugador);
-            crearJugador(nombre(jugadorActual), puntos, jugadorActual);
+            crearJugador(nombreActual, puntos, jugadorActual);
             // Escribe en el fichero los puntos del jugador modificados
             f2.write(reinterpret_cast<char*>(&jugadorActual), sizeof(Jugador));
         }

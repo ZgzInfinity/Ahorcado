@@ -129,6 +129,12 @@ void mostrarClasificacion(const char fichero[]){
         while (!f.eof()){
             // Mientras queden lienas por leer
 
+            // Detener sonido ring
+            detenerSonidoRing();
+
+            // Reproducir sonido del reing
+            sonidoRing();
+
             gotoxy(50, 9 + i);
             // Mostrar los datos del jugador en cuestion
             cout << i + 1 << " - " << setfill(' ') << setw(10) << nombre(jugadorActual)
@@ -139,6 +145,9 @@ void mostrarClasificacion(const char fichero[]){
 
             // Incremento del indice del jugador en la tabla
             i++;
+
+            // Detener ejecucion 500 milisegundos
+            Sleep(1000);
         }
         // Cierre del flujo de lectura del fichero
         f.close();

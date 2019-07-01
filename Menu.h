@@ -17,7 +17,7 @@ const int TECLA_ENTER = 13;
  * Post: Muestra por pantalla el mensaje "Pulse la tecla intro" hasta
  *       que se detecta la tecla
  */
-void mostrarTitulo();
+void mostrarTitulo(string deseo);
 
 
 /*
@@ -78,6 +78,14 @@ void panelPuntuacion(string dificultad, string nombre, int puntos);
  */
 void mostrarMensaje(const string mensaje);
 
+
+
+
+/*
+ * Pre: ---
+ * Post: Muestra por pantalla los creditos del juego
+ */
+void creditos();
 
 
 #endif // MENU_H_INCLUDED

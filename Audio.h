@@ -69,6 +69,15 @@ void sonidoPistaTercera();
 
 
 /*
+ * Pre: ---
+ * Post: Ha reproducido por el microfono la banda sonora correspondiente
+ *       a la tercera pista del juego
+ */
+void sonidoRing();
+
+
+
+/*
  * Pre: <<pista>> es el indice de la pista musical seleccionada por
  *      el usario a reproducir
  * Post: Ha reproducido durante la partida la banda sonora con indice de pista
@@ -129,6 +138,14 @@ void tocarSonidoReloj();
  * Post: Ha reproducido por el microfono el sonido del ranking
  */
 void tocarSonidoRanking();
+
+
+
+/*
+ * Pre: ---
+ * Post: Ha reproducido por el microfono el sonido de los creditos
+ */
+void tocarSonidoCreditos();
 
 
 
@@ -202,6 +219,21 @@ void detenerSonidoReloj();
  */
 void detenerSonidoRanking();
 
+
+
+/*
+ * Pre: ---
+ * Post: Ha detenido la reproduccion del sonido del ring
+ */
+void detenerSonidoRing();
+
+
+
+/*
+ * Pre: ---
+ * Post: Ha detenido la reproduccion del sonido de los creditos
+ */
+void detenerSonidoCreditos();
 
 
 

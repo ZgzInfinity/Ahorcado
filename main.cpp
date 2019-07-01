@@ -156,7 +156,8 @@ int main(){
     presentarMenu();
 
     // Mostrar el rotulo que parpadea
-    mostrarTitulo();
+    string orden = "comenzar";
+    mostrarTitulo(orden);
 
     // Borrado de pantalla
     system("cls");
@@ -211,8 +212,8 @@ int main(){
 	// Control del fin del juego
 	bool fin = false;
 
-	// Estado inicial del juego
-    int estado = 1;
+	// Estado del juego
+    int estado;
 
 	// Numero de letras descubiertas de la palabra
 	int letrasVolteadas = 0;
@@ -231,6 +232,9 @@ int main(){
 
 	// Control de partidas
 	while (!terminado){
+        // Estado inicial del juego
+        estado = 1;
+
         // limpieza de pantalla
         system("cls");
 
@@ -257,6 +261,7 @@ int main(){
 
         // Mientras queden letras por descubir y no se haya terminado el juego
         while (!fin && letrasVolteadas != numLetras){
+
             // Se vuelve a pedir letra nueva
             pedirLetra(letra);
 
@@ -364,18 +369,30 @@ int main(){
 
         // Limpiar la pantlla
         system("cls");
-
-        // Reproducir sonido de ranking
-        tocarSonidoRanking();
-
-        // Mostrar la clasificacion actual de los jugadores
-        mostrarClasificacion(f3);
     }
 
-    Sleep(20000);
+    // Reproducir sonido de ranking
+    tocarSonidoRanking();
+
+    // Mostrar la clasificacion actual de los jugadores
+    mostrarClasificacion(f3);
+
+    Sleep(3000);
+
+    system("cls");
+
+    // Reproducir sonido de los creditos
+    tocarSonidoCreditos();
+
+    // Nostrar creditos finales
+    creditos();
+
+    // Detener sonido creditos
+    detenerSonidoCreditos();
 
 	// Posicionamiento al final de la pantalla para el fin de ejecucion
 	gotoxy(1, 24);
-	cout << " Fin del programa " << endl;
+	cout << " Fin del juego " << endl;
 	return 0;
+
 }
