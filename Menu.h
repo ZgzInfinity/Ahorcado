@@ -17,8 +17,14 @@ const int TECLA_ENTER = 13;
  * Post: Muestra por pantalla el mensaje "Pulse la tecla intro" hasta
  *       que se detecta la tecla
  */
-void mostrarTituloParpadeante();
+void mostrarTitulo();
 
+
+/*
+ * Pre: ---
+ * Post: Ha devuelto el tipo de dificultad del modo de juego
+ */
+string mostrarDificultad(const int& dificultad);
 
 
 /*
@@ -61,7 +67,7 @@ void menuOpciones(int& dificultad, int& pista, string& nombre);
  *       En el lateral izquierdo se ha informado de la dificultad actual del modo de juego, en el centro
  *       se encuentra el nombre del jugador actual, y en la derecha fiura el total de ountos que lleva actualmente
  */
-void panelPuntuacion(int dificultad, string nombre, int puntos);
+void panelPuntuacion(string dificultad, string nombre, int puntos);
 
 
 

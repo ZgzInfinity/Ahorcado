@@ -6,7 +6,7 @@
  * Post: Muestra por pantalla el mensaje "Pulse la tecla intro" hasta
  *       que se detecta la tecla
  */
-void mostrarTituloParpadeante(){
+void mostrarTitulo(){
     // Capturar codigo de la tecla ENTER
     bool pulsada = false;
 
@@ -27,6 +27,30 @@ void mostrarTituloParpadeante(){
 }
 
 
+
+/*
+ * Pre: ---
+ * Post: Ha devuelto el tipo de dificultad del modo de juego
+ */
+string mostrarDificultad(const int& dificultad){
+    // Control de dificultad
+    string tipoDificultad;
+
+    // Muestra la dificultad seleccionada al jugador
+    if (dificultad == 1){
+        // Modo facil
+        tipoDificultad = "Facil";
+    }
+    else if (dificultad == 2){
+        // Modo intermedio
+        tipoDificultad = "Intermedio";
+    }
+    else {
+        // Modo dificil
+        tipoDificultad = "Dificil";
+    }
+    return tipoDificultad;
+}
 
 /*
  * Pre: ---
@@ -127,24 +151,17 @@ void menuOpciones(int& dificultad, int& pista, string& nombre){
     // Reproducir sonido de correcto
     tocarSonidoCorrecto();
 
-    // Informa de la dificultad seleccionada
+    // Gestion de dificultad
+    string tipoDificultad = mostrarDificultad(dificultad);
+
+     // Informa de la dificultad seleccionada
     gotoxy(67, 15);
+    cout << tipoDificultad << endl;
 
-    // Muestra la dificultad seleccionada al jugador
-    if (dificultad == 1){
-        cout << "Facil";
-    }
-    else if (dificultad == 2){
-        cout << "Intermedio";
-    }
-    else {
-        cout << "Dificil";
-    }
-
+    // Peticion de la banda sonora de partida
     gotoxy(35, 18);
     cout << "Banda sonora (0 - 3) --> " << flush;
     cin >> pista;
-
 
     // Reproducir sonido de correcto
     tocarSonidoCorrecto();
@@ -182,7 +199,7 @@ void menuOpciones(int& dificultad, int& pista, string& nombre){
  *       En el lateral izquierdo se ha informado de la dificultad actual del modo de juego, en el centro
  *       se encuentra el nombre del jugador actual, y en la derecha fiura el total de ountos que lleva actualmente
  */
-void panelPuntuacion(int dificultad, string nombre, int puntos){
+void panelPuntuacion(string dificultad, string nombre, int puntos){
     // Borde horizontal superior
     for (int i = 1; i <= 128; i++){
         if (i % 43 == 0){

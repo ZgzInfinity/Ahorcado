@@ -156,13 +156,13 @@ int main(){
     presentarMenu();
 
     // Mostrar el rotulo que parpadea
-    mostrarTituloParpadeante();
+    mostrarTitulo();
 
     // Borrado de pantalla
     system("cls");
 
     int dificultad, pista, puntos, puntosPalabra;
-    string nombre, mensajePartida;
+    string nombre, mensajePartida, tipoDificultad;
 
     // Detener banda sonora del menu principal
     detenerSonidoMenu();
@@ -247,8 +247,11 @@ int main(){
         // Dibujo de la horca del monigote
         dibujarHorca();
 
+        // Obtener la dificultad
+        tipoDificultad = mostrarDificultad(dificultad);
+
         // Dibujar panel de puntuacion
-        panelPuntuacion(dificultad, nombre, puntos);
+        panelPuntuacion(tipoDificultad, nombre, puntos);
 
         // Mientras queden letras por descubir y no se haya terminado el juego
         while (!fin && letrasVolteadas != numLetras){
