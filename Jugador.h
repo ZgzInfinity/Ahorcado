@@ -55,7 +55,19 @@ struct Jugador {
          *       En caso contrario ha aumentado los puntos que ya tenia el jugador cuyo nombre es igual a <<nombre>> un
          *       total de <<puntosJugador>> puntos
          */
-        friend bool anyadirJugador(const char fichero[], Jugador jugador);
+        friend void anyadirJugador(const char fichero[], Jugador& jugador);
+
+
+
+
+        /*
+         * Pre: <<fichero>> es un fichero binario que almacena todos los jugadores del ahorcado registrados
+         *      y <<j>> es un jugador que puede estar o no almacenado en el fichero de jugadores <<fichero>>
+         * Post: Si el jugador <<j>> se encuentra almacenado en el fichero de jugadores <<fichero>> devuelve la linea
+         *       en la que se encuentra. En caso contrario devuelve un valor negativo.
+         */
+        friend int buscarLineaJugador(const char fichero[], Jugador& j);
+
 
 };
 

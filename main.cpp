@@ -195,9 +195,9 @@ int main(){
     detenerSonidoOpciones();
 
 	// Ficheros de trabajo
-	const char f1[MAX_LONG_FICHERO] = "palabras_rae.txt";
-	const char f2[MAX_LONG_FICHERO] = "palabras_bin.bin";
-	const char f3[MAX_LONG_FICHERO] = "jugadores_bin.bin";
+	const char ficheroPalabras[MAX_LONG_FICHERO] = "palabras_rae.txt";
+	const char ficheroPalabrasBinario[MAX_LONG_FICHERO] = "palabras_bin.bin";
+	const char ficheroJugadoresBinario[MAX_LONG_FICHERO] = "jugadores_bin.bin";
 
 
 	// Contador de filas del fichero de texto de palabras
@@ -207,7 +207,7 @@ int main(){
 	Palabra palabraSeleccionada;
 
 	// Lectura del fichero de palabras y generacion del fichero binario
-	crearFicheroPalabrasBinario(f1, f2, numLineas);
+	crearFicheroPalabrasBinario(ficheroPalabras, ficheroPalabrasBinario, numLineas);
 
 	// Control del fin del juego
 	bool fin = false;
@@ -228,7 +228,7 @@ int main(){
 	bool terminado = false, encontrado = false, letraYaDicha = false;;
 
 	// Crear fichero de jugadores si no existe
-	comprobarExistenciaFichero(f3);
+	comprobarExistenciaFichero(ficheroJugadoresBinario);
 
 	// Control de partidas
 	while (!terminado){
@@ -239,7 +239,7 @@ int main(){
         system("cls");
 
         // seleccion de nueva palabra con la que se va a jugar
-        seleccionarPalabra(f2, numLineas, palabraSeleccionada);
+        seleccionarPalabra(ficheroPalabrasBinario, numLineas, palabraSeleccionada);
 
         // Numero de letras de la palabra seleccionada
         int numLetras = obtenerLetras(palabraSeleccionada);
@@ -315,7 +315,7 @@ int main(){
         if (!fin){
             textcolor(COLOR_VERDE);
 
-            mensajePartida = "¡VICTORIA!";
+            mensajePartida = "VCTORIA";
 
             // Sumar puntos acumulados
             puntos += puntosPalabra;
@@ -332,7 +332,7 @@ int main(){
         else {
             textcolor(COLOR_ROJO);
 
-            mensajePartida = "!DERROTA!";
+            mensajePartida = "DERROTA";
 
             // Detener el sonido Game Over
             detenerSonidoGameOver();
@@ -359,7 +359,7 @@ int main(){
         crearJugador(nombre, puntos, jugador);
 
         // Sumar o anyadir nuevo jugador
-        anyadirJugador(f3, jugador);
+        anyadirJugador(ficheroJugadoresBinario, jugador);
 
         // Fin de la partida y pregunta al usuario si desea jugar
         controlFinDelJuego(terminado);
@@ -375,7 +375,7 @@ int main(){
     tocarSonidoRanking();
 
     // Mostrar la clasificacion actual de los jugadores
-    mostrarClasificacion(f3);
+    mostrarClasificacion(ficheroPalabrasBinario);
 
     Sleep(3000);
 

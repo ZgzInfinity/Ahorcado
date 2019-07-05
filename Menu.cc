@@ -269,11 +269,15 @@ void panelPuntuacion(string dificultad, string nombre, int puntos){
  */
 void mostrarMensaje(const string mensaje){
     int dim = mensaje.length();
+    gotoxy(64, 20);
+    printf("%c", 33);
     for (int i = 0; i < dim; i++){
         gotoxy(65 + i, 20);
         cout << mensaje.at(i) << " ";
         Sleep(100);
     }
+    gotoxy(65 + dim, 20);
+    printf("%c", 173);
 }
 
 

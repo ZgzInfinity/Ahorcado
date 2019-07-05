@@ -126,6 +126,7 @@ void mostrarClasificacion(const char fichero[]){
 
         // Lectura del jugador
         f.read(reinterpret_cast<char*>(&jugadorActual), sizeof(Jugador));
+
         while (!f.eof()){
             // Mientras queden lienas por leer
 
