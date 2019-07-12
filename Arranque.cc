@@ -137,8 +137,13 @@ void mostrarClasificacion(const char fichero[]){
             sonidoRing();
 
             gotoxy(50, 9 + i);
+
+            char nombreJugador[MAX_LONG_NOMBRE];
+
+            nombre(jugadorActual, nombreJugador);
+
             // Mostrar los datos del jugador en cuestion
-            cout << i + 1 << " - " << setfill(' ') << setw(10) << nombre(jugadorActual)
+            cout << i + 1 << " - " << setfill(' ') << setw(10) << nombreJugador
                                    << setfill(' ') << setw(14) << puntuacion(jugadorActual) << endl;
 
             // Lectura del nuevo jugador

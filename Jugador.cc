@@ -7,8 +7,8 @@
  * Pre: ---
  * Post: Ha creado un jugador cuyo nombre es igual a <<nombre>> y cuyos puntos es igual a puntos
  */
-void crearJugador(string nombre, int puntuacion, Jugador& j){
-    j.nombre = nombre;
+void crearJugador(char nombre[], int puntuacion, Jugador& j){
+    strcpy(j.nombre, nombre);
     j.puntuacion = puntuacion;
 }
 
@@ -18,8 +18,8 @@ void crearJugador(string nombre, int puntuacion, Jugador& j){
  * Pre: ---
  * Post : Devuelve el nombre del jugador
  */
-string nombre(const Jugador& j){
-    return j.nombre;
+void nombre(Jugador j, char nombreJugador[]){
+    strcpy(nombreJugador, j.nombre);
 }
 
 
@@ -28,7 +28,7 @@ string nombre(const Jugador& j){
  * Pre: ---
  * Post : Devuelve los puntos del jugador
  */
-int puntuacion(const Jugador& j){
+int puntuacion(Jugador j){
     return j.puntuacion;
 }
 
@@ -45,8 +45,9 @@ int puntuacion(const Jugador& j){
  */
 void anyadirJugador(const char fichero[], Jugador& jugador){
     // Comprobar que el jugador se encuentra en el fichero
+
     int enQueLinea = buscarLineaJugador(fichero, jugador);
-    cout << "Linea " << enQueLinea;
+
     // Flujo de lectura asociado al fichero
     ofstream f;
     // Comprobar el resultado
@@ -55,14 +56,12 @@ void anyadirJugador(const char fichero[], Jugador& jugador){
         f.open(fichero, ios::binary | ios::app);
         // Re-escribir el Jugador con los nuevos puntos
         f.write(reinterpret_cast<char*>(&jugador), sizeof(Jugador));
-
-        cout << " QUE PASA AQUI " << endl;
     }
     else {
         // Modificar el jugador guardado en la linea <<enQueLinea
-        f.open(fichero, ios::binary | ios::app);
+        f.open(fichero, ios::binary);
         // Calculo de la posicion en bytes del jugador a modificar
-        int direccion = sizeof(Jugador) + sizeof(Jugador) * enQueLinea;
+        int direccion = sizeof(Jugador) + sizeof(Jugador) * (enQueLinea - 1);
         // Posicionamiento del cursor para poder escribir
         f.seekp(direccion);
         // Re-escribir el Jugador con los nuevos puntos
@@ -90,17 +89,19 @@ int buscarLineaJugador(const char fichero[], Jugador& j){
 
         // Control de jugador hallado
         bool encontrado = false;
-        string nombreJugador;
+        char nombreJugador[MAX_LONG_NOMBRE], nombreJugadorActual[MAX_LONG_NOMBRE];
         //  Lectura del nombre del jugador
         Jugador jugadorActual;
         f.read(reinterpret_cast<char*>(&jugadorActual), sizeof(Jugador));
 
-        nombreJugador = nombre(j);
+        nombre(j, nombreJugador);
 
         // Bucle de lectura del fichero
         while (!encontrado && !f.eof()){
             // Quedan lineas pendientes de leer
-            if (nombreJugador == nombre(jugadorActual)){
+            nombre (jugadorActual, nombreJugadorActual);
+
+            if (strcmp(nombreJugador, nombreJugadorActual) == 0){
                 // jugador encontrado
                 encontrado = true;
             }
@@ -115,6 +116,7 @@ int buscarLineaJugador(const char fichero[], Jugador& j){
         // Comprobar que el jugador existe
         if (encontrado){
             // Si el jugador existia
+            cout << numLineas << endl;
             return numLineas;
         }
         else {

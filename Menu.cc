@@ -126,7 +126,7 @@ void dibujoCuadricula(){
  * Post: Ha mostrado por pantalla un menu con las posibles
  *       opciones de configuracion al usuario
  */
-void menuOpciones(int& dificultad, int& pista, string& nombre){
+void menuOpciones(int& dificultad, int& pista, char nombre[]){
 
     // Reproduccion de la banda sonora del menu de opciones
     // sonidoMenuOpciones();
@@ -315,10 +315,15 @@ void creditos(){
 
     // Limpiar pantalla y seguir con los creditos
     system("cls");
-    gotoxy(50, 5);
+    gotoxy(50, 3);
     cout << " Bandas sonoras del juego " << endl;
-    gotoxy(49, 6);
+    gotoxy(49, 4);
     cout << "===========================" << endl;
+
+
+    Sleep(2000);
+    gotoxy(47, 6);
+    cout << "Golden axe 1991 (GENESIS) Music " << endl;
 
     Sleep(2000);
     gotoxy(45, 8);

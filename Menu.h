@@ -57,7 +57,7 @@ void dibujoCuadricula();
  * Post: Ha mostrado por pantalla un menu con las posibles
  *       opciones de configuracion al usuario
  */
-void menuOpciones(int& dificultad, int& pista, string& nombre);
+void menuOpciones(int& dificultad, int& pista, char nombre[]);
 
 
 

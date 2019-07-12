@@ -12,20 +12,21 @@ using namespace std;
 
 
 const int MAX_LONG_LINEA = 128;
+const int MAX_LONG_NOMBRE = 100;
 
 
 struct Jugador {
     private:
         // Estructura interna del jugador
-        string nombre;      // nombre del jugador
-        int puntuacion;         // puntos del jugador
+        char nombre[MAX_LONG_NOMBRE];      // nombre del jugador
+        int puntuacion;                    // puntos del jugador
     public:
 
         /*
          * Pre: ---
          * Post: Ha creado un jugador cuyo nombre es igual a <<nombre>> y cuyos puntos es igual a puntos
          */
-        friend void crearJugador(string nombre, int puntuacion, Jugador& j);
+        friend void crearJugador(char nombre[], int puntuacion, Jugador& j);
 
 
 
@@ -33,7 +34,7 @@ struct Jugador {
          * Pre: ---
          * Post : Devuelve el nombre del jugador
          */
-        friend string nombre(const Jugador& j);
+        friend void nombre(Jugador j, char nombreJugador[]);
 
 
 
@@ -41,7 +42,7 @@ struct Jugador {
          * Pre: ---
          * Post : Devuelve los puntos del jugador
          */
-        friend int puntuacion(const Jugador& j);
+        friend int puntuacion(Jugador j);
 
 
 

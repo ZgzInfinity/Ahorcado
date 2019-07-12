@@ -163,7 +163,9 @@ int main(){
     system("cls");
 
     int dificultad, pista, puntos, puntosPalabra;
-    string nombre, mensajePartida, tipoDificultad;
+    string mensajePartida, tipoDificultad;
+
+    char nombreJugador[MAX_LONG_NOMBRE];
 
     // Detener banda sonora del menu principal
     detenerSonidoMenu();
@@ -172,7 +174,7 @@ int main(){
     sonidoMenuOpciones();
 
     // Mostrar menu de opciones
-    menuOpciones(dificultad, pista, nombre);
+    menuOpciones(dificultad, pista, nombreJugador);
 
     // Establecer cirterio de puntos a ganar por palabra
     if (dificultad == 1){
@@ -257,7 +259,7 @@ int main(){
         tipoDificultad = mostrarDificultad(dificultad);
 
         // Dibujar panel de puntuacion
-        panelPuntuacion(tipoDificultad, nombre, puntos);
+        panelPuntuacion(tipoDificultad, nombreJugador, puntos);
 
         // Mientras queden letras por descubir y no se haya terminado el juego
         while (!fin && letrasVolteadas != numLetras){
@@ -356,7 +358,7 @@ int main(){
         system("cls");
 
         Jugador jugador;
-        crearJugador(nombre, puntos, jugador);
+        crearJugador(nombreJugador, puntos, jugador);
 
         // Sumar o anyadir nuevo jugador
         anyadirJugador(ficheroJugadoresBinario, jugador);
@@ -375,7 +377,7 @@ int main(){
     tocarSonidoRanking();
 
     // Mostrar la clasificacion actual de los jugadores
-    mostrarClasificacion(ficheroPalabrasBinario);
+    mostrarClasificacion(ficheroJugadoresBinario);
 
     Sleep(3000);
 

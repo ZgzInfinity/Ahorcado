@@ -20,7 +20,7 @@
  */
 void sonidoMenuPrincipal(){
     mciSendString("close MENU", NULL, 0, NULL);
-    mciSendString("open menu.wav alias MENU", NULL, 0, NULL);
+    mciSendString("open Audio\\menu.wav alias MENU", NULL, 0, NULL);
     mciSendString("play MENU", NULL, 0, NULL);
 }
 
@@ -33,7 +33,7 @@ void sonidoMenuPrincipal(){
  */
 void sonidoMenuOpciones(){
     mciSendString("close OPTIONS", NULL, 0, NULL);
-    mciSendString("open opciones.wav alias OPTIONS", NULL, 0, NULL);
+    mciSendString("open Audio\\opciones.wav alias OPTIONS", NULL, 0, NULL);
     mciSendString("play OPTIONS", NULL, 0, NULL);
 }
 
@@ -46,7 +46,7 @@ void sonidoMenuOpciones(){
  */
 void sonidoPistaPrimera(){
     mciSendString("close FIRST_TRACK", NULL, 0, NULL);
-    mciSendString("open main.wav alias FIRST_TRACK", NULL, 0, NULL);
+    mciSendString("open Audio\\main.wav alias FIRST_TRACK", NULL, 0, NULL);
     mciSendString("play FIRST_TRACK", NULL, 0, NULL);
 }
 
@@ -59,7 +59,7 @@ void sonidoPistaPrimera(){
  */
 void sonidoPistaSegunda(){
     mciSendString("close SECOND_TRACK", NULL, 0, NULL);
-    mciSendString("open speed.wav alias SECOND_TRACK", NULL, 0, NULL);
+    mciSendString("open Audio\\speed.wav alias SECOND_TRACK", NULL, 0, NULL);
     mciSendString("play SECOND_TRACK", NULL, 0, NULL);
 }
 
@@ -72,7 +72,7 @@ void sonidoPistaSegunda(){
  */
 void sonidoPistaTercera(){
     mciSendString("close THIRD_TRACK", NULL, 0, NULL);
-    mciSendString("open master.wav alias THIRD_TRACK", NULL, 0, NULL);
+    mciSendString("open Audio\\master.wav alias THIRD_TRACK", NULL, 0, NULL);
     mciSendString("play THIRD_TRACK", NULL, 0, NULL);
 }
 
@@ -85,7 +85,7 @@ void sonidoPistaTercera(){
  */
 void sonidoRing(){
     mciSendString("close RING", NULL, 0, NULL);
-    mciSendString("open Ring.wav alias RING", NULL, 0, NULL);
+    mciSendString("open Audio\\Ring.wav alias RING", NULL, 0, NULL);
     mciSendString("play RING", NULL, 0, NULL);
 }
 
@@ -129,7 +129,7 @@ void tocarMusicaPartida(int& pista){
  */
 void tocarSonidoCorrecto(){
     mciSendString("close CORRECTO", NULL, 0, NULL);
-    mciSendString("open correcto.wav alias CORRECTO", NULL, 0, NULL);
+    mciSendString("open Audio\\correcto.wav alias CORRECTO", NULL, 0, NULL);
     mciSendString("play CORRECTO", NULL, 0, NULL);
 }
 
@@ -142,7 +142,7 @@ void tocarSonidoCorrecto(){
  */
 void tocarSonidoIncorrecto(){
     mciSendString("close INCORRECT", NULL, 0, NULL);
-    mciSendString("open incorrecto.wav alias INCORRECT", NULL, 0, NULL);
+    mciSendString("open Audio\\incorrecto.wav alias INCORRECT", NULL, 0, NULL);
     mciSendString("play INCORRECT", NULL, 0, NULL);
 }
 
@@ -155,7 +155,7 @@ void tocarSonidoIncorrecto(){
  */
 void tocarSonidoFindOut(){
     mciSendString("close FIND_OUT", NULL, 0, NULL);
-    mciSendString("open FindOut.wav alias FIND_OUT", NULL, 0, NULL);
+    mciSendString("open Audio\\FindOut.wav alias FIND_OUT", NULL, 0, NULL);
     mciSendString("play FIND_OUT", NULL, 0, NULL);
 }
 
@@ -167,7 +167,7 @@ void tocarSonidoFindOut(){
  */
 void tocarSonidoGameOver(){
     mciSendString("close GAME_OVER", NULL, 0, NULL);
-    mciSendString("open GameOver.wav alias GAME_OVER", NULL, 0, NULL);
+    mciSendString("open Audio\\GameOver.wav alias GAME_OVER", NULL, 0, NULL);
     mciSendString("play GAME_OVER", NULL, 0, NULL);
 }
 
@@ -180,7 +180,7 @@ void tocarSonidoGameOver(){
  */
 void tocarSonidoReloj(){
     mciSendString("close CLOCK", NULL, 0, NULL);
-    mciSendString("open Reloj.wav alias CLOCK", NULL, 0, NULL);
+    mciSendString("open Audio\\Reloj.wav alias CLOCK", NULL, 0, NULL);
     mciSendString("play CLOCK", NULL, 0, NULL);
 }
 
@@ -192,7 +192,7 @@ void tocarSonidoReloj(){
  */
 void tocarSonidoRanking(){
     mciSendString("close RANKING", NULL, 0, NULL);
-    mciSendString("open Ranking.wav alias RANKING", NULL, 0, NULL);
+    mciSendString("open Audio\\Ranking.wav alias RANKING", NULL, 0, NULL);
     mciSendString("play RANKING", NULL, 0, NULL);
 }
 
@@ -205,7 +205,7 @@ void tocarSonidoRanking(){
  */
 void tocarSonidoCreditos(){
     mciSendString("close CREDITS", NULL, 0, NULL);
-    mciSendString("open creditos.wav alias CREDITS", NULL, 0, NULL);
+    mciSendString("open Audio\\creditos.wav alias CREDITS", NULL, 0, NULL);
     mciSendString("play CREDITS", NULL, 0, NULL);
 }
 
