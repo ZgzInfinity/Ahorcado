@@ -197,9 +197,9 @@ int main(){
     detenerSonidoOpciones();
 
 	// Ficheros de trabajo
-	const char ficheroPalabras[MAX_LONG_FICHERO] = "palabras_rae.txt";
-	const char ficheroPalabrasBinario[MAX_LONG_FICHERO] = "palabras_bin.bin";
-	const char ficheroJugadoresBinario[MAX_LONG_FICHERO] = "jugadores_bin.bin";
+	const char ficheroPalabras[MAX_LONG_FICHERO] = "Datos\\palabras_rae.txt";
+	const char ficheroPalabrasBinario[MAX_LONG_FICHERO] = "Datos\\palabras_bin.bin";
+	const char ficheroJugadoresBinario[MAX_LONG_FICHERO] = "Datos\\jugadores_bin.bin";
 
 
 	// Contador de filas del fichero de texto de palabras
