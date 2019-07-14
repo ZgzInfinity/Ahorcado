@@ -34,6 +34,7 @@ const int DIFICULTAD_MAXIMA = 3;
 const int MAX_LONG_FICHERO = 100;
 const int TECLA_ESC = 27;
 const int RETARDO = 6000;
+const int MAX_JUGADORES = 100;
 
 
 /*
@@ -387,8 +388,16 @@ int main(){
     // Reproducir sonido de ranking
     tocarSonidoRanking();
 
+    // Cargar los jugadores almacenados en el fichero
+    Jugador listadoJugadores[MAX_JUGADORES];
+    int numJugadores;
+    leerJugadores(ficheroJugadoresBinario, listadoJugadores, numJugadores);
+
+    // Ordenar los jugadores por orden decreciente de puntuacion
+    ordenarJugadores(listadoJugadores, 0, numJugadores - 1);
+
     // Mostrar la clasificacion actual de los jugadores
-    mostrarClasificacion(ficheroJugadoresBinario);
+    mostrarClasificacion(listadoJugadores, numJugadores, nombreJugador);
 
     Sleep(3000);
 

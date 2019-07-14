@@ -6,6 +6,8 @@
 #include <fstream>
 #include <iomanip>
 #include <conio.h>
+#include <fcntl.h>
+#include "Audio.h"
 
 
 using namespace std;
@@ -68,6 +70,56 @@ struct Jugador {
          *       en la que se encuentra. En caso contrario devuelve un valor negativo.
          */
         friend int buscarLineaJugador(const char fichero[], Jugador& j);
+
+
+
+
+        /*
+         * Pre: <<jug>> es un puntero a un vector de jugadores regitrados en
+         *      el juego del Ahorcado, <<inicio>> y <<fin>> son los indices de los extremos
+         *      de la busqueda, inicio >= 0, fin >= 0 y inicio <= fin
+         * Post: Ha devuelto el vector de jugadores <<jug>> ordenado por orden decreciente de puntuacion
+         *       usando el metodo quicksort
+         */
+        friend void ordenarJugadores(Jugador *jug, int inicio, int fin);
+
+
+
+
+        /*
+         * Pre:  <<fichero>> representa el nombre de un fichero de texto existente
+         *       que almacena información sobre todos los jugadores; la tabla <<jugadores>>
+         *       tiene capacidad suficiente como para almacenar todos las jugadores que estan
+         *       contenidas en el fichero de nombre <<fichero>>.
+         * Post: Si se ha podido abrir sin problemas el fichero cuyo nombre es
+         *       <<fichero>>, ha copiado la información sobre los jugadores
+         *       contenida en el fichero en las primeras <<numJugadores componentes de
+         *       la tabla <<jugador>>. En caso contrario, ha escrito un mensaje de error
+         *       informando del problema encontrado
+         */
+        friend void leerJugadores(const char fichero[], Jugador jugadores[], int& numJugadores);
+
+
+
+
+        /*
+         * Pre:  * Pre: <<jugadores>> es una tabla que almacena todos los jugadores registrados hasta el momento.
+         * Post: Ha mostrado por pantalla una clasificacion de todos los jugadores registrados. La clasificacion
+         *       presenta el siguiente formqto:
+         *
+         *       Ejemplo:
+         *
+         *         JUGADOR    PUNTUACION
+         *       =========  ============
+         *          Europe           230
+         *      ZgzInfinty            40
+         *
+         *            . . . . . . . . .
+         *
+         *         Pitazzo           870
+         *            Aeri            90
+         */
+        friend void mostrarClasificacion(const Jugador jugadores[], const int numJugadores, string nombreJugador);
 
 
 };

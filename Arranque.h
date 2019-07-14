@@ -10,6 +10,7 @@
 #include "Audio.h"
 
 
+
 using namespace std;
 
 
@@ -32,26 +33,6 @@ void crearFicheroPalabrasBinario(const char ficheroPalabrasTexto[], const char f
  */
 void comprobarExistenciaFichero(const char fichero[]);
 
-
-
-/*
- * Pre:  * Pre: <<fichero>> es un fichero binario que almacena todos los jugadores registrados hasta el momento.
- * Post: Ha mostrado por pantalla una clasificacion de todos los jugadores registrados. La clasificacion
- *       presenta el siguiente formqto:
- *
- *       Ejemplo:
- *
- *         JUGADOR    PUNTUACION
- *       =========  ============
- *          Europe           230
- *      ZgzInfinty            40
- *
- *            . . . . . . . . .
- *
- *         Pitazzo           870
- *            Aeri            90
- */
-void mostrarClasificacion(const char fichero[]);
 
 
 
