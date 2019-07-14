@@ -12,7 +12,7 @@ void mostrarTitulo(const string deseo){
 
     // Capturar codigo de la tecla ENTER
     while (!pulsada){
-         gotoxy(45 , 22);
+         gotoxy(45 , 23);
          cout << "Pulsa la tecla INTRO para " + deseo << flush;
 
          // Capturar tecla pulsada
@@ -319,7 +319,7 @@ void creditos(){
     // Dormir 1 segundo y duracion del proyecto
     Sleep(2000);
     gotoxy(47, 14);
-    cout << " Marzo 2019 - Julio 2019 " << endl;
+    cout << " Abril 2019 - Julio 2019 " << endl;
 
     // Dormir 2 segundos
     Sleep(2000);
@@ -362,12 +362,14 @@ void creditos(){
     cout << "Cruis'n USA 1994 (Nintendo 64)" << endl;
 
 
+    Sleep(2000);
+    gotoxy(35, 19);
+    cout << "El profesor Layton y la villa misteriosa 2008 (Nintendo DS)" << endl;
+
 
     Sleep(2000);
-    gotoxy(33, 19);
-    cout << " Todos los sonidos y bandas sonoras empleadas son propiedad " << endl;
-    gotoxy(35, 20);
-    cout << " de las empresas desarrolladoras de dichos videojuegos" << endl;
+    gotoxy(15, 21);
+    cout << " Todos los sonidos y bandas sonoras empleadas son propiedad de las empresas desarrolladoras" << endl;
 
     // Pulsar ENTER para finalizar
     mostrarTitulo(orden);
