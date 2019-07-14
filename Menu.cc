@@ -173,7 +173,7 @@ void menuOpciones(int& dificultad, int& pista, char nombre[]){
         cout << "The art of war";
     }
     else if (pista == 1){
-        cout << "deciphering the enigma";
+        cout << "The enigmatic puzle";
     }
     else if (pista == 2){
         cout << "Chess Master";

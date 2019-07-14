@@ -59,9 +59,9 @@ void anyadirJugador(const char fichero[], Jugador& jugador){
     }
     else {
         // Modificar el jugador guardado en la linea <<enQueLinea
-        f.open(fichero, ios::binary);
+        f.open(fichero, ios::binary |ios :: in | ios::out);
         // Calculo de la posicion en bytes del jugador a modificar
-        int direccion = sizeof(Jugador) + sizeof(Jugador) * (enQueLinea - 1);
+        int direccion = sizeof(Jugador) * (enQueLinea - 1);
         // Posicionamiento del cursor para poder escribir
         f.seekp(direccion);
         // Re-escribir el Jugador con los nuevos puntos
