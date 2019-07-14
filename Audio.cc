@@ -211,6 +211,17 @@ void tocarSonidoCreditos(){
 
 
 
+/*
+ * Pre: ---
+ * Post: Ha reproducido por el microfono el sonido del bonus al aceptar la palabra
+ */
+void tocarSonidoBonusLife(){
+    mciSendString("close BONUS_LIFE", NULL, 0, NULL);
+    mciSendString("open Audio\\BonusLife.wav alias BONUS_LIFE", NULL, 0, NULL);
+    mciSendString("play BONUS_LIFE", NULL, 0, NULL);
+}
+
+
 
 /*
  * Pre: ---
@@ -319,6 +330,17 @@ void detenerSonidoRing(){
  */
 void detenerSonidoCreditos(){
     mciSendString("close CREDITS", NULL, 0, NULL);
+}
+
+
+
+
+/*
+ * Pre: ---
+ * Post: Ha detenido la reproduccion del sonido del bonus al aceptar la palabra
+ */
+void detenerSonidoBonus(){
+    mciSendString("close BONUS_LIFE", NULL, 0, NULL);
 }
 
 

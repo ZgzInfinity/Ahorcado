@@ -22,9 +22,7 @@
 // valores de color de fondo y fuente
 
 const int FONDO_AZUL = 1;
-const int COLOR_VERDE = 10;
 const int COLOR_ROJO = 12;
-const int COLOR_AMARILLO = 14;
 const int COLOR_BLANCO = 15;
 
 const int DIFICULTAD_MINIMA = 1;
@@ -212,7 +210,7 @@ int main(){
 	crearFicheroPalabrasBinario(ficheroPalabras, ficheroPalabrasBinario, numLineas);
 
 	// Control del fin del juego
-	bool fin = false;
+	bool fin = false, acertada = false;
 
 	// Estado del juego
     int estado;
@@ -237,11 +235,18 @@ int main(){
         // Estado inicial del juego
         estado = 1;
 
+        // total de letras volteadas
+        letrasVolteadas = 0;
+
         // limpieza de pantalla
         system("cls");
 
         // seleccion de nueva palabra con la que se va a jugar
         seleccionarPalabra(ficheroPalabrasBinario, numLineas, palabraSeleccionada);
+
+        char pal[MAX_LETRAS];
+        obtenerPalabra(pal, palabraSeleccionada);
+        cout << pal << endl;
 
         // Numero de letras de la palabra seleccionada
         int numLetras = obtenerLetras(palabraSeleccionada);
@@ -259,7 +264,10 @@ int main(){
         tipoDificultad = mostrarDificultad(dificultad);
 
         // Dibujar panel de puntuacion
-        panelPuntuacion(tipoDificultad, nombreJugador, puntos);
+        panelPuntuacion(tipoDificultad, nombreJugador, puntos, acertada);
+
+        // La palabra de la partida actual todavia no ha sido acertada
+        acertada = false;
 
         // Mientras queden letras por descubir y no se haya terminado el juego
         while (!fin && letrasVolteadas != numLetras){
@@ -330,6 +338,9 @@ int main(){
 
             // Mostrar mensaje de victoria
             mostrarMensaje(mensajePartida);
+
+            // La palabra ha sido acertada
+            acertada = true;
         }
         else {
             textcolor(COLOR_ROJO);

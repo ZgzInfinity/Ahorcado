@@ -199,7 +199,7 @@ void menuOpciones(int& dificultad, int& pista, char nombre[]){
  *       En el lateral izquierdo se ha informado de la dificultad actual del modo de juego, en el centro
  *       se encuentra el nombre del jugador actual, y en la derecha fiura el total de ountos que lleva actualmente
  */
-void panelPuntuacion(string dificultad, string nombre, int puntos){
+void panelPuntuacion(string dificultad, string nombre, int puntos, bool& actualizar){
     // Borde horizontal superior
     for (int i = 1; i <= 128; i++){
         if (i % 43 == 0){
@@ -256,7 +256,18 @@ void panelPuntuacion(string dificultad, string nombre, int puntos){
             cout << " ";
         }
     }
-    cout << " PUNTUACION : " << puntos;
+    // Mostrar los puntos
+    cout << " PUNTUACION : ";
+
+    if (actualizar){
+        // Actualizar puntos de la partida anterior
+        // Reproducir sonido de bonus y mostrar los nuevos puntos
+        tocarSonidoBonusLife();
+        // Dormir ejecucion 30 milisegundos y reanudar
+        Sleep(30);
+    }
+    // Mantiene los ountos de antes
+    cout << puntos;
 }
 
 

@@ -12,6 +12,10 @@ using namespace std;
 
 const int TECLA_ENTER = 13;
 
+
+const int COLOR_VERDE = 10;
+const int COLOR_AMARILLO = 14;
+
 /*
  * Pre: ---
  * Post: Muestra por pantalla el mensaje "Pulse la tecla intro" hasta
@@ -65,9 +69,9 @@ void menuOpciones(int& dificultad, int& pista, char nombre[]);
  * Pre: ---
  * Post: Ha mostrado por pantalla un panel con la informacion de la partida actual del usuario.
  *       En el lateral izquierdo se ha informado de la dificultad actual del modo de juego, en el centro
- *       se encuentra el nombre del jugador actual, y en la derecha fiura el total de ountos que lleva actualmente
+ *       se encuentra el nombre del jugador actual, y en la derecha figura el total de ountos que lleva actualmente
  */
-void panelPuntuacion(string dificultad, string nombre, int puntos);
+void panelPuntuacion(string dificultad, string nombre, int puntos, bool& actualizar);
 
 
 

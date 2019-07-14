@@ -151,6 +151,14 @@ void tocarSonidoCreditos();
 
 /*
  * Pre: ---
+ * Post: Ha reproducido por el microfono el sonido del bonus al aceptar la palabra
+ */
+void tocarSonidoBonusLife();
+
+
+
+/*
+ * Pre: ---
  * Post: Ha detenido la reproduccion del sonido actual en curso
  */
 void detenerSonidoMenu();
@@ -234,6 +242,14 @@ void detenerSonidoRing();
  * Post: Ha detenido la reproduccion del sonido de los creditos
  */
 void detenerSonidoCreditos();
+
+
+
+/*
+ * Pre: ---
+ * Post: Ha detenido la reproduccion del sonido del bonus al aceptar la palabra
+ */
+void detenerSonidoBonus();
 
 
 
