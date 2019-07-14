@@ -122,6 +122,7 @@ void tocarMusicaPartida(int& pista){
  *       a que el usuario ha acertado una letra de la palabra
  */
 void tocarSonidoCorrecto(){
+    mciSendString("close CORRECTO", NULL, 0, NULL);
     mciSendString("open Audio\\correcto.mp3 alias CORRECTO", NULL, 0, NULL);
     mciSendString("play CORRECTO", NULL, 0, NULL);
 }
@@ -134,6 +135,7 @@ void tocarSonidoCorrecto(){
  *       a que el usuario ha acertado una letra de la palabra
  */
 void tocarSonidoIncorrecto(){
+    mciSendString("close INCORRECT", NULL, 0, NULL);
     mciSendString("open Audio\\incorrecto.mp3 alias INCORRECT", NULL, 0, NULL);
     mciSendString("play INCORRECT", NULL, 0, NULL);
 }

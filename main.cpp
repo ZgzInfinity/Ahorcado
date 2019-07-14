@@ -320,6 +320,7 @@ int main(){
         }
 
         // Detener banda sonora de la partida
+        detenerSonidoPartida(pista);
 
         // Comprobar que la palabra se ha resuelto
         if (!fin){

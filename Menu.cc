@@ -326,40 +326,47 @@ void creditos(){
 
     // Limpiar pantalla y seguir con los creditos
     system("cls");
-    gotoxy(50, 3);
+    gotoxy(50, 2);
     cout << " Bandas sonoras del juego " << endl;
-    gotoxy(49, 4);
+    gotoxy(49, 3);
     cout << "===========================" << endl;
 
 
     Sleep(2000);
-    gotoxy(47, 6);
+    gotoxy(47, 5);
     cout << "Golden axe 1991 (GENESIS) Music " << endl;
 
     Sleep(2000);
-    gotoxy(45, 8);
+    gotoxy(45, 7);
     cout << "Streets of Rage 1991 (GENESIS) Music " << endl;
 
     Sleep(2000);
-    gotoxy(50, 10);
+    gotoxy(50, 9);
     cout << "Alien 3 (GENESIS) Music " << endl;
 
     Sleep(2000);
-    gotoxy(43, 12);
+    gotoxy(43, 11);
     cout << "Sonic the hedgehog 1991 (GENESIS) Music " << endl;
 
     Sleep(2000);
-    gotoxy(47, 14);
+    gotoxy(47, 13);
     cout << "Final fantasy X 2001 (ps2) Music " << endl;
 
     Sleep(2000);
-    gotoxy(50, 16);
+    gotoxy(50, 15);
     cout << "Chessmaster 2002 (ps2)" << endl;
 
+
     Sleep(2000);
-    gotoxy(33, 18);
+    gotoxy(48, 17);
+    cout << "Cruis'n USA 1994 (Nintendo 64)" << endl;
+
+
+
+    Sleep(2000);
+    gotoxy(33, 19);
     cout << " Todos los sonidos y bandas sonoras empleadas son propiedad " << endl;
-    gotoxy(35, 19);
+    gotoxy(35, 20);
     cout << " de las empresas desarrolladoras de dichos videojuegos" << endl;
 
     // Pulsar ENTER para finalizar
