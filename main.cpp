@@ -196,7 +196,7 @@ int main(){
     detenerSonidoOpciones();
 
 	// Ficheros de trabajo
-	const char ficheroPalabras[MAX_LONG_FICHERO] = "Datos\\palabras_rae.txt";
+	const char ficheroPalabras[MAX_LONG_FICHERO] = "Datos\\palabras.txt";
 	const char ficheroPalabrasBinario[MAX_LONG_FICHERO] = "Datos\\palabras_bin.bin";
 	const char ficheroJugadoresBinario[MAX_LONG_FICHERO] = "Datos\\jugadores_bin.bin";
 

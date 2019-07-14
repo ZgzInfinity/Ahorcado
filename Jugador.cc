@@ -35,6 +35,8 @@ int puntuacion(Jugador j){
 
 
 
+
+
 /*
  * Pre: <<ichero>> es un fichero de texto que almacena a razon de una por linea
  *      los jugadores que han sido registrados en el Ahorcado y sus correspondientes puntuaciones,
@@ -48,9 +50,13 @@ void anyadirJugador(const char fichero[], Jugador& jugador){
     // Comprobar que el jugador se encuentra en el fichero
 
     int enQueLinea = buscarLineaJugador(fichero, jugador);
+    Jugador jug;
+    char nombreJug[MAX_LONG_NOMBRE];
+
+    nombre(jugador, nombreJug);
 
     // Flujo de lectura asociado al fichero
-    ofstream f;
+    fstream f;
     // Comprobar el resultado
     if (enQueLinea == -1){
         // El jugador no estaba y se guarda en la ultima linea
@@ -63,6 +69,14 @@ void anyadirJugador(const char fichero[], Jugador& jugador){
         f.open(fichero, ios::binary |ios :: in | ios::out);
         // Calculo de la posicion en bytes del jugador a modificar
         int direccion = sizeof(Jugador) * (enQueLinea - 1);
+        // Posicionamiento del cursor para poder leer
+        f.seekg(direccion);
+        // Lectura del jugador que ha jugado
+        f.read(reinterpret_cast<char*>(&jug), sizeof(Jugador));
+        // Puntuacion de las partidas anteriores
+        int puntosViejos = puntuacion(jug);
+        // Nuevo jugador con los datos actualizados
+        crearJugador(nombreJug, puntosViejos + puntuacion(jugador), jugador);
         // Posicionamiento del cursor para poder escribir
         f.seekp(direccion);
         // Re-escribir el Jugador con los nuevos puntos
