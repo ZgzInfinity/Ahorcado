@@ -17,6 +17,8 @@ const int MAX_LONG_LINEA = 128;
 const int MAX_LONG_NOMBRE = 100;
 
 
+
+
 struct Jugador {
     private:
         // Estructura interna del jugador

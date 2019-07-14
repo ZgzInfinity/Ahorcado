@@ -1,5 +1,6 @@
 
 #include "Jugador.h"
+#include "Menu.h"
 
 
 
@@ -150,11 +151,11 @@ int dividir(Jugador *jug, int inicio, int fin)
 
   //Mientras no se cruzen los índices
   while (izq < der){
-    while (puntuacion(jug[der]) > pibote){
+    while (puntuacion(jug[der]) < pibote){
 	  der--;
     }
 
-	while ((izq < der) && (puntuacion(jug[izq]) <= pibote)){
+	while ((izq < der) && (puntuacion(jug[izq]) >= pibote)){
       izq++;
     }
 
@@ -286,9 +287,21 @@ void mostrarClasificacion(const Jugador jugadores[], const int numJugadores, str
             gotoxy(50, 9 + i);
             nombre(jugadores[i], nombreJug);
 
-            // Mostrar los datos del jugador en cuestion
-            cout << i + 1 << " - " << setfill(' ') << setw(10) << nombreJugador
+            // Si el jugador esta
+            if (nombreJug == nombreJugador){
+                textcolor(COLOR_VERDE);
+
+                // Mostrar los datos del jugador de la partida marcado en verde para diferenciar
+                cout << i + 1 << " - " << setfill(' ') << setw(10) << nombreJug
                                    << setfill(' ') << setw(14) << puntuacion(jugadores[i]) << endl;
+
+                textcolor(COLOR_AMARILLO);
+            }
+            else {
+                // Mostrar los datos del jugador en cuestion
+                cout << i + 1 << " - " << setfill(' ') << setw(10) << nombreJug
+                                   << setfill(' ') << setw(14) << puntuacion(jugadores[i]) << endl;
+            }
 
             // Detener ejecucion 500 milisegundos
             Sleep(1000);

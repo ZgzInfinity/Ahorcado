@@ -73,7 +73,6 @@ abanto
 abarajar
 abaratamiento
 abaratar
-abarañar
 abarbechar
 abarbetar
 abarca
@@ -143,9 +142,6 @@ abatojar
 abati
 abayado
 abazon
-abañador
-abañadura
-abañar
 abderitano
 abdicacion
 abdicar
@@ -407,7 +403,6 @@ abrelatas
 abrenunciar
 abrenuncio
 abreojos
-abrepuño
 abretonar
 abrevadero
 abrevador
@@ -434,10 +429,8 @@ abrigador
 abrigadura
 abrigamiento
 abrigar
-abrigaño
 abrigo
 abril
-abrileño
 abrillantador
 abrillantar
 abrimiento
@@ -459,7 +452,6 @@ abromar
 abroncar
 abroquelado
 abroquelar
-abrotoñar
 abrumador
 abrumar
 abrumarse
@@ -470,8 +462,6 @@ abrupto
 abrutado
 abruzarse
 abruzo
-abruñal
-abruño
 abrotano
 absceso
 abscisa
@@ -580,16 +570,10 @@ abusion
 abuso
 abuson
 abuzarse
-abuñolado
-abuñolar
-abuñuelado
-abuñuelar
 abyeccion
 abyecto
 abes
 abestola
-abeñola
-abeñula
 abulico
 aca
 acabable
@@ -606,7 +590,6 @@ acaballerar
 acaballonar
 acabamiento
 acabar
-acabañar
 acabe
 acabellado
 acabestrillar
@@ -653,7 +636,6 @@ acalorado
 acaloramiento
 acalorar
 acaloro
-acaloñar
 acalugar
 acalumniador
 acalumniar
@@ -704,7 +686,6 @@ acapillar
 acapizarse
 acaponado
 acapullarse
-acapulqueño
 acaracolado
 acarambanado
 acaramelar
@@ -735,7 +716,6 @@ acasamatado
 acasarado
 acaserarse
 acaso
-acastañado
 acastillado
 acastorado
 acatable
@@ -758,9 +738,6 @@ acaudillamiento
 acaudillar
 acaule
 acautelarse
-acañaverear
-acañonear
-acañutado
 acceder
 accesibilidad
 accesible
@@ -962,8 +939,6 @@ acezante
 acezar
 acezo
 acezoso
-aceña
-aceñero
 achabacanamiento
 achabacanar
 achacable
@@ -977,7 +952,6 @@ achajuanarse
 achalay
 achambergado
 achampanado
-achampañado
 achancar
 achantar
 achaparrado
@@ -1210,12 +1184,6 @@ acomodaticio
 acomodo
 acompasado
 acompasar
-acompañado
-acompañador
-acompañamiento
-acompañanta
-acompañante
-acompañar
 acomplejado
 acomplejamiento
 acomplejar
@@ -1543,9 +1511,6 @@ acuatico
 acuatil
 acuicola
 acuifero
-acuñacion
-acuñador
-acuñar
 aca
 acapite
 acarido
@@ -1625,8 +1590,6 @@ adelgazador
 adelgazamiento
 adelgazante
 adelgazar
-adeliñar
-adeliño
 adema
 ademador
 ademar
@@ -1884,7 +1847,6 @@ aduccion
 aducir
 aductor
 aduendado
-adueñarse
 adufe
 adufero
 adufre
@@ -2239,7 +2201,6 @@ afrentar
 afrentoso
 afresado
 afretar
-afreñir
 africado
 africana
 africanidad
@@ -2273,7 +2234,6 @@ aftoso
 afuciado
 afuciar
 afuera
-afuereño
 afuerino
 afuero
 afufa
@@ -2362,7 +2322,6 @@ agave
 agavillador
 agavillar
 agazapar
-agañotar
 agencia
 agenciar
 agenciero
@@ -2449,7 +2408,6 @@ agostador
 agostamiento
 agostar
 agostero
-agosteño
 agostizo
 agosto
 agostia
@@ -2463,7 +2421,6 @@ agozcado
 agracejina
 agracejo
 agracero
-agraceño
 agraciadamente
 agraciado
 agraciar
@@ -2688,7 +2645,6 @@ aguazoso
 aguazul
 aguazur
 aguai
-aguañon
 agucia
 aguciar
 agucioso
@@ -2714,8 +2670,6 @@ aguijoneador
 aguijonear
 aguijon
 aguilando
-aguileña
-aguileño
 aguililla
 aguilonia
 aguilucho
@@ -2907,7 +2861,6 @@ aimara
 aindamais
 aindiado
 aindiarse
-aiquileño
 airada
 airadamente
 airamiento
@@ -3217,7 +3170,6 @@ albacea
 albaceato
 albaceazgo
 albacetense
-albaceteño
 albacora
 albacoron
 albada
@@ -3268,7 +3220,6 @@ albarigo
 albarillo
 albarino
 albarizo
-albariño
 albarrada
 albarrana
 albarraniego
@@ -3287,17 +3238,6 @@ albayalde
 albayano
 albazano
 albazo
-albañal
-albañalero
-albañar
-albañear
-albañeria
-albañil
-albañila
-albañilear
-albañileria
-albañir
-albañi
 albear
 albedo
 albedriador
@@ -3425,7 +3365,6 @@ alcabtea
 alcabuz
 alcacel
 alcacer
-alcaceña
 alcachofa
 alcachofado
 alcachofal
@@ -3455,8 +3394,6 @@ alcaidiado
 alcaidia
 alcairia
 alcaladino
-alcalaeño
-alcalareño
 alcalaino
 alcaldada
 alcalde
@@ -3517,12 +3454,9 @@ alcaparrosa
 alcaparron
 alcaptonuria
 alcapurria
-alcaraceño
 alcaravanero
 alcaravea
 alcaravan
-alcarceña
-alcarceñal
 alcarchofa
 alcarchofado
 alcarchofar
@@ -3530,7 +3464,6 @@ alcarcil
 alcarracero
 alcarraza
 alcarreto
-alcarreño
 alcarria
 alcartaz
 alcaria
@@ -3547,9 +3480,7 @@ alcavera
 alcayata
 alcayatar
 alcazaba
-alcazareño
 alcazuz
-alcañizano
 alce
 alcea
 alcedo
@@ -3557,7 +3488,6 @@ alcedon
 alcino
 alcionio
 alcionito
-alcireño
 alcista
 alcion
 alcoba
@@ -3593,7 +3523,6 @@ alcorce
 alcorci
 alcornocal
 alcornoque
-alcornoqueño
 alcorque
 alcorza
 alcorzado
@@ -3613,8 +3542,6 @@ alcuzada
 alcuzcucero
 alcuzcuz
 alcuzcuzu
-alcuña
-alcuño
 alcandara
 alcandora
 alcantara
@@ -3668,7 +3595,6 @@ alectomancia
 alectomancia
 alectoria
 aleda
-aledaño
 alefangina
 alefato
 alefriz
@@ -3838,9 +3764,6 @@ alferazgo
 alferecia
 alferraz
 alferza
-alfeñar
-alfeñicarse
-alfeñique
 alficoz
 alfil
 alfilel
@@ -3889,7 +3812,6 @@ alfonsigo
 alfostiga
 alga
 algaba
-algabeño
 algadara
 algaida
 algaido
@@ -3920,7 +3842,6 @@ algazara
 algazul
 algebraico
 algebrista
-algecireño
 algente
 algia
 algidez
@@ -3986,8 +3907,6 @@ alhareme
 alharma
 alhavara
 alheli
-alheña
-alheñar
 alhidada
 alholva
 alholvar
@@ -4006,7 +3925,6 @@ alhorin
 alhoz
 alhucema
 alhucemilla
-alhuceña
 alhumajo
 alhurreca
 alhabega
@@ -4086,8 +4004,6 @@ alim
 alimania
 alimanisco
 alimara
-alimaña
-alimañero
 alimentacion
 alimentador
 alimental
@@ -4153,12 +4069,6 @@ alizace
 alizar
 alizarina
 aliaceo
-aliñado
-aliñador
-aliñamiento
-aliñar
-aliño
-aliñoso
 aljaba
 aljabibe
 aljafana
@@ -4236,8 +4146,6 @@ almadiero
 almadraba
 almadrabero
 almadraque
-almadreña
-almadreñero
 almaden
 almadia
 almagacen
@@ -4247,7 +4155,6 @@ almagral
 almagrar
 almagre
 almagrero
-almagreño
 almahala
 almaizal
 almaizar
@@ -4345,7 +4252,6 @@ almizclado
 almizclar
 almizcle
 almizclero
-almizcleño
 almizque
 almizquera
 almo
@@ -4357,7 +4263,6 @@ almocela
 almocrebe
 almocri
 almocarabe
-almodovareño
 almodrote
 almodi
 almodon
@@ -4414,7 +4319,6 @@ almorraja
 almorrana
 almorraniento
 almorrefa
-almorriña
 almorron
 almorta
 almorzada
@@ -4544,7 +4448,6 @@ alpargateria
 alpargatilla
 alpartaz
 alpatana
-alpañata
 alpechinera
 alpechin
 alpende
@@ -4559,7 +4462,6 @@ alpiste
 alpistela
 alpistera
 alpistero
-alpujarreño
 alquequenje
 alquermes
 alquerque
@@ -4704,7 +4606,6 @@ aludel
 aludido
 aludir
 aludo
-alueñarse
 alufrar
 alugar
 alumbrado
@@ -4759,7 +4660,6 @@ alzador
 alzadura
 alzafuelles
 alzamiento
-alzapaño
 alzapie
 alzaprima
 alzaprimar
@@ -4810,7 +4710,6 @@ amador
 amadrigar
 amadrinamiento
 amadrinar
-amadroñado
 amaestradamente
 amaestrado
 amaestrador
@@ -4883,7 +4782,6 @@ amarantina
 amaranto
 amarantaceo
 amarar
-amarañar
 amarcar
 amarcigado
 amarecer
@@ -4977,7 +4875,6 @@ amazona
 amazonense
 amazonio
 amazonico
-amañar
 amaño
 ambages
 ambagioso
@@ -76469,7 +76366,6 @@ trigonal
 trigonometria
 trigonometrico
 triguero
-trigueño
 triguillo
 trigesimo
 trigon
@@ -76511,7 +76407,6 @@ trincado
 trincadura
 trincaesquinas
 trincafia
-trincapiñones
 trincar
 trincha
 trinchador
@@ -76574,7 +76469,6 @@ triquete
 triquina
 triquinosis
 triquitraque
-triquiñuela
 trirrectangulo
 trirreme
 tris
@@ -76955,7 +76849,6 @@ tuicion
 tuina
 tuitivo
 tul
-tulcaneño
 tule
 tulio
 tulipa
