@@ -19,9 +19,8 @@
  *       al menu principal del juego
  */
 void sonidoMenuPrincipal(){
-    mciSendString("close MENU", NULL, 0, NULL);
-    mciSendString("open Audio\\menu.wav alias MENU", NULL, 0, NULL);
-    mciSendString("play MENU", NULL, 0, NULL);
+    mciSendString("open Audio\\menu.mp3 alias MENU", NULL, 0, NULL);
+    mciSendString("play MENU notify repeat", NULL, 0, NULL);
 }
 
 
@@ -32,9 +31,8 @@ void sonidoMenuPrincipal(){
  *       al menu de opciones del juego
  */
 void sonidoMenuOpciones(){
-    mciSendString("close OPTIONS", NULL, 0, NULL);
-    mciSendString("open Audio\\opciones.wav alias OPTIONS", NULL, 0, NULL);
-    mciSendString("play OPTIONS", NULL, 0, NULL);
+    mciSendString("open Audio\\opciones.mp3 alias OPTIONS", NULL, 0, NULL);
+    mciSendString("play OPTIONS notify repeat", NULL, 0, NULL);
 }
 
 
@@ -45,9 +43,8 @@ void sonidoMenuOpciones(){
  *       a la primera pista del juego
  */
 void sonidoPistaPrimera(){
-    mciSendString("close FIRST_TRACK", NULL, 0, NULL);
-    mciSendString("open Audio\\main.wav alias FIRST_TRACK", NULL, 0, NULL);
-    mciSendString("play FIRST_TRACK", NULL, 0, NULL);
+    mciSendString("open Audio\\main.mp3 alias FIRST_TRACK", NULL, 0, NULL);
+    mciSendString("play FIRST_TRACK notify repeat", NULL, 0, NULL);
 }
 
 
@@ -58,9 +55,8 @@ void sonidoPistaPrimera(){
  *       a la segunda pista del juego
  */
 void sonidoPistaSegunda(){
-    mciSendString("close SECOND_TRACK", NULL, 0, NULL);
-    mciSendString("open Audio\\speed.wav alias SECOND_TRACK", NULL, 0, NULL);
-    mciSendString("play SECOND_TRACK", NULL, 0, NULL);
+    mciSendString("open Audio\\speed.mp3 alias SECOND_TRACK", NULL, 0, NULL);
+    mciSendString("play SECOND_TRACK notify repeat", NULL, 0, NULL);
 }
 
 
@@ -71,9 +67,8 @@ void sonidoPistaSegunda(){
  *       a la tercera pista del juego
  */
 void sonidoPistaTercera(){
-    mciSendString("close THIRD_TRACK", NULL, 0, NULL);
-    mciSendString("open Audio\\master.wav alias THIRD_TRACK", NULL, 0, NULL);
-    mciSendString("play THIRD_TRACK", NULL, 0, NULL);
+    mciSendString("open Audio\\master.mp3 alias THIRD_TRACK", NULL, 0, NULL);
+    mciSendString("play THIRD_TRACK notify repeat", NULL, 0, NULL);
 }
 
 
@@ -84,8 +79,7 @@ void sonidoPistaTercera(){
  *       a la tercera pista del juego
  */
 void sonidoRing(){
-    mciSendString("close RING", NULL, 0, NULL);
-    mciSendString("open Audio\\Ring.wav alias RING", NULL, 0, NULL);
+    mciSendString("open Audio\\Ring.mp3 alias RING", NULL, 0, NULL);
     mciSendString("play RING", NULL, 0, NULL);
 }
 
@@ -128,8 +122,7 @@ void tocarMusicaPartida(int& pista){
  *       a que el usuario ha acertado una letra de la palabra
  */
 void tocarSonidoCorrecto(){
-    mciSendString("close CORRECTO", NULL, 0, NULL);
-    mciSendString("open Audio\\correcto.wav alias CORRECTO", NULL, 0, NULL);
+    mciSendString("open Audio\\correcto.mp3 alias CORRECTO", NULL, 0, NULL);
     mciSendString("play CORRECTO", NULL, 0, NULL);
 }
 
@@ -141,8 +134,7 @@ void tocarSonidoCorrecto(){
  *       a que el usuario ha acertado una letra de la palabra
  */
 void tocarSonidoIncorrecto(){
-    mciSendString("close INCORRECT", NULL, 0, NULL);
-    mciSendString("open Audio\\incorrecto.wav alias INCORRECT", NULL, 0, NULL);
+    mciSendString("open Audio\\incorrecto.mp3 alias INCORRECT", NULL, 0, NULL);
     mciSendString("play INCORRECT", NULL, 0, NULL);
 }
 
@@ -154,8 +146,7 @@ void tocarSonidoIncorrecto(){
  *       a que el usuario ha descifrado la palabra
  */
 void tocarSonidoFindOut(){
-    mciSendString("close FIND_OUT", NULL, 0, NULL);
-    mciSendString("open Audio\\FindOut.wav alias FIND_OUT", NULL, 0, NULL);
+    mciSendString("open Audio\\FindOut.mp3 alias FIND_OUT", NULL, 0, NULL);
     mciSendString("play FIND_OUT", NULL, 0, NULL);
 }
 
@@ -166,8 +157,7 @@ void tocarSonidoFindOut(){
  *       a que el usuario ha fallado toda la palabra
  */
 void tocarSonidoGameOver(){
-    mciSendString("close GAME_OVER", NULL, 0, NULL);
-    mciSendString("open Audio\\GameOver.wav alias GAME_OVER", NULL, 0, NULL);
+    mciSendString("open Audio\\GameOver.mp3 alias GAME_OVER", NULL, 0, NULL);
     mciSendString("play GAME_OVER", NULL, 0, NULL);
 }
 
@@ -175,13 +165,11 @@ void tocarSonidoGameOver(){
 
 /*
  * Pre: ---
- * Post: Ha reproducido por el microfono el sonido incorrecto debido
- *       a que el usuario conteste si quiere jugar otra vez
+ * Post: Ha reproducido por el microfono el sonido del menu de intentos
  */
-void tocarSonidoReloj(){
-    mciSendString("close CLOCK", NULL, 0, NULL);
-    mciSendString("open Audio\\Reloj.wav alias CLOCK", NULL, 0, NULL);
-    mciSendString("play CLOCK", NULL, 0, NULL);
+void tocarSonidoIntentos(){
+    mciSendString("open Audio\\intentos.mp3 alias ATTEMPT", NULL, 0, NULL);
+    mciSendString("play ATTEMPT notify repeat", NULL, 0, NULL);
 }
 
 
@@ -191,8 +179,7 @@ void tocarSonidoReloj(){
  * Post: Ha reproducido por el microfono el sonido del ranking
  */
 void tocarSonidoRanking(){
-    mciSendString("close RANKING", NULL, 0, NULL);
-    mciSendString("open Audio\\Ranking.wav alias RANKING", NULL, 0, NULL);
+    mciSendString("open Audio\\Ranking.mp3 alias RANKING", NULL, 0, NULL);
     mciSendString("play RANKING", NULL, 0, NULL);
 }
 
@@ -204,9 +191,8 @@ void tocarSonidoRanking(){
  * Post: Ha reproducido por el microfono el sonido de los creditos
  */
 void tocarSonidoCreditos(){
-    mciSendString("close CREDITS", NULL, 0, NULL);
-    mciSendString("open Audio\\creditos.wav alias CREDITS", NULL, 0, NULL);
-    mciSendString("play CREDITS", NULL, 0, NULL);
+    mciSendString("open Audio\\creditos.mp3 alias CREDITS", NULL, 0, NULL);
+    mciSendString("play CREDITS notify repeat", NULL, 0, NULL);
 }
 
 
@@ -216,8 +202,7 @@ void tocarSonidoCreditos(){
  * Post: Ha reproducido por el microfono el sonido del bonus al aceptar la palabra
  */
 void tocarSonidoBonusLife(){
-    mciSendString("close BONUS_LIFE", NULL, 0, NULL);
-    mciSendString("open Audio\\BonusLife.wav alias BONUS_LIFE", NULL, 0, NULL);
+    mciSendString("open Audio\\BonusLife.mp3 alias BONUS_LIFE", NULL, 0, NULL);
     mciSendString("play BONUS_LIFE", NULL, 0, NULL);
 }
 
@@ -297,10 +282,10 @@ void detenerSonidoGameOver(){
 
 /*
  * Pre: ---
- * Post: Ha detenido la reproduccion del sonido de Reloj
+ * Post: Ha detenido la reproduccion del menu de nuevos intentos
  */
-void detenerSonidoReloj(){
-    mciSendString("close CLOCK", NULL, 0, NULL);
+void detenerSonidoIntentos(){
+    mciSendString("close ATTEMPT", NULL, 0, NULL);
 }
 
 

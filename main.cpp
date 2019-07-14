@@ -46,7 +46,7 @@ const int MAX_JUGADORES = 100;
 void controlFinDelJuego(bool& terminado){
 
     // Reproducir sonido del reloj
-    tocarSonidoReloj();
+    tocarSonidoIntentos();
 
     // Control de la orden introducida por el usuario
     int orden;
@@ -93,7 +93,7 @@ void controlFinDelJuego(bool& terminado){
     }
 
     // Detener sonido del reloj
-    detenerSonidoReloj();
+    detenerSonidoIntentos();
 }
 
 
@@ -320,7 +320,6 @@ int main(){
         }
 
         // Detener banda sonora de la partida
-        detenerSonidoPartida(pista);
 
         // Comprobar que la palabra se ha resuelto
         if (!fin){
@@ -379,7 +378,7 @@ int main(){
         controlFinDelJuego(terminado);
 
         // Detener sonido del reloj
-        detenerSonidoReloj();
+        detenerSonidoIntentos();
 
         // Limpiar la pantlla
         system("cls");

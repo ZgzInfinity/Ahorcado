@@ -124,12 +124,12 @@ void tocarSonidoGameOver();
 
 
 
+
 /*
  * Pre: ---
- * Post: Ha reproducido por el microfono el sonido incorrecto debido
- *       a que el usuario conteste si quiere jugar otra vez
+ * Post: Ha reproducido por el microfono el sonido del menu de intentos
  */
-void tocarSonidoReloj();
+void tocarSonidoIntentos();
 
 
 
@@ -215,9 +215,9 @@ void detenerSonidoGameOver();
 
 /*
  * Pre: ---
- * Post: Ha detenido la reproduccion del sonido de Reloj
+ * Post: Ha detenido la reproduccion del menu de nuevos intentos
  */
-void detenerSonidoReloj();
+void detenerSonidoIntentos();
 
 
 
