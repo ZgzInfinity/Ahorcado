@@ -37,9 +37,9 @@ los puntos, explicado más adelante.
 A continuación se muestra dos capturas, una del menú de opciones antes de introducir los datos solicitados y otra después de 
 haberlos rellenado.
 
-![alt text](https://i.ibb.co/HDX2SbD/12.jpg)
+![alt text](https://i.ibb.co/pQdqLtn/0.png)
 
-![alt text](https://i.ibb.co/Mgy6kmv/13.jpg)
+![alt text](https://i.ibb.co/rdvprZY/1.png)
 
 ### 2.3 - Pantalla de juego principal
 
