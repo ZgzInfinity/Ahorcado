@@ -95,7 +95,14 @@ imágenes donde se puede observar lo explicado anteriormente.
 
 ![alt text](https://i.ibb.co/wCmHRgy/3.png)
 
-## 3 Tecnologías y librerías
+### 2.7 - Tratamiento de puntos
+
+Como ya se ha dicho anteriormente, los puntos es un aspecto que al igual que el número de intentos depende de la dificultad con
+la que se está jugando. Si se juega en modo difícil y se acierta una palabra se ganan 50 puntos, si se juega en modo intermedio
+y se adivina la palabra se ganan 30 puntos y si se juega en modo fácil por cada palabra acertada se ganan 20 puntos. Por cada
+letra fallida no se quitan puntos. 
+
+## 3 Tecnologías y librerías y compatibilidad
 
 ### 3.1 - Entorno de programación
 
@@ -113,13 +120,19 @@ winmm.dll, el cual es un módulo para el Windows Multimedia API, que contiene fu
 En internet se proporciona documentación suficiente de como funciona todo el material empleado y como configurarlo para 
 diferentes entornos de programación como CodeBlocks, Dev-C++, entre otros.
 
+### 3.3 - Compatibilidad 
+
+El juego del Ahorcado solo tiene compatibilidad con Windows y sus diferentes versiones. Si se desea correr en otros sistemas
+se deberá recurrir a recursos adicionales como el empleo de máquinas virtuales o aplicaciones que puedan ejecutar programas de
+Windows en otros sistemas operativos. 
+
 ### 4 Documentación y ficheros
 
 Esta versión del Ahorcado solo trabaja con palabras del lenguaje castellano, de las que se han eliminado todas aquellas que 
 tienen tildes en vocales o que contienen la letra eñe. Las palabras se encuentran almacenadas en un fichero binario porque así 
-la selección de la palabra se efectua de forma más eficiente. Dicho fichero se denomina "palabras_bin.bin", que es generado a su 
+la selección de la palabra se hace de forma más eficiente. Dicho fichero se denomina "palabras_bin.bin", que es generado a su 
 vez de otro fichero de texto denominado "palabras.txt" que almacena las palabras del castellano descritas anteriormente, a razón
-de una por línea tal y como muestra la siguiente imagen.
+de una por línea, tal y como muestra la siguiente imagen.
 
 ![alt text](https://i.ibb.co/7nqJXGV/0.png)
 
