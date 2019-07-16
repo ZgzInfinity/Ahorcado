@@ -277,14 +277,14 @@ void leerJugadores(const char fichero[], Jugador jugadores[], int& numJugadores)
  */
 void mostrarClasificacion(const Jugador jugadores[], const int numJugadores, string nombreJugador){
         cout << endl << endl;
-        gotoxy(50, 5);
+        gotoxy(53, 5);
         cout << "   RANKING DE LOS JUGADORES" << endl << endl;
 
         // Escritura de la cabecera de la clasificacion
-        gotoxy(50, 7);
-        cout << setfill(' ') << setw(14) << "JUGADOR"  << setfill(' ') << setw(14) << "PUNTUACION" << endl;
-        gotoxy(50, 8);
-        cout << setfill('=') << setw(14) << "=" << "  " << setfill('=') << setw(12) << "=" << endl;
+        gotoxy(53, 7);
+        cout << setfill(' ') << setw(17) << "JUGADOR"  << setfill(' ') << setw(14) << "PUNTUACION" << endl;
+        gotoxy(52, 8);
+        cout << setfill('=') << setw(18) << "=" << "  " << setfill('=') << setw(12) << "=" << endl;
 
         // Almacenado del ultimo jugador leido
         char nombreJug[MAX_LONG_NOMBRE];
@@ -305,15 +305,16 @@ void mostrarClasificacion(const Jugador jugadores[], const int numJugadores, str
                 textcolor(COLOR_VERDE);
 
                 // Mostrar los datos del jugador de la partida marcado en verde para diferenciar
-                cout << i + 1 << " - " << setfill(' ') << setw(10) << nombreJug
-                                   << setfill(' ') << setw(14) << puntuacion(jugadores[i]) << endl;
-
+                cout << setfill(' ') << setw(3) << i + 1 << " - "
+                     << setfill(' ') << setw(14) << nombreJug
+                     << setfill(' ') << setw(14) << puntuacion(jugadores[i]) << endl;
                 textcolor(COLOR_AMARILLO);
             }
             else {
                 // Mostrar los datos del jugador en cuestion
-                cout << i + 1 << " - " << setfill(' ') << setw(10) << nombreJug
-                                   << setfill(' ') << setw(14) << puntuacion(jugadores[i]) << endl;
+                cout << setfill(' ') << setw(3) << i + 1 << " - "
+                     << setfill(' ') << setw(14) << nombreJug
+                     << setfill(' ') << setw(14) << puntuacion(jugadores[i]) << endl;
             }
 
             // Detener ejecucion 500 milisegundos

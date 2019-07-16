@@ -246,7 +246,7 @@ void dibujoParteMonigote(int& estado, const int dificultad, bool& fin){
     // Control de la dificultad del juego
     switch (dificultad){
         // Dificultad en modo novato
-        case 1:
+        case 0:
             // Seleccion del estado de control del juego
             switch(estado){
             case 1:
@@ -285,7 +285,7 @@ void dibujoParteMonigote(int& estado, const int dificultad, bool& fin){
             }
             break;
         // Dificultad en modo intermedio
-        case 2:
+        case 1:
             switch(estado){
                 case 1:
                     // Dibujo de la cabeza y del cuello
@@ -316,7 +316,7 @@ void dibujoParteMonigote(int& estado, const int dificultad, bool& fin){
             }
             break;
         // Dificultad en modo maestro
-        case 3:
+        case 2:
             switch(estado){
                 case 1:
                     // Dibujo de la cabeza y del cuello

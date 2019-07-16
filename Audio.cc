@@ -92,7 +92,10 @@ void sonidoRing(){
  *       <<pista>>
  */
 void tocarMusicaPartida(int& pista){
-    pista = pista % NUM_PISTAS;
+    // Control de errores
+    if (pista > 3){
+        pista = pista % NUM_PISTAS;
+    }
     switch(pista){
         // Reproducir primera pista
         case 0 :
