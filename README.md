@@ -64,6 +64,13 @@ continuación se muestran tres capturas para evidenciar la retroalimentación an
 
 ![alt text](https://i.ibb.co/9swRYRk/8.png)
 
+Tras agotar todos los intentos o adivinar la palabra, se muesta un mensaje de victoria o derrota según corresponda tal y como se
+puede ver en las siguientes imágenes.
+
+![alt text](https://i.ibb.co/LSZ8K2d/5.png)
+
+![alt text](https://i.ibb.co/bBmfCBr/4.png)
+
 ### 2.4 - Pantalla de retorno de juego
 
 Una vez finalizada la partida, se muestra un menú al usuario para preguntarle si desea volver a jugar o no. Para ello, el 
