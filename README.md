@@ -109,7 +109,7 @@ la que se está jugando. Si se juega en modo difícil y se acierta una palabra s
 y se adivina la palabra se ganan 30 puntos y si se juega en modo fácil por cada palabra acertada se ganan 20 puntos. Por cada
 letra fallida no se quitan puntos. 
 
-## 3 Tecnologías y librerías y compatibilidad
+## 3 - Tecnologías y librerías y compatibilidad
 
 ### 3.1 - Entorno de programación
 
@@ -133,7 +133,7 @@ El juego del Ahorcado solo tiene compatibilidad con Windows y sus diferentes ver
 se deberá recurrir a recursos adicionales como el empleo de máquinas virtuales o aplicaciones que puedan ejecutar programas de
 Windows en otros sistemas operativos. 
 
-## 4 Documentación y ficheros
+## 4 - Documentación y ficheros
 
 Esta versión del Ahorcado solo trabaja con palabras del lenguaje castellano, de las que se han eliminado todas aquellas que 
 tienen tildes en vocales o que contienen la letra eñe. Las palabras se encuentran almacenadas en un fichero binario porque así 
@@ -143,14 +143,14 @@ de una por línea, tal y como muestra la siguiente imagen.
 
 ![alt text](https://i.ibb.co/7nqJXGV/0.png)
 
-## 5 Jerarquía de directorios
+## 5 - Jerarquía de directorios
 
 Dada la gran cantidad de archivos por los que se encuentra compuesto el juego del Ahorcado, se ha optado por establecer una 
 agrupaión de los ficheros de implementación y el sonido, así como el ejecutable en diferentes carpetas para poder tener mejor
 estructura la información. Los archivos de sonido se encuentran en la carpeta "Audio", los ficheros de las palabras y la 
 documentación en la carpeta "Datos", y los ficheros de implementación en la ráiz del directorio proyecto.
 
-## 6 Release 
+## 6 - Release 
 
 El release proporcionado es un fichero con extenión zip donde se hayan comprimidos la carpeta "Datos", la carpeta "Audio" y el 
 archivo ejecutable del juego. No se deben borrar ni las carpetas ni nada que éstas guardan porque de lo contrario el juego 
