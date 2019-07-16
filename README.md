@@ -109,7 +109,7 @@ la que se está jugando. Si se juega en modo difícil y se acierta una palabra s
 y se adivina la palabra se ganan 30 puntos y si se juega en modo fácil por cada palabra acertada se ganan 20 puntos. Por cada
 letra fallida no se quitan puntos. 
 
-## 3 - Tecnologías y librerías y compatibilidad
+## 3 - Tecnologías, librerías y compatibilidad
 
 ### 3.1 - Entorno de programación
 
