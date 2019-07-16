@@ -26,12 +26,12 @@ de la apariencia que tiene el menú principal.
 ### 2.2 - Menú de opciones
 
 Seguidamente, se le presenta al usuario un menú de opciones donde debe introducir por teclado la dificultad con la que desea 
-jugar, introduciendo un valor entre 1, 2, o 3, correspondidos con los niveles de dificultad fácil, intermedio y difícil 
+jugar, introduciendo un valor entre 0, 1, o 2, correspondidos con los niveles de dificultad fácil, intermedio y difícil 
 respectivamente.
 
 Posteriormente se le pide al usuario que seleccione una banda sonora con la que jugar o si por el contrario desea jugar en modo
 muteado, es decir, sin audio de fondo. Para escoger la música el usuario debe introducir por teclado el valor correspondiente
-al número de pista, el cual oscila entre 1 y 3. Finalmente le pide que introduzca su nombre para poder gestionar el guardado de
+al número de pista, el cual oscila entre 0 y 3. Finalmente le pide que introduzca su nombre para poder gestionar el guardado de
 los puntos, explicado más adelante.
 
 A continuación se muestra dos capturas, una del menú de opciones antes de introducir los datos solicitados y otra después de 
