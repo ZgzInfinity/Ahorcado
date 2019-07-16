@@ -32,16 +32,17 @@ void mostrarTitulo(const string deseo){
  * Pre: ---
  * Post: Ha devuelto el tipo de dificultad del modo de juego
  */
-string mostrarDificultad(const int& dificultad){
+string mostrarDificultad(int& dificultad){
+    dificultad = dificultad % MAX_DIFICULTADES;
     // Control de dificultad
     string tipoDificultad;
 
     // Muestra la dificultad seleccionada al jugador
-    if (dificultad == 1){
+    if (dificultad == 0){
         // Modo facil
         tipoDificultad = "Facil";
     }
-    else if (dificultad == 2){
+    else if (dificultad == 1){
         // Modo intermedio
         tipoDificultad = "Intermedio";
     }
@@ -145,7 +146,7 @@ void menuOpciones(int& dificultad, int& pista, char nombre[]){
     dibujoCuadricula();
 
     gotoxy(35, 15);
-    cout << "Dificultad de juego (1 - 3) --> " << flush;
+    cout << "Dificultad de juego (0 - 2) --> " << flush;
     cin >> dificultad;
 
     // Reproducir sonido de correcto
@@ -322,7 +323,7 @@ void creditos(){
     cout << " Abril 2019 - Julio 2019 " << endl;
 
     // Dormir 2 segundos
-    Sleep(2000);
+    Sleep(5000);
 
     // Limpiar pantalla y seguir con los creditos
     system("cls");

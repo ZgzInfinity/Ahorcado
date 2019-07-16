@@ -25,7 +25,7 @@ void crearPalabra(char secuencia[], int nLetras, Palabra& p){
 	strcpy(p.cadena, secuencia);
 	p.numLetras = nLetras;
 
-	for (int i = 0; i < MAX_LETRAS; i++){
+	for (int i = 0; i < MAX_LETRAS - 7; i++){
         p.marcadas[i] = false;
 	}
 }
@@ -101,43 +101,35 @@ void existeLetra(Palabra& p, const char l, int& letrasVolteadas, bool& encontrad
     encontrado = false;
 	// Total de veces que ha aparecido la letra <<l>>
 	int numVeces = 0;
-	// Bucle de recorrido
-	for (int i = 0; i < numLetras; i++){
-		// Se compara si la letra i-ésima es igual a <<l>> y no se ha buscado antes
-		if (devolverLetra(p, i) == l){
-		    // Comprobar si la letra no esta marcada
-		    if (!p.marcadas[i]){
-                 // Poner letra como marcada
-                p.marcadas[i] = true;
+	// letra leida
+    char c;
+    // Ver si es o no letra repetida
+    if (!p.marcadas[l - 'a' ]){
+        // Bucle de recorrido
+        for (int i = 0; i < numLetras; i++){
+            // Se compara si la letra i-ésima es igual a <<l>> y no se ha buscado antes
+            c = devolverLetra(p, i);
+            if (c == l){
+                // Muestreo de la letra en la poscion correcta
+                gotoxy(60 + 2 * i, 15);
+                cout << l << " ";
                 // Se ha hallado una nueva letra y se voltea
                 letrasVolteadas++;
                 // Incremento del numero de veces que se ha hallado la letra
                 numVeces++;
-                // Se compara si esta mas de una vez
+                // La letra existe en la palabra
                 if (numVeces == 1){
-                    // es la primera vez
                     encontrado = true;
                 }
-
-                // Muestreo de la letra en la poscion correcta
-                gotoxy(60 + 2 * i, 15);
-                cout << l << " ";
-		    }
-		    else {
-                // La letra ya estaba dicha de antes
-                letraYaDicha = true;
-		    }
-		}
-	}
-	if (!encontrado){
-        // Si la letra no figura dentro de la palabra pero hay que marcarla
-        if (!p.marcadas[l - 'a']){
-            p.marcadas[l - 'a'] = true;
+            }
         }
-        else {
-            letraYaDicha = true;
-        }
-	}
+        // Marco la letra dicha
+        p.marcadas[l - 'a'] = true;
+    }
+    else {
+        // La letra se ha repetido
+        letraYaDicha = true;
+    }
 }
 
 

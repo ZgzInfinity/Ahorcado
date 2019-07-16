@@ -131,7 +131,6 @@ int buscarLineaJugador(const char fichero[], Jugador& j){
         // Comprobar que el jugador existe
         if (encontrado){
             // Si el jugador existia
-            cout << numLineas << endl;
             return numLineas;
         }
         else {

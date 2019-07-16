@@ -23,6 +23,10 @@
 
 using namespace std;
 
+
+const int NUM_PISTAS = 3;
+
+
 /*
  * Pre: ---
  * Post: Ha reproducido por el microfono la banda sonora correspondiente

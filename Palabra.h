@@ -28,9 +28,9 @@ const int MAX_LETRAS = 33;
 struct Palabra {
 	private:
 		// Estructura interna del tipo de dato Palabra
-		char cadena[MAX_LETRAS];	     // vector de caracteres que representa las letras de la palabra
-		bool marcadas[MAX_LETRAS + 10];  // vector que representa las letras descubertas y las que no
-		int numLetras;				     // numero de letras de la palabra
+		char cadena[MAX_LETRAS];	    // vector de caracteres que representa las letras de la palabra
+		bool marcadas[MAX_LETRAS - 7];  // vector que representa las letras descubertas y las que no
+		int numLetras;				    // numero de letras de la palabra
 	public:
 
 		/*

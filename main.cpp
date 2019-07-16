@@ -114,11 +114,13 @@ void pedirLetra(char& letra){
 	// Comprobacion de si el caracter introducido por el usuario es una letra
 	while (!isalpha(letra)){
 		// El caracter no es el adecuado y lo vuelve a pedir
-		cout << "El caracter introducido no es una letra" << endl;
+        gotoxy(4,5);
+		cout << " El caracter introducido no es una letra" << endl;
 		Sleep(RETARDO);
-		gotoxy(5,4);
+		gotoxy(4,5);
 		clreol();
 		gotoxy(5,3);
+        clreol();
 		cout << "Introduzca la letra a comprobar: " << flush;
 		cin >> letra;
 	}

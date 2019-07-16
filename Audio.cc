@@ -92,6 +92,7 @@ void sonidoRing(){
  *       <<pista>>
  */
 void tocarMusicaPartida(int& pista){
+    pista = pista % NUM_PISTAS;
     switch(pista){
         // Reproducir primera pista
         case 0 :
@@ -339,6 +340,7 @@ void detenerSonidoBonus(){
  *       <<pista>>
  */
 void detenerSonidoPartida(int& pista){
+    pista = pista % NUM_PISTAS;
     switch(pista){
         // Detener primera pista
         case 0 :

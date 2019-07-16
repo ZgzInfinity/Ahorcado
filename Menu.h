@@ -11,10 +11,10 @@ using namespace std;
 
 
 const int TECLA_ENTER = 13;
-
-
 const int COLOR_VERDE = 10;
 const int COLOR_AMARILLO = 14;
+const int MAX_DIFICULTADES = 3;
+
 
 /*
  * Pre: ---
@@ -28,7 +28,7 @@ void mostrarTitulo(string deseo);
  * Pre: ---
  * Post: Ha devuelto el tipo de dificultad del modo de juego
  */
-string mostrarDificultad(const int& dificultad);
+string mostrarDificultad(int& dificultad);
 
 
 /*
