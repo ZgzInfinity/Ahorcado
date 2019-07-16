@@ -14,6 +14,7 @@ const int TECLA_ENTER = 13;
 const int COLOR_VERDE = 10;
 const int COLOR_AMARILLO = 14;
 const int MAX_DIFICULTADES = 3;
+const int RETARDO = 6000;
 
 
 /*

@@ -33,7 +33,6 @@ const int DIFICULTAD_MAXIMA = 3;
 
 const int MAX_LONG_FICHERO = 100;
 const int TECLA_ESC = 27;
-const int RETARDO = 6000;
 const int MAX_JUGADORES = 100;
 
 
@@ -247,9 +246,6 @@ int main(){
         // seleccion de nueva palabra con la que se va a jugar
         seleccionarPalabra(ficheroPalabrasBinario, numLineas, palabraSeleccionada);
 
-        char pal[MAX_LETRAS];
-        obtenerPalabra(pal, palabraSeleccionada);
-        cout << pal << endl;
 
         // Numero de letras de la palabra seleccionada
         int numLetras = obtenerLetras(palabraSeleccionada);
@@ -311,7 +307,7 @@ int main(){
             }
 
             // Esperar un tiempo y limpiar la linea
-            Sleep(2000);
+            Sleep(RETARDO / 3);
             gotoxy(4,5);
             clreol();
 
@@ -366,7 +362,7 @@ int main(){
         textcolor(COLOR_AMARILLO);
 
          // Dormir 2 segundos
-        Sleep(2000);
+        Sleep(RETARDO / 3);
 
         // Limpiar la pantlla
         system("cls");
@@ -401,7 +397,7 @@ int main(){
     // Mostrar la clasificacion actual de los jugadores
     mostrarClasificacion(listadoJugadores, numJugadores, nombreJugador);
 
-    Sleep(3000);
+    Sleep(RETARDO / 2);
 
     system("cls");
 

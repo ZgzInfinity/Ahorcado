@@ -34,7 +34,7 @@ muteado, es decir, sin audio de fondo. Para escoger la música el usuario debe i
 al número de pista, el cual oscila entre 0 y 3. Finalmente le pide que introduzca su nombre para poder gestionar el guardado de
 los puntos, explicado más adelante.
 
-A continuación se muestra dos capturas, una del menú de opciones antes de introducir los datos solicitados y otra después de 
+A continuación, se muestran dos capturas, una del menú de opciones antes de introducir los datos solicitados y otra después de 
 haberlos rellenado.
 
 ![alt text](https://i.ibb.co/pQdqLtn/0.png)

@@ -265,7 +265,7 @@ void panelPuntuacion(string dificultad, string nombre, int puntos, bool& actuali
         // Reproducir sonido de bonus y mostrar los nuevos puntos
         tocarSonidoBonusLife();
         // Dormir ejecucion 30 milisegundos y reanudar
-        Sleep(30);
+        Sleep(RETARDO / 200);
     }
     // Mantiene los ountos de antes
     cout << puntos;
@@ -286,7 +286,7 @@ void mostrarMensaje(const string mensaje){
     for (int i = 0; i < dim; i++){
         gotoxy(65 + i, 20);
         cout << mensaje.at(i) << " ";
-        Sleep(100);
+        Sleep(RETARDO / 600);
     }
     gotoxy(65 + dim, 20);
     printf("%c", 173);
@@ -308,22 +308,22 @@ void creditos(){
     cout << " ==================" << endl;
 
     // Dormir 1 segundo y mostrar titulo del juego
-    Sleep(2000);
+    Sleep(RETARDO / 3);
     gotoxy(49, 9);
     cout << " Juego del Ahorcado " << endl;
 
     // Dormir 1 segundo y mostrar autor del juego
-    Sleep(2000);
+    Sleep(RETARDO / 3);
     gotoxy(52, 11);
     cout << " ZgzInfinity " << endl;
 
     // Dormir 1 segundo y duracion del proyecto
-    Sleep(2000);
+    Sleep(RETARDO / 3);
     gotoxy(47, 14);
     cout << " Abril 2019 - Julio 2019 " << endl;
 
     // Dormir 2 segundos
-    Sleep(5000);
+    Sleep(RETARDO - 1000);
 
     // Limpiar pantalla y seguir con los creditos
     system("cls");
@@ -333,42 +333,42 @@ void creditos(){
     cout << "===========================" << endl;
 
 
-    Sleep(2000);
+    Sleep(RETARDO / 3);
     gotoxy(47, 5);
     cout << "Golden axe 1991 (GENESIS) Music " << endl;
 
-    Sleep(2000);
+    Sleep(RETARDO / 3);
     gotoxy(45, 7);
     cout << "Streets of Rage 1991 (GENESIS) Music " << endl;
 
-    Sleep(2000);
+    Sleep(RETARDO / 3);
     gotoxy(50, 9);
     cout << "Alien 3 (GENESIS) Music " << endl;
 
-    Sleep(2000);
+    Sleep(RETARDO / 3);
     gotoxy(43, 11);
     cout << "Sonic the hedgehog 1991 (GENESIS) Music " << endl;
 
-    Sleep(2000);
+    Sleep(RETARDO / 3);
     gotoxy(47, 13);
     cout << "Final fantasy X 2001 (ps2) Music " << endl;
 
-    Sleep(2000);
+    Sleep(RETARDO / 3);
     gotoxy(50, 15);
     cout << "Chessmaster 2002 (ps2)" << endl;
 
 
-    Sleep(2000);
+    Sleep(RETARDO / 3);
     gotoxy(48, 17);
     cout << "Cruis'n USA 1994 (Nintendo 64)" << endl;
 
 
-    Sleep(2000);
+    Sleep(RETARDO / 3);
     gotoxy(35, 19);
     cout << "El profesor Layton y la villa misteriosa 2008 (Nintendo DS)" << endl;
 
 
-    Sleep(2000);
+    Sleep(RETARDO / 3);
     gotoxy(15, 21);
     cout << " Todos los sonidos y bandas sonoras empleadas son propiedad de las empresas desarrolladoras" << endl;
 
