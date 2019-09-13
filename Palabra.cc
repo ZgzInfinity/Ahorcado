@@ -77,7 +77,7 @@ char devolverLetra(Palabra& p, const int i){
  */
 void mostrarHuecosPalabra(Palabra& p){
 	// Total de letras de la palabra <<p>>
-	gotoxy(60, 15);
+	gotoxy(50, 15);
 	int numLetras = obtenerLetras(p);
 	// Bucle de recorrido de la palabra
 	for (int i = 0; i < numLetras; i++){
@@ -111,7 +111,7 @@ void existeLetra(Palabra& p, const char l, int& letrasVolteadas, bool& encontrad
             c = devolverLetra(p, i);
             if (c == l){
                 // Muestreo de la letra en la poscion correcta
-                gotoxy(60 + 2 * i, 15);
+                gotoxy(50 + 2 * i, 15);
                 cout << l << " ";
                 // Se ha hallado una nueva letra y se voltea
                 letrasVolteadas++;
