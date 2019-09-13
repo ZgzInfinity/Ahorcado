@@ -340,6 +340,7 @@ int main(){
 
             // La palabra ha sido acertada
             acertada = true;
+            textcolor(COLOR_AMARILLO);
         }
         else {
             textcolor(COLOR_ROJO);
@@ -357,12 +358,18 @@ int main(){
 
             // Mostrar mensaje de derrota
             mostrarMensaje(mensajePartida);
+
+            // Mostrar la palabra no acertada
+            gotoxy(58, 21);
+            textcolor(COLOR_AMARILLO);
+
+            cout << "La palabra era ";
+            mostrarPalabra(palabraSeleccionada);
+
         }
 
-        textcolor(COLOR_AMARILLO);
-
-         // Dormir 2 segundos
-        Sleep(RETARDO / 3);
+         // Dormir 3 segundos
+        Sleep(RETARDO / 2);
 
         // Limpiar la pantlla
         system("cls");

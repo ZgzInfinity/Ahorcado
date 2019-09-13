@@ -99,6 +99,12 @@ struct Palabra {
 
 
 
+        /*
+         * Pre: ---
+         * Post Ha mostrado por pantalla la palabra oculta
+         */
+        friend void mostrarPalabra(Palabra& p);
+
 
 };
 

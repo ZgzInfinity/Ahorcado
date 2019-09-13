@@ -104,7 +104,7 @@ void existeLetra(Palabra& p, const char l, int& letrasVolteadas, bool& encontrad
 	// letra leida
     char c;
     // Ver si es o no letra repetida
-    if (!p.marcadas[l - 'a' ]){
+    if (!p.marcadas[l - 'a']){
         // Bucle de recorrido
         for (int i = 0; i < numLetras; i++){
             // Se compara si la letra i-ésima es igual a <<l>> y no se ha buscado antes
@@ -118,7 +118,7 @@ void existeLetra(Palabra& p, const char l, int& letrasVolteadas, bool& encontrad
                 // Incremento del numero de veces que se ha hallado la letra
                 numVeces++;
                 // La letra existe en la palabra
-                if (numVeces == 1){
+                if (numVeces >= 1){
                     encontrado = true;
                 }
             }
@@ -164,6 +164,18 @@ void seleccionarPalabra(const char ficheroPalabrasBinario[], const int numLineas
     }
 }
 
+
+
+/*
+ * Pre: ---
+ * Post Ha mostrado por pantalla la palabra oculta
+ */
+void mostrarPalabra(Palabra& p){
+    int numLetras = obtenerLetras(p);
+    for (int i = 0; i < numLetras; i++){
+        cout << devolverLetra(p, i);
+    }
+}
 
 
 
