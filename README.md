@@ -1,7 +1,6 @@
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) 
 [![windows](https://img.shields.io/badge/Windows%20-compatible-1df31a.svg)](https://www.microsoft.com/es-es/windows) 
-[![Allegro](https://img.shields.io/badge/Use%20-Allegro-f3661a.svg)](https://liballeg.org/)
 [![Version](https://img.shields.io/badge/Version%20-1.0-0101DF.svg)](https://github.com/ZgzInfinity/Ahorcado/releases)
 
 # Ahorcado
