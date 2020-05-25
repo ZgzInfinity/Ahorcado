@@ -15,8 +15,7 @@
 [![Version](https://img.shields.io/badge/Version%20-1.0-0101DF.svg)](https://github.com/ZgzInfinity/Ahorcado/releases)
 ![GitHub All Releases](https://img.shields.io/github/downloads/ZgzInfinity/Ahorcado/total?color=%20%23f34605&label=Release%20downloads&logoColor=%20)
 [![Github Stars](https://img.shields.io/github/stars/ZgzInfinity/Ahorcado?logo=github)](https://github.com/ZgzInfinity/Ahorcado/stargazers)
-[![Github forks](https://img.shields.io/github/forks/ZgzInfinity/Ahorcado?logo=github)](https://github.com/ZgzInfinity/Ahorcado/stargazers)
-
+[![Github forks](https://img.shields.io/github/forks/ZgzInfinity/Ahorcado?logo=github)](https://github.com/ZgzInfinity/Ahorcado/network/members)
 ## 1 - Descripción
 
 El ahorcado es un juego de adivinanzas para dos o más jugadores. Un jugador piensa en una palabra, frase u oración y el otro
