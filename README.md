@@ -1,6 +1,6 @@
 
 <p align="center">
-  <img src="https://i.ibb.co/JFYvqyS/unnamed.png" alt="Logo" width=400 height=300>
+  <img src="https://i.ibb.co/0VJNYmH/Hangman.png" alt="Logo" width=100 height=100>
 
   <h3 align="center">Juego del Ahorcado</h3>
 
